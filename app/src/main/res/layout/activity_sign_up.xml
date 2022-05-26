@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.prev.signup.SignUpActivity">
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilUserSignUp"
+        style="@style/tilsSignUpStyle"
+        android:layout_marginTop="@dimen/tilUserSignUp_marginTop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tieUserSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/tieUserSignUp_hint"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilEmailSignUp"
+        style="@style/tilsSignUpStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilUserSignUp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tieEmailSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/tieEmailSignUp_hint" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilPasswdSignUp"
+        style="@style/tilsSignUpStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilEmailSignUp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiePasswdSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/tiePasswdSignUp_hint" android:inputType="textPassword"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilConfirmPasswdSignUp"
+        style="@style/tilsSignUpStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilPasswdSignUp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tieConfirmPasswdSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/tieConfirmPasswdSignUp_hint"
+            android:inputType="textPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnSignUpSignUp"
+        style="@style/simpleBtnColored"
+        android:text="@string/btnSignUpSignUp_text"
+        android:layout_marginTop="@dimen/btnSignUpSignUp_marginTop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilConfirmPasswdSignUp" />
+
+    <Button
+        android:id="@+id/btnSignUpWGoogleSignUp"
+        style="@style/simpleBtnTransparent"
+        android:text="@string/btnSignUpWGoogleSignUp_text"
+        android:layout_marginTop="@dimen/btnSignUpWGoogleSignUp_marginTop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSignUpSignUp" />
+
+    <Button
+        android:id="@+id/btnSignInSignUp"
+        style="@style/simpleBtnTransparent"
+
+        android:text="@string/btnSignInSignUp_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/pbSignUp"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/pbLogin_marginHorizontal"
+        app:layout_constraintBottom_toTopOf="@+id/btnSignInSignUp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSignUpWGoogleSignUp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

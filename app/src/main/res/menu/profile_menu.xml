@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/action_settings_tittle"
+        android:orderInCategory="1"
+        android:icon="@drawable/ic_search"/>
+
+    <item
+        android:id="@+id/action_aboutus"
+        android:title="@string/action_aboutus_tittle"
+        android:orderInCategory="2"
+        android:icon="@drawable/ic_search"/>
+</menu>

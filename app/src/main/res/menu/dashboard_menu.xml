@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="@string/actionDashboardHome_tittle"
+        android:id="@+id/actionDashboardHome"
+        android:icon="@drawable/ic_dash_home" />
+
+    <item
+        android:title="@string/actionDashboardSeries_tittle"
+        android:id="@+id/actionDashboardSeries"
+        android:icon="@drawable/ic_dash_series" />
+
+    <item
+        android:title="@string/actionDashboardFilms_tittle"
+        android:id="@+id/actionDashboardFilms"
+        android:icon="@drawable/ic_dash_movie" />
+
+
+    <item
+        android:title="@string/actionDashboardProfile_tittle"
+        android:id="@+id/actionDashboardProfile"
+        android:icon="@drawable/ic_dash_profile" />
+
+</menu>

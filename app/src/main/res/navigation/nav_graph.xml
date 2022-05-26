@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dashboardFragment">
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.showtrack.ui.dashboard.DashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+    <fragment
+        android:id="@+id/recyclerFilmsFragment"
+        android:name="com.example.showtrack.ui.flm.filmsrecycler.RecyclerFilmsFragment"
+        android:label="fragment_recycler_films"
+        tools:layout="@layout/fragment_recycler_films" >
+        <action
+            android:id="@+id/action_recyclerFilmsFragment_to_filmItemFragment"
+            app:destination="@id/filmItemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.showtrack.ui.prf.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_aboutUsFragment"
+            app:destination="@id/aboutUsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.showtrack.ui.hm.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/recyclerSeriesFragment"
+        android:name="com.example.showtrack.ui.srs.seriesrecycler.RecyclerSerieFragment"
+        android:label="fragment_recyler_series"
+        tools:layout="@layout/fragment_recycler_series" />
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.example.showtrack.ui.prf.aboutus.AboutUsFragment"
+        android:label="fragment_about_us"
+        tools:layout="@layout/fragment_about_us" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.showtrack.ui.prf.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/filmGenreFragment"
+        android:name="com.example.showtrack.ui.flm.filmgenre.FilmGenreFragment"
+        android:label="fragment_film_genre"
+        tools:layout="@layout/fragment_film_genre" />
+    <fragment
+        android:id="@+id/filmSearchFragment"
+        android:name="com.example.showtrack.ui.flm.filmsearch.FilmSearchFragment"
+        android:label="fragment_film_search"
+        tools:layout="@layout/fragment_film_search" >
+    </fragment>
+    <fragment
+        android:id="@+id/serieItemFragment"
+        android:name="com.example.showtrack.ui.srs.serieitem.SerieItemFragment"
+        android:label="fragment_serie_item"
+        tools:layout="@layout/fragment_serie_item" />
+    <fragment
+        android:id="@+id/filmItemFragment"
+        android:name="com.example.showtrack.ui.flm.filmitem.FilmItemFragment"
+        android:label="FilmItemFragment" >
+        <action
+            android:id="@+id/action_filmItemFragment_to_recyclerFilmsFragment"
+            app:destination="@id/recyclerFilmsFragment" />
+    </fragment>
+</navigation>

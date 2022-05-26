@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "968380035997",
+    "project_id": "showtrack-9b562",
+    "storage_bucket": "showtrack-9b562.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:968380035997:android:19b26e34ff8763f553b574",
+        "android_client_info": {
+          "package_name": "com.example.showtrack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "968380035997-pvfohq4g4lsobt3u8qdg7mba5p3a4spc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYIjhscyNiiVL5KpN6yJXN_Qm8FKb8wo8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "968380035997-pvfohq4g4lsobt3u8qdg7mba5p3a4spc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,93 @@
+<resources>
+
+    <!--region LOGIN -->
+
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="txtST_marginTop">20dp</dimen>
+    <dimen name="imSTLogo_marginTop">100dp</dimen>
+    <dimen name="imSTLogo_width">431dp</dimen>
+    <dimen name="imSTLogo_height">458dp</dimen>
+    <dimen name="imgUserLogin_marginTop">30dp</dimen>
+    <dimen name="tilUserLogin_marginTop">50dp</dimen>
+    <dimen name="tilPaswdLogin_marginTop">10dp</dimen>
+    <dimen name="btnSignInLogin_margintop">20dp</dimen>
+    <dimen name="btnSignInWGoogleLogin_marginTop">10dp</dimen>
+    <dimen name="btnSignUpLogin_marginBottom">20dp</dimen>
+    <dimen name="chkRembMeLogin_marginHorinz">30dp</dimen>
+    <dimen name="tilPaswdLogin_marginHorizn">30dp</dimen>
+    <dimen name="tilUserLogin_marginHorizn">30dp</dimen>
+
+    <!--endregion-->
+
+    <!--region SIGN UP -->
+
+    <dimen name="tilsSignUp_marginHorizn">30dp</dimen>
+    <dimen name="tilsSignUp_marginTop">15dp</dimen>
+    <dimen name="tilUserSignUp_marginTop">40dp</dimen>
+    <dimen name="btnSignUpWGoogleSignUp_marginBottom">220dp</dimen>
+    <dimen name="btnSignUpSignUp_marginBottom">10dp</dimen>
+    <dimen name="btnSignInSignUp_marginBottom">30dp</dimen>
+
+    <!--endregion-->
+
+    <dimen name="toolbar_elevation">4dp</dimen>
+
+    <!--region SERIE VIEW -->
+
+    <dimen name="tvNameSerieView_marginTop">10dp</dimen>
+    <dimen name="tvYearSerieView_marginBottom">10dp</dimen>
+    <dimen name="serieView_width">190dp</dimen>
+    <dimen name="clBackgroundSerieView_width">160dp</dimen>
+    <dimen name="clBackgroundSerieView_height">260dp</dimen>
+    <dimen name="clTittleSerieView_height">60dp</dimen>
+
+    <!--endregion-->
+
+    <!--region FILM VIEW -->
+
+    <dimen name="tvNameFilmView_marginTop">10dp</dimen>
+    <dimen name="tvYearFilmView_marginBottom">10dp</dimen>
+    <dimen name="FilmView_width">190dp</dimen>
+    <dimen name="clBackgroundFilmView_width">160dp</dimen>
+    <dimen name="clBackgroundFilmView_height">260dp</dimen>
+    <dimen name="clTittleFilmView_height">60dp</dimen>
+
+    <!--endregion-->
+
+    <!--region FILM ITEM  -->
+
+    <dimen name="collapsingToolbarFilmItem_height">300dp</dimen>
+    <dimen name="collapsingToolbarFilmItem_expandedTittleMarginBottom">94dp</dimen>
+    <dimen name="nestedScrollViewFilmItem_overlapTop">78dp</dimen>
+    <dimen name="cardViewFilmItem_contentPaddingBottom">16dp</dimen>
+    <dimen name="cardViewFilmItem_contentPaddingLeft">16dp</dimen>
+    <dimen name="cardViewFilmItem_contentPaddingRight">16dp</dimen>
+    <dimen name="cardViewFilmItem_cardCornerRadius">4dp</dimen>
+    <dimen name="cardViewFilmItem_cardElevation">4dp</dimen>
+    <dimen name="cardViewFilmItem_margin">8dp</dimen>
+    <dimen name="textFilmItem_lineSpacingExtra">8dp</dimen>
+    <dimen name="textFilmItem_textSize">16sp</dimen>
+    <dimen name="btnAddSerieFilmItem_marginRight">32dp</dimen>
+    <dimen name="btnAddSerieFilmItem_elevation">8dp</dimen>
+
+    <!--endregion-->
+
+    <!--region FILM SEARCH  -->
+
+    <dimen name="tilFilmSearch_marginHorizn">30dp</dimen>
+    <dimen name="btnSearchFilmSearch_marginTop">25dp</dimen>
+    <dimen name="tilFilmSearch_marginTop">25dp</dimen>
+    <dimen name="rvFilmsSearched_marginTop">30dp</dimen>
+    <dimen name="tvTittleFilmGenre_margintop">20dp</dimen>
+    <dimen name="tvTittleFilmGenre_textSize">30sp</dimen>
+    <dimen name="llRecyclersFilmGenre_marginTop">20dp</dimen>
+
+    <!--endregion-->
+
+    <dimen name="filmview_padding">20dp</dimen>
+    <dimen name="pbLogin_marginHorizontal">30dp</dimen>
+    <dimen name="btnSignUpWGoogleSignUp_marginTop">20dp</dimen>
+    <dimen name="btnSignUpSignUp_marginTop">30dp</dimen>
+
+
+</resources>
