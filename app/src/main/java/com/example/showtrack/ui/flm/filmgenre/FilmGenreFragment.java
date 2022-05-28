@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 
 import com.example.showtrack.R;
 import com.example.showtrack.data.model.Film;
+import com.example.showtrack.data.repository.FilmRepository;
 import com.example.showtrack.databinding.FragmentFilmGenreBinding;
 import com.example.showtrack.ui.ShowTrackApplication;
 import com.example.showtrack.ui.flm.filmsrecycler.FilmsAdapter;
@@ -86,7 +87,9 @@ public class FilmGenreFragment extends Fragment implements FilmGenreContract.Vie
 
     @Override
     public void onChangeFilm(Film film) {
-
+        FilmRepository.getInstance().changeFilm(film);
+        presenter.cargarFilmsRvLeft(ShowTrackApplication.getGenreTemp());
+        presenter.cargarFilmsRvRight(ShowTrackApplication.getGenreTemp());
     }
 
     @Override

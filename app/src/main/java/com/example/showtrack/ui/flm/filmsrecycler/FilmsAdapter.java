@@ -40,8 +40,8 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolderFi
     @Override
     public void onBindViewHolder(@NonNull FilmsAdapter.ViewHolderFilms holder, int position) {
         //holder.clBackgroundFilmView.setBackground(this.FilmsList.get(position).getImage());
-        holder.tvNameFilmView.setText(this.filmsList.get(position).getName());
-        holder.tvYearFilmView.setText(Integer.toString(this.filmsList.get(position).getYear()));
+        holder.tvNameFilmView.setText(this.filmsList.get(position).getTittle());
+        holder.tvYearFilmView.setText(Integer.toString(this.filmsList.get(position).getFilmYear()));
 
         holder.bind(this.filmsList.get(position), listener);
     }

@@ -15,26 +15,26 @@ public class SerieRepository {
     }
 
     private void iniSeriesList() {
-        this.rvList.add(new Serie("Accion", LocalDate.now(), "Breaking Bad"));
-        this.rvList.add(new Serie("Accion",LocalDate.now(), "ToyBoy"));
-        this.rvList.add(new Serie("Accion",LocalDate.now(), "Prision Break"));
-        this.rvList.add(new Serie("Aventuras",LocalDate.now(), "Hora de Aventuras"));
-        this.rvList.add(new Serie("Aventuras",LocalDate.now(), "Hora de Aventuras"));
-        this.rvList.add(new Serie("Aventuras",LocalDate.now(), "Hora de Aventuras"));
-        this.rvList.add(new Serie("Aventuras",LocalDate.now(), "Hora de Aventuras"));
-        this.rvList.add(new Serie("Aventuras",LocalDate.now(), "Hora de Aventuras"));
-        this.rvList.add(new Serie("Thriller",LocalDate.now(), "Black Mirror"));
-        this.rvList.add(new Serie("Thriller",LocalDate.now(), "Black Mirror"));
-        this.rvList.add(new Serie("Thriller",LocalDate.now(), "Black Mirror"));
-        this.rvList.add(new Serie("Comedia",LocalDate.now(), "La que se avecina"));
-        this.rvList.add(new Serie("Terror",LocalDate.now(), "The Walking Dead"));
-        this.rvList.add(new Serie("Terror",LocalDate.now(), "The Walking Dead"));
-        this.rvList.add(new Serie("Terror",LocalDate.now(), "The Walking Dead"));
-        this.rvList.add(new Serie("Terror",LocalDate.now(), "The Walking Dead"));
-        this.rvList.add(new Serie("Terror",LocalDate.now(), "The Walking Dead"));
-        this.rvList.add(new Serie("Terror",LocalDate.now(), "The Walking Dead"));
-        this.rvList.add(new Serie("Terror",LocalDate.now(), "The Walking Dead"));
-        this.rvList.add(new Serie("Terror",LocalDate.now(), "The Walking Dead"));
+        this.rvList.add(new Serie("Accion", LocalDate.now().plusYears(10), "Breaking Bad"));
+        this.rvList.add(new Serie("Accion",LocalDate.now().plusYears(20), "ToyBoy"));
+        this.rvList.add(new Serie("Accion",LocalDate.now().plusYears(14), "Prision Break"));
+        this.rvList.add(new Serie("Aventuras",LocalDate.now().plusYears(15), "Hora de Aventuras"));
+        this.rvList.add(new Serie("Aventuras",LocalDate.now().plusYears(7), "Hora de Aventuras"));
+        this.rvList.add(new Serie("Aventuras",LocalDate.now().plusYears(8), "Hora de Aventuras"));
+        this.rvList.add(new Serie("Aventuras",LocalDate.now().plusYears(10), "Hora de Aventuras"));
+        this.rvList.add(new Serie("Aventuras",LocalDate.now().plusYears(11), "Hora de Aventuras"));
+        this.rvList.add(new Serie("Thriller",LocalDate.now().plusYears(9), "Black Mirror"));
+        this.rvList.add(new Serie("Thriller",LocalDate.now().plusYears(17), "Black Mirror"));
+        this.rvList.add(new Serie("Thriller",LocalDate.now().plusYears(19), "Black Mirror"));
+        this.rvList.add(new Serie("Comedia",LocalDate.now().plusYears(10), "La que se avecina"));
+        this.rvList.add(new Serie("Terror",LocalDate.now().plusYears(19), "The Walking Dead"));
+        this.rvList.add(new Serie("Terror",LocalDate.now().plusYears(7), "The Walking Dead"));
+        this.rvList.add(new Serie("Terror",LocalDate.now().plusYears(3), "The Walking Dead"));
+        this.rvList.add(new Serie("Terror",LocalDate.now().plusYears(2), "The Walking Dead"));
+        this.rvList.add(new Serie("Terror",LocalDate.now().plusYears(1), "The Walking Dead"));
+        this.rvList.add(new Serie("Terror",LocalDate.now().plusYears(11), "The Walking Dead"));
+        this.rvList.add(new Serie("Terror",LocalDate.now().plusYears(10), "The Walking Dead"));
+        this.rvList.add(new Serie("Terror",LocalDate.now().plusYears(25), "The Walking Dead"));
 
 
     }

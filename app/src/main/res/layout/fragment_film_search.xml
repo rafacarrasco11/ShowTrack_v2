@@ -26,12 +26,14 @@
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <ImageButton
         android:id="@+id/btnSearchFilmSearch"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:text="Button"
 
+        android:src="@drawable/ic_search_white"
+        android:backgroundTint="@color/primaryLightColor"
         android:layout_marginTop="@dimen/btnSearchFilmSearch_marginTop"
         android:layout_marginHorizontal="@dimen/tilFilmSearch_marginHorizn"
         app:layout_constraintEnd_toEndOf="parent"

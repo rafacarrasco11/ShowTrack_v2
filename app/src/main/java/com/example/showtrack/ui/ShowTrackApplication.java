@@ -31,7 +31,7 @@ public class ShowTrackApplication extends Application {
 
     public static Context context() { return context;}
 
-    public Film getFilmTemp() {
+    public static Film getFilmTemp() {
         return filmTemp;
     }
 
@@ -39,7 +39,7 @@ public class ShowTrackApplication extends Application {
         filmTemp = filmTempp;
     }
 
-    public Serie getSerieTemp() {
+    public static Serie getSerieTemp() {
         return serieTemp;
     }
 

@@ -112,7 +112,7 @@ public class RecyclerFilmAdapter extends RecyclerView.Adapter<RecyclerFilmAdapte
 
     @Override
     public void onChangeFilm(Film film) {
-
+        FilmRepository.getInstance().changeFilm(film);
     }
 
 

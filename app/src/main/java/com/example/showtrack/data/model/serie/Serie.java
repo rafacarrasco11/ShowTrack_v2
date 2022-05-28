@@ -3,6 +3,7 @@ package com.example.showtrack.data.model.serie;
 import android.graphics.drawable.Drawable;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Serie {
     int id;
@@ -25,7 +26,9 @@ public class Serie {
 
     double imdbRating;
     String type;
-    long boxOffice;
+    int totalSeasons;
+
+    List<Season> seasons;
 
     public Serie( String genre, LocalDate released, String tittle) {
         this.tittle = tittle;
@@ -170,11 +173,19 @@ public class Serie {
         this.type = type;
     }
 
-    public long getBoxOffice() {
-        return boxOffice;
+    public int getTotalSeasons() {
+        return totalSeasons;
     }
 
-    public void setBoxOffice(long boxOffice) {
-        this.boxOffice = boxOffice;
+    public void setTotalSeasons(int totalSeasons) {
+        this.totalSeasons = totalSeasons;
+    }
+
+    public List<Season> getSeasons() {
+        return seasons;
+    }
+
+    public void setSeasons(List<Season> seasons) {
+        this.seasons = seasons;
     }
 }
