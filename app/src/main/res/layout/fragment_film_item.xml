@@ -111,7 +111,7 @@
         android:elevation="@dimen/btnAddSerieFilmItem_elevation"
         android:src="@drawable/ic_add_white"
         app:tint="@color/primaryLightColor"
-        app:backgroundTint="@color/secondaryLightColor"
+        android:backgroundTint="@color/secondaryLightColor"
         app:layout_anchor="@id/cardViewFilmItem"
         app:layout_anchorGravity="top|right|end"
         tools:ignore="RtlHardcoded"

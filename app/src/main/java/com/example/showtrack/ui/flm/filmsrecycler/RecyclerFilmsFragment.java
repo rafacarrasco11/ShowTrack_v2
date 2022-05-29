@@ -57,7 +57,7 @@ public class RecyclerFilmsFragment extends Fragment implements RecyclerFilmsCont
     }
 
     private void initAdapterFilmsRv() {
-        adapter = new RecyclerFilmAdapter(fragment, this);
+        adapter = new RecyclerFilmAdapter(this, this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
 
         binding.rvFilms.setLayoutManager(layoutManager);
@@ -106,12 +106,12 @@ public class RecyclerFilmsFragment extends Fragment implements RecyclerFilmsCont
     @Override
     public void onVisitGenre(String genre) {
         ShowTrackApplication.setGenreTemp(genre);
-        NavHostFragment.findNavController(this).navigate(R.id.filmGenreFragment);
+        NavHostFragment.findNavController(this).navigate(R.id.action_recyclerFilmsFragment_to_filmGenreFragment);
     }
 
     //#region NAVEGACION
 
-    public void goFilmSearch() { NavHostFragment.findNavController(this).navigate(R.id.filmSearchFragment); }
+    public void goFilmSearch() { NavHostFragment.findNavController(this).navigate(R.id.action_recyclerFilmsFragment_to_filmSearchFragment); }
 
     //#endregion
 

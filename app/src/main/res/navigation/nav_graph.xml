@@ -17,6 +17,12 @@
         <action
             android:id="@+id/action_recyclerFilmsFragment_to_filmItemFragment"
             app:destination="@id/filmItemFragment" />
+        <action
+            android:id="@+id/action_recyclerFilmsFragment_to_filmSearchFragment"
+            app:destination="@id/filmSearchFragment" />
+        <action
+            android:id="@+id/action_recyclerFilmsFragment_to_filmGenreFragment"
+            app:destination="@id/filmGenreFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -54,12 +60,19 @@
         android:id="@+id/filmGenreFragment"
         android:name="com.example.showtrack.ui.flm.filmgenre.FilmGenreFragment"
         android:label="fragment_film_genre"
-        tools:layout="@layout/fragment_film_genre" />
+        tools:layout="@layout/fragment_film_genre" >
+        <action
+            android:id="@+id/action_filmGenreFragment_to_filmItemFragment"
+            app:destination="@id/filmItemFragment" />
+    </fragment>
     <fragment
         android:id="@+id/filmSearchFragment"
         android:name="com.example.showtrack.ui.flm.filmsearch.FilmSearchFragment"
         android:label="fragment_film_search"
         tools:layout="@layout/fragment_film_search" >
+        <action
+            android:id="@+id/action_filmSearchFragment_to_filmItemFragment"
+            app:destination="@id/filmItemFragment" />
     </fragment>
     <fragment
         android:id="@+id/serieItemFragment"
@@ -69,9 +82,5 @@
     <fragment
         android:id="@+id/filmItemFragment"
         android:name="com.example.showtrack.ui.flm.filmitem.FilmItemFragment"
-        android:label="FilmItemFragment" >
-        <action
-            android:id="@+id/action_filmItemFragment_to_recyclerFilmsFragment"
-            app:destination="@id/recyclerFilmsFragment" />
-    </fragment>
+        android:label="FilmItemFragment" />
 </navigation>

@@ -27,8 +27,8 @@ public interface FilmItemContract {
     }
 
     interface OnFilmItemCallback {
-        void onSuccessAddFilm(Film film);
-        void onSuccessRemoveFilm(Film film);
+        void onSuccessAddFilm(String message);
+        void onSuccessRemoveFilm( String message);
     }
 
 }

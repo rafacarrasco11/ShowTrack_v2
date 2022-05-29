@@ -82,7 +82,7 @@ public class FilmGenreFragment extends Fragment implements FilmGenreContract.Vie
     @Override
     public void onVisitFilm(Film film) {
         ShowTrackApplication.setFilmTemp(film);
-        NavHostFragment.findNavController(this).navigate(R.id.filmItemFragment);
+        NavHostFragment.findNavController(this).navigate(R.id.action_filmGenreFragment_to_filmItemFragment);
     }
 
     @Override
