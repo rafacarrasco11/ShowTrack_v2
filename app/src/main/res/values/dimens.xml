@@ -36,7 +36,6 @@
 
     <dimen name="tvNameSerieView_marginTop">10dp</dimen>
     <dimen name="tvYearSerieView_marginBottom">10dp</dimen>
-    <dimen name="serieView_width">190dp</dimen>
     <dimen name="clBackgroundSerieView_width">160dp</dimen>
     <dimen name="clBackgroundSerieView_height">260dp</dimen>
     <dimen name="clTittleSerieView_height">60dp</dimen>
@@ -80,7 +79,7 @@
     <dimen name="rvFilmsSearched_marginTop">30dp</dimen>
     <dimen name="tvTittleFilmGenre_margintop">20dp</dimen>
     <dimen name="tvTittleFilmGenre_textSize">30sp</dimen>
-    <dimen name="llRecyclersFilmGenre_marginTop">20dp</dimen>
+    <dimen name="llRecyclersFilmGenre_marginTop">90dp</dimen>
 
     <!--endregion-->
 
@@ -88,6 +87,46 @@
     <dimen name="pbLogin_marginHorizontal">30dp</dimen>
     <dimen name="btnSignUpWGoogleSignUp_marginTop">20dp</dimen>
     <dimen name="btnSignUpSignUp_marginTop">30dp</dimen>
+    <dimen name="pbFilmSearch_marginVertical">20dp</dimen>
+    <dimen name="serieview_padding">20dp</dimen>
+    <dimen name="tvTittleSerieGenre_margintop">20dp</dimen>
+    <dimen name="tvTittleSerieGenre_textSize">30sp</dimen>
+    <dimen name="llRecyclersSerieGenre_marginTop">90dp</dimen>
+    <dimen name="collapsingToolbarSerieItem_height">300dp</dimen>
+    <dimen name="collapsingToolbarSerieItem_expandedTittleMarginBottom">94dp</dimen>
+    <dimen name="nestedScrollViewSerieItem_overlapTop">78dp</dimen>
+    <dimen name="cardViewSerieItem_contentPaddingBottom">16dp</dimen>
+    <dimen name="cardViewSerieItem_contentPaddingLeft">16dp</dimen>
+    <dimen name="cardViewSerieItem_contentPaddingRight">16dp</dimen>
+    <dimen name="cardViewSerieItem_cardCornerRadius">4dp</dimen>
+    <dimen name="cardViewSerieItem_cardElevation">4dp</dimen>
+    <dimen name="cardViewSerieItem_margin">8dp</dimen>
+    <dimen name="textSerieItem_lineSpacingExtra">8dp</dimen>
+    <dimen name="textSerieItem_textSize">16sp</dimen>
+    <dimen name="btnAddSerieSerieItem_marginRight">32dp</dimen>
+    <dimen name="btnAddSerieSerieItem_elevation">8dp</dimen>
+    <dimen name="tilSerieSearch_marginTop">25dp</dimen>
+    <dimen name="tilSerieSearch_marginHorizn">30dp</dimen>
+    <dimen name="btnSearchSerieSearch_marginTop">25dp</dimen>
+    <dimen name="pbSerieSearch_marginVertical">20dp</dimen>
+
+    <dimen name="llBackgroundProfileFragment_height">200dp</dimen>
+    <dimen name="imgAvatarProfileFragment_width">70dp</dimen>
+    <dimen name="imgAvatarProfileFragment_height">70dp</dimen>
+    <dimen name="imgAvatarProfileFragment_marginTop">28dp</dimen>
+    <dimen name="tvUserNameProfileFragment_textSize">25sp</dimen>
+    <dimen name="tvUserNameProfileFragment_height">28dp</dimen>
+    <dimen name="rvStatsProfileFragment_height">100dp</dimen>
+    <dimen name="rvStatsProfileFragment_marginVertical">13dp</dimen>
+    <dimen name="tvTittleMySeriesProfileFragment_textSize">25sp</dimen>
+    <dimen name="tvTittleMySeriesProfileFragment_marginBottom">15dp</dimen>
+    <dimen name="tvTittleMyFilmsProfileFragment_textSize">25sp</dimen>
+    <dimen name="tvTittleMyFilmsProfileFragment_marginTop">15dp</dimen>
+    <dimen name="tvTittleMyFilmsProfileFragment_marginBottom">15dp</dimen>
+    <dimen name="tvTittleMySeriesProfileFragment_marginLeft">15dp</dimen>
+    <dimen name="tvTittleMyFilmsProfileFragment_marginLeft">15dp</dimen>
+    <dimen name="btnSettingsProfileFragment_marginTop">10dp</dimen>
+    <dimen name="btnAboutUsProfileFragment_marginTop">10dp</dimen>
 
 
 </resources>

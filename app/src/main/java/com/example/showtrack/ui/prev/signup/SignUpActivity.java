@@ -44,6 +44,12 @@ public class SignUpActivity extends AppCompatActivity implements SignUpContract.
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        this.presenter.onDestroy();
+    }
+
+    @Override
     public void setEmailEmptyError() {
         binding.tilEmailSignUp.setError(getApplicationContext().getString(R.string.tilEmailSignUp_EmptyError));
         hideProgress();

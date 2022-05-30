@@ -2,11 +2,14 @@ package com.example.showtrack.data.repository;
 
 import com.example.showtrack.data.model.Film;
 import com.example.showtrack.ui.flm.filmgenre.FilmGenreContract;
+import com.example.showtrack.ui.flm.filmitem.FilmItemContract;
+import com.example.showtrack.ui.flm.filmsearch.FilmSearchContract;
+import com.example.showtrack.ui.prf.profile.prof.ProfileContract;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class FilmRepository implements FilmGenreContract.Repository {
+public class FilmRepository implements FilmGenreContract.Repository, FilmItemContract.Repository, FilmSearchContract.Repository, ProfileContract.FilmsRepository {
     private static FilmRepository instance;
     private ArrayList<Film> filmsList;
 
@@ -44,11 +47,11 @@ public class FilmRepository implements FilmGenreContract.Repository {
     }
 
 
-    public ArrayList<Film> cargarFilms(String genre) {
+    public ArrayList<Film> cargarFilmsByGenre(String genre) {
         ArrayList<Film> FilmListByGenre = new ArrayList<>();
-        for (Film s : filmsList) {
-            if (s.getGenre().equals(genre))
-                FilmListByGenre.add(s);
+        for (Film f : filmsList) {
+            if (f.getGenre().equals(genre))
+                FilmListByGenre.add(f);
         }
 
         return FilmListByGenre;
@@ -61,11 +64,46 @@ public class FilmRepository implements FilmGenreContract.Repository {
 
     @Override
     public void cargarFilmsRvLeft(String genre, FilmGenreContract.OnFilmGenreCallback callback) {
-        callback.onSuccessCargarFilmsRvLeft(cargarFilms(genre));
+        callback.onSuccessCargarFilmsRvLeft(cargarFilmsByGenre(genre));
     }
 
     @Override
     public void cargarFilmsRvRight(String genre, FilmGenreContract.OnFilmGenreCallback callback) {
-        callback.onSuccessCargarFilmsRvRight(cargarFilms(genre));
+        callback.onSuccessCargarFilmsRvRight(cargarFilmsByGenre(genre));
+    }
+
+    @Override
+    public void addFilm(Film film, FilmItemContract.OnFilmItemCallback callback) {
+
+    }
+
+    @Override
+    public void removeFilm(Film film, FilmItemContract.OnFilmItemCallback callback) {
+
+    }
+
+    @Override
+    public void search(String searchText, FilmSearchContract.OnFilmSearchCallback callback) {
+
+    }
+
+    //#region PROFILE (ROOM)
+
+    @Override
+    public void cargarFilmsRv(ProfileContract.OnProfileGenreCallback callback) {
+        callback.onSuccessCargarFilmsRv(cargarFilmsAlea());
+    }
+
+    //#endregion
+
+    //TEMPORAL
+    private ArrayList<Film> cargarFilmsAlea() {
+        ArrayList<Film> list = new ArrayList<>();
+
+        for (int i = 1; i < 11; i++) {
+            list.add(this.filmsList.get(i));
+        }
+
+        return list;
     }
 }

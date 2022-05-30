@@ -4,7 +4,9 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,21 +19,26 @@ import android.view.ViewGroup;
 
 import com.example.showtrack.R;
 import com.example.showtrack.data.model.recycler.RecyclerSerie;
+import com.example.showtrack.data.model.serie.Serie;
 import com.example.showtrack.databinding.FragmentRecyclerSeriesBinding;
+import com.example.showtrack.ui.ShowTrackApplication;
 
 import java.util.ArrayList;
 
 
-public class RecyclerSerieFragment extends Fragment implements SeriesContract.View {
+public class RecyclerSerieFragment extends Fragment implements RecyclerSerieContract.View, RecyclerSerieAdapter.OnRecyclerSerieListener {
 
     private FragmentRecyclerSeriesBinding binding;
     private RecyclerSerieAdapter adapter;
     private RecyclerSerieFragmentPresenter presenter;
 
+    private RecyclerSerieFragment fragment;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        fragment = this;
         presenter = new RecyclerSerieFragmentPresenter(this);
     }
 
@@ -46,13 +53,17 @@ public class RecyclerSerieFragment extends Fragment implements SeriesContract.Vi
         super.onViewCreated(view, savedInstanceState);
         setHasOptionsMenu(true);
 
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+
         initAdapterSeriesRv();
 
         presenter.cargarSeriesRv();
     }
 
+
+
     private void initAdapterSeriesRv() {
-        adapter = new RecyclerSerieAdapter();
+        adapter = new RecyclerSerieAdapter(this, this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
 
         binding.rvSeries.setLayoutManager(layoutManager);
@@ -75,7 +86,7 @@ public class RecyclerSerieFragment extends Fragment implements SeriesContract.Vi
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_search:
-
+                goSerieSearch();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -96,4 +107,25 @@ public class RecyclerSerieFragment extends Fragment implements SeriesContract.Vi
     public void onSuccessCargarSeriesRv(ArrayList<RecyclerSerie> rvList) {
         adapter.update(rvList);
     }
+
+
+    @Override
+    public void onVisitGenre(String genre) {
+        ShowTrackApplication.setGenreTemp(genre);
+        NavHostFragment.findNavController(this).navigate(R.id.action_dashboardFragment_to_serieGenreFragment);
+    }
+
+    @Override
+    public void onVisitSerie(Serie serie) {
+        ShowTrackApplication.setSerieTemp(serie);
+        NavHostFragment.findNavController(this).navigate(R.id.action_dashboardFragment_to_serieItemFragment);
+    }
+
+    //#region NAVEGACION
+
+    public void goSerieSearch() { NavHostFragment.findNavController(this).navigate(R.id.action_dashboardFragment_to_serieSearchFragment); }
+
+    //#endregion
+
+
 }

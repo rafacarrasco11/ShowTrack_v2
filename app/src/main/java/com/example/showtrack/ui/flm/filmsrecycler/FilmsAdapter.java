@@ -24,7 +24,7 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolderFi
         void onChangeFilm(Film film);
     }
     
-    public FilmsAdapter(String genre, FilmsAdapter.OnFilmsListener listener) {
+    public FilmsAdapter(FilmsAdapter.OnFilmsListener listener) {
         this.filmsList = new ArrayList<>();
         this.listener = listener;
     }

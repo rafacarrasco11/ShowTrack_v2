@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +15,8 @@ import com.example.showtrack.R;
 import com.example.showtrack.databinding.FragmentDashboardBinding;
 import com.example.showtrack.ui.ShowTrackApplication;
 import com.example.showtrack.ui.flm.filmsrecycler.RecyclerFilmsFragment;
-import com.example.showtrack.ui.hm.home.HomeFragment;
-import com.example.showtrack.ui.prf.profile.ProfileFragment;
+import com.example.showtrack.ui.hm.HomeFragment;
+import com.example.showtrack.ui.prf.profile.prof.ProfileFragment;
 import com.example.showtrack.ui.srs.seriesrecycler.RecyclerSerieFragment;
 
 

@@ -1,15 +1,13 @@
 package com.example.showtrack.ui.flm.filmsrecycler;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,6 +26,8 @@ public class RecyclerFilmAdapter extends RecyclerView.Adapter<RecyclerFilmAdapte
 
     public interface OnRecyclerFilmListener {
         void onVisitGenre(String genre);
+
+        void onVisitFilm(Film film);
     }
 
     public RecyclerFilmAdapter(RecyclerFilmsFragment fragment, OnRecyclerFilmListener listener) {
@@ -51,7 +51,7 @@ public class RecyclerFilmAdapter extends RecyclerView.Adapter<RecyclerFilmAdapte
         holder.tvTittleFilmsRv.setText(recyclerFilm.getTittle());
 
 
-        FilmsAdapter adapter = new FilmsAdapter(recyclerFilm.getGenre(), this );
+        FilmsAdapter adapter = new FilmsAdapter( this );
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ShowTrackApplication.context(), RecyclerView.HORIZONTAL, false);
 
         holder.nestedRvFilms.setLayoutManager(layoutManager);
@@ -59,7 +59,11 @@ public class RecyclerFilmAdapter extends RecyclerView.Adapter<RecyclerFilmAdapte
 
 
 
-        adapter.update(FilmRepository.getInstance().cargarFilms(recyclerFilm.getGenre()));
+        adapter.update(FilmRepository.getInstance().cargarFilmsByGenre(recyclerFilm.getGenre()));
+
+        holder.llTittleFilmsRv.setOnClickListener(v -> {
+            listener.onVisitGenre(this.recyclersList.get(position).getGenre());
+        });
 
         holder.btnVisitGenre.setOnClickListener(v -> {
             listener.onVisitGenre(this.recyclersList.get(position).getGenre());
@@ -76,6 +80,7 @@ public class RecyclerFilmAdapter extends RecyclerView.Adapter<RecyclerFilmAdapte
 
         TextView tvTittleFilmsRv;
         RecyclerView nestedRvFilms;
+        LinearLayout llTittleFilmsRv;
         ImageView btnVisitGenre;
 
 
@@ -84,6 +89,7 @@ public class RecyclerFilmAdapter extends RecyclerView.Adapter<RecyclerFilmAdapte
 
             tvTittleFilmsRv = itemView.findViewById(R.id.tvTittleFilmsRv);
             nestedRvFilms = itemView.findViewById(R.id.nestedRvFilms);
+            llTittleFilmsRv = itemView.findViewById(R.id.llTittleFilmsRv);
             btnVisitGenre = itemView.findViewById(R.id.btnVisitGenre);
 
         }
@@ -107,7 +113,7 @@ public class RecyclerFilmAdapter extends RecyclerView.Adapter<RecyclerFilmAdapte
         NavHostFragment.findNavController().navigate(actionFilmsFragmentToFilmItemFragment);*/
 
         ShowTrackApplication.setFilmTemp(film);
-        NavHostFragment.findNavController(fragment).navigate(R.id.filmItemFragment);
+        listener.onVisitFilm(film);
     }
 
     @Override

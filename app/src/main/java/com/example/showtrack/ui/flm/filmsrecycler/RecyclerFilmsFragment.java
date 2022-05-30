@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.showtrack.R;
+import com.example.showtrack.data.model.Film;
 import com.example.showtrack.data.model.recycler.RecyclerFilm;
 import com.example.showtrack.databinding.FragmentRecyclerFilmsBinding;
 import com.example.showtrack.ui.ShowTrackApplication;
@@ -51,10 +53,13 @@ public class RecyclerFilmsFragment extends Fragment implements RecyclerFilmsCont
         super.onViewCreated(view, savedInstanceState);
         setHasOptionsMenu(true);
 
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+
         initAdapterFilmsRv();
 
         presenter.cargarFilmsRv();
     }
+
 
     private void initAdapterFilmsRv() {
         adapter = new RecyclerFilmAdapter(this, this);
@@ -106,12 +111,18 @@ public class RecyclerFilmsFragment extends Fragment implements RecyclerFilmsCont
     @Override
     public void onVisitGenre(String genre) {
         ShowTrackApplication.setGenreTemp(genre);
-        NavHostFragment.findNavController(this).navigate(R.id.action_recyclerFilmsFragment_to_filmGenreFragment);
+        NavHostFragment.findNavController(this).navigate(R.id.action_dashboardFragment_to_filmGenreFragment);
+    }
+
+    @Override
+    public void onVisitFilm(Film film) {
+        ShowTrackApplication.setFilmTemp(film);
+        NavHostFragment.findNavController(this).navigate(R.id.action_dashboardFragment_to_filmItemFragment);
     }
 
     //#region NAVEGACION
 
-    public void goFilmSearch() { NavHostFragment.findNavController(this).navigate(R.id.action_recyclerFilmsFragment_to_filmSearchFragment); }
+    public void goFilmSearch() { NavHostFragment.findNavController(this).navigate(R.id.action_dashboardFragment_to_filmSearchFragment); }
 
     //#endregion
 

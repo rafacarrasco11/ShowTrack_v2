@@ -4,9 +4,9 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,12 +16,9 @@ import android.view.ViewGroup;
 
 import com.example.showtrack.R;
 import com.example.showtrack.data.model.Film;
-import com.example.showtrack.data.repository.FilmRepository;
 import com.example.showtrack.databinding.FragmentFilmGenreBinding;
 import com.example.showtrack.ui.ShowTrackApplication;
 import com.example.showtrack.ui.flm.filmsrecycler.FilmsAdapter;
-import com.example.showtrack.ui.flm.filmsrecycler.RecyclerFilmAdapter;
-import com.example.showtrack.ui.flm.filmsrecycler.RecyclerFilmsFragmentPresenter;
 
 import java.util.ArrayList;
 
@@ -49,11 +46,15 @@ public class FilmGenreFragment extends Fragment implements FilmGenreContract.Vie
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+
         initRvLeft();
         initRvRight();
 
         presenter.cargarFilmsRvLeft(ShowTrackApplication.getGenreTemp());
         presenter.cargarFilmsRvRight(ShowTrackApplication.getGenreTemp());
+
+        binding.tvTittleFilmGenre.setText(getString(R.string.tvTittleFilmGenre_tittleText) + ShowTrackApplication.getGenreTemp());
      }
 
     @Override
@@ -63,7 +64,7 @@ public class FilmGenreFragment extends Fragment implements FilmGenreContract.Vie
     }
 
     private void initRvRight() {
-        adapterR = new FilmsAdapter(ShowTrackApplication.getGenreTemp(),this);
+        adapterR = new FilmsAdapter(this);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
 
@@ -72,7 +73,7 @@ public class FilmGenreFragment extends Fragment implements FilmGenreContract.Vie
     }
 
     private void initRvLeft() {
-        adapterL = new FilmsAdapter(ShowTrackApplication.getGenreTemp(),this);
+        adapterL = new FilmsAdapter(this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
 
         binding.rvLeftFilmGenre.setLayoutManager(layoutManager);
@@ -87,9 +88,7 @@ public class FilmGenreFragment extends Fragment implements FilmGenreContract.Vie
 
     @Override
     public void onChangeFilm(Film film) {
-        FilmRepository.getInstance().changeFilm(film);
-        presenter.cargarFilmsRvLeft(ShowTrackApplication.getGenreTemp());
-        presenter.cargarFilmsRvRight(ShowTrackApplication.getGenreTemp());
+//
     }
 
     @Override

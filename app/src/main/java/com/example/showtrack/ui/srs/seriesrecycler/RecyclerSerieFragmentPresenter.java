@@ -1,15 +1,16 @@
 package com.example.showtrack.ui.srs.seriesrecycler;
 
+import com.example.showtrack.data.model.recycler.RecyclerFilm;
 import com.example.showtrack.data.model.recycler.RecyclerSerie;
 
 import java.util.ArrayList;
 
-public class RecyclerSerieFragmentPresenter implements SeriesContract.Presenter, SeriesContract.OnInteractorListener {
+public class RecyclerSerieFragmentPresenter implements RecyclerSerieContract.Presenter, RecyclerSerieContract.OnInteractorListener {
 
     private RecyclerSerieFragmentInteractor interactor;
-    private SeriesContract.View view;
+    private RecyclerSerieContract.View view;
 
-    public RecyclerSerieFragmentPresenter(SeriesContract.View view) {
+    public RecyclerSerieFragmentPresenter(RecyclerSerieContract.View view) {
         this.view = view;
         this.interactor = new RecyclerSerieFragmentInteractor(this);
     }

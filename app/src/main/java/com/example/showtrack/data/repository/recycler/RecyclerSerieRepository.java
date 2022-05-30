@@ -1,11 +1,11 @@
 package com.example.showtrack.data.repository.recycler;
 
 import com.example.showtrack.data.model.recycler.RecyclerSerie;
-import com.example.showtrack.ui.srs.seriesrecycler.SeriesContract;
+import com.example.showtrack.ui.srs.seriesrecycler.RecyclerSerieContract;
 
 import java.util.ArrayList;
 
-public class RecyclerSerieRepository implements SeriesContract.Repository {
+public class RecyclerSerieRepository implements RecyclerSerieContract.Repository {
 
     private static RecyclerSerieRepository instance;
     private ArrayList<RecyclerSerie> rvList;
@@ -32,7 +32,7 @@ public class RecyclerSerieRepository implements SeriesContract.Repository {
     }
 
     @Override
-    public void cargarSeriesRv(SeriesContract.OnRepositoryRecyclerSerieFragmentCallback callback) {
+    public void cargarSeriesRv(RecyclerSerieContract.OnRepositoryRecyclerSerieFragmentCallback callback) {
         callback.onSuccessCargarSeriesRv(this.rvList);
     }
 }

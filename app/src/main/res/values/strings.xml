@@ -33,7 +33,6 @@
     <string name="toolbarTittleSeries">Series</string>
     <string name="toolbarTittleFilms">Películas</string>
     <string name="toolbarTittleProfile">Mi Perfil</string>
-    <string name="action_settings_tittle">Ajustes</string>
     <string name="action_aboutus_tittle">Sobre nosotros...</string>
     <string name="action_search_tittle">Buscar</string>
     <string name="tieFilmSearch_hint">Buscar...</string>
@@ -51,4 +50,15 @@
     <string name="tilUserSignUp_EmptyError">Usuario no puede ser vacío.</string>
     <string name="signUp_success">¡Usuario registrado con éxito!</string>
     <string name="signUp_failure">Registro de usuario fallido.</string>
+    <string name="tilFilmSearch_emptyError">Introduce algo para buscar.</string>
+    <string name="searchFailure">No se han encontrado coincidencias.</string>
+    <string name="tvTittleFilmGenre_tittleText">"Peliculas de "</string>
+    <string name="action_back">Volver</string>
+    <string name="tieSerieSearch_hint">Buscar...</string>
+    <string name="tvTittleSerieGenre_tittleText">"Series de "</string>
+    <string name="tilSerieSearch_emptyError">Introduce algo para buscar.</string>
+    <string name="tvTittleMySeriesProfileFragment_text">Mis Series</string>
+    <string name="tvTittleMyFilmsProfileFragment_text">Mis Peliculas</string>
+    <string name="btnSettingsProfileFragment_text">Ajustes</string>
+    <string name="btnAboutUsProfileFragment_text">Sorbe nosotros...</string>
 </resources>

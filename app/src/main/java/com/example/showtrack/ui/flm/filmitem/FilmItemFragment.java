@@ -15,6 +15,9 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -48,12 +51,26 @@ public class FilmItemFragment extends Fragment implements FilmItemContract.View 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if (!cargarPelicula())
-            goBack();
+
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+
+        if (!cargarPelicula()) {
+            NavHostFragment.findNavController(this).navigateUp();
+        }
 
         binding.btnAddSerieFilmItem.setOnClickListener(v -> {
             presenter.addFilm(this.film);
         });
+
+        binding.btnBackFilmItem.setOnClickListener(v -> {
+            NavHostFragment.findNavController(this).navigateUp();
+        });
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        this.presenter.onDestroy();
     }
 
     @Override
@@ -69,17 +86,14 @@ public class FilmItemFragment extends Fragment implements FilmItemContract.View 
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 
-
-    private void goBack () {
-        NavHostFragment.findNavController(this).navigate(R.id.filmGenreFragment);
-    }
-
     private boolean cargarPelicula () {
         if (this.film != null) {
             binding.imageFilmItem.setImageDrawable(film.getPoster());
             binding.collapsingToolbarFilmItem.setTitle(film.getTittle());
             binding.tittleFilmItem.setText(film.getTittle());
             binding.textFilmItem.setText(film.makePlot());
+
+            return true;
         }
 
         return false;

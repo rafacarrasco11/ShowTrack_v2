@@ -1,4 +1,4 @@
-package com.example.showtrack.ui.prf.settings;
+package com.example.showtrack.ui.prf.profile.settingssection;
 
 import android.os.Bundle;
 
@@ -9,8 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.showtrack.R;
-
-public class SettingsFragment extends Fragment {
+public class SettingsSectionFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -19,6 +18,11 @@ public class SettingsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_settings, container, false);
+        return inflater.inflate(R.layout.fragment_settings_section, container, false);
     }
+
+    public static Fragment newInstance() {
+        return new SettingsSectionFragment();
+    }
+
 }

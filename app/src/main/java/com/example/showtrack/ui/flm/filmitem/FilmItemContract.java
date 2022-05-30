@@ -19,7 +19,7 @@ public interface FilmItemContract {
 
     interface Repository {
         void addFilm(Film film, OnFilmItemCallback callback);
-        void removeFilm(Film film);
+        void removeFilm(Film film, OnFilmItemCallback callback);
     }
 
     interface OnInteractorListener extends OnFilmItemCallback {

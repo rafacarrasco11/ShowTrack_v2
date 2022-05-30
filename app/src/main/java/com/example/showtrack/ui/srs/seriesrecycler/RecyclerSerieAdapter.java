@@ -3,6 +3,8 @@ package com.example.showtrack.ui.srs.seriesrecycler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,16 +13,28 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.showtrack.R;
 import com.example.showtrack.data.model.recycler.RecyclerSerie;
+import com.example.showtrack.data.model.serie.Serie;
 import com.example.showtrack.data.repository.SerieRepository;
 import com.example.showtrack.ui.ShowTrackApplication;
 
 import java.util.ArrayList;
 
-public class RecyclerSerieAdapter extends RecyclerView.Adapter<RecyclerSerieAdapter.ViewHolderSeries> {
-    private ArrayList<RecyclerSerie> recyclersList;
+public class RecyclerSerieAdapter extends RecyclerView.Adapter<RecyclerSerieAdapter.ViewHolderSeries> implements SerieAdapter.OnSeriesListener{
 
-    public RecyclerSerieAdapter() {
+    private ArrayList<RecyclerSerie> recyclersList;
+    private RecyclerSerieFragment fragment;
+    private OnRecyclerSerieListener listener;
+
+    public interface OnRecyclerSerieListener {
+        void onVisitGenre(String genre);
+
+        void onVisitSerie(Serie serie);
+    }
+
+    public RecyclerSerieAdapter(RecyclerSerieFragment fragment, OnRecyclerSerieListener listener) {
         this.recyclersList = new ArrayList<>();
+        this.fragment = fragment;
+        this.listener =listener;
     }
 
     @NonNull
@@ -38,14 +52,23 @@ public class RecyclerSerieAdapter extends RecyclerView.Adapter<RecyclerSerieAdap
         holder.tvTittleSeriesRv.setText(recyclerSerie.getTittle());
 
 
-        SeriesAdapter adapter = new SeriesAdapter(recyclerSerie.getGenre());
+        SerieAdapter adapter = new SerieAdapter( this );
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ShowTrackApplication.context(), RecyclerView.HORIZONTAL, false);
 
         holder.nestedRvSeries.setLayoutManager(layoutManager);
         holder.nestedRvSeries.setAdapter(adapter);
 
 
+
         adapter.update(SerieRepository.getInstance().cargarSeries(recyclerSerie.getGenre()));
+
+        holder.llTittleSeriesRv.setOnClickListener(v -> {
+            listener.onVisitGenre(this.recyclersList.get(position).getGenre());
+        });
+
+        holder.btnVisitGenre.setOnClickListener(v -> {
+            listener.onVisitGenre(this.recyclersList.get(position).getGenre());
+        });
     }
 
     @Override
@@ -58,6 +81,8 @@ public class RecyclerSerieAdapter extends RecyclerView.Adapter<RecyclerSerieAdap
 
         TextView tvTittleSeriesRv;
         RecyclerView nestedRvSeries;
+        LinearLayout llTittleSeriesRv;
+        ImageView btnVisitGenre;
 
 
         public ViewHolderSeries(@NonNull View itemView) {
@@ -65,6 +90,9 @@ public class RecyclerSerieAdapter extends RecyclerView.Adapter<RecyclerSerieAdap
 
             tvTittleSeriesRv = itemView.findViewById(R.id.tvTittleSeriesRv);
             nestedRvSeries = itemView.findViewById(R.id.nestedRvSeries);
+            llTittleSeriesRv = itemView.findViewById(R.id.llTittleSeriesRv);
+            btnVisitGenre = itemView.findViewById(R.id.btnVisitGenre);
+
         }
     }
 
@@ -74,4 +102,26 @@ public class RecyclerSerieAdapter extends RecyclerView.Adapter<RecyclerSerieAdap
 
         notifyDataSetChanged();
     }
+
+
+    @Override
+    public void onVisitSerie(Serie serie) {
+        /*
+        NO SE HIZO CON FRAGMENT DIRECTIONS POR PROBELMAS BOTENIENDO FRAGMENT
+        RecyclerSeriesFragmentDirections.ActionSeriesFragmentToSerieItemFragment actionSeriesFragmentToSerieItemFragment
+                = RecyclerSeriesFragmentDirections.actionSeriesFragmentToSerieItemFragment(Serie);
+
+        NavHostFragment.findNavController().navigate(actionSeriesFragmentToSerieItemFragment);*/
+
+        ShowTrackApplication.setSerieTemp(serie);
+        listener.onVisitSerie(serie);
+    }
+
+    @Override
+    public void onChangeSerie(Serie serie) {
+        //SerieRepository.getInstance().changeSerie(serie);
+    }
+
+
 }
+

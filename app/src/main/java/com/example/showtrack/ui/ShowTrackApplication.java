@@ -43,7 +43,7 @@ public class ShowTrackApplication extends Application {
         return serieTemp;
     }
 
-    public void setSerieTemp(Serie serieTempp) {
+    public static  void setSerieTemp(Serie serieTempp) {
         serieTemp = serieTempp;
     }
 
