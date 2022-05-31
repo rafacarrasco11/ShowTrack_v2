@@ -47,22 +47,22 @@
                 android:layout_gravity="center"/>
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvStatsProfileFragment"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/rvStatsProfileFragment_height"
-            android:layout_marginVertical="@dimen/rvStatsProfileFragment_marginVertical"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
         <LinearLayout
             android:id="@+id/llRvSeriesAndFilmsProfileFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/rvStatsProfileFragment">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvStatsProfileFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/rvStatsProfileFragment_marginVertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </androidx.recyclerview.widget.RecyclerView>
 
             <TextView
                 android:id="@+id/tvTittleMySeriesProfileFragment"

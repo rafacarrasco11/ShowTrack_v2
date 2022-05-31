@@ -2,6 +2,7 @@ package com.example.showtrack.ui.prf.profile.prof;
 
 import com.example.showtrack.data.model.Film;
 import com.example.showtrack.data.model.serie.Serie;
+import com.example.showtrack.data.model.user.Stat;
 
 import java.util.ArrayList;
 
@@ -26,6 +27,11 @@ public class ProfilePresenter implements ProfileContract.Presenter, ProfileContr
     }
 
     @Override
+    public void cargarStatsRv() {
+        this.interactor.cargarStats();
+    }
+
+    @Override
     public void onDestroy() {
         this.interactor = null;
         this.view = null;
@@ -39,6 +45,10 @@ public class ProfilePresenter implements ProfileContract.Presenter, ProfileContr
     @Override
     public void onSuccessCargarFilmsRv(ArrayList<Film> rvList) {
         this.view.onSuccessCargarFilmsRv(rvList);
+    }
 
+    @Override
+    public void onSuccessCargarStatsRv(ArrayList<Stat> rvList) {
+        this.view.onSuccessCargarStatsRv(rvList);
     }
 }

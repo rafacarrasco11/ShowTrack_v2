@@ -3,7 +3,6 @@ package com.example.showtrack.data.repository.prev;
 import androidx.annotation.NonNull;
 
 import com.example.showtrack.R;
-import com.example.showtrack.data.model.User;
 import com.example.showtrack.ui.ShowTrackApplication;
 import com.example.showtrack.ui.prev.signup.SignUpContract;
 import com.google.android.gms.tasks.OnCompleteListener;

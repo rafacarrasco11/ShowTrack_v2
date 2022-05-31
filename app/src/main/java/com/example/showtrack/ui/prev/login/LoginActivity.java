@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.showtrack.MainActivity;
-import com.example.showtrack.data.model.User;
+import com.example.showtrack.data.model.user.User;
 import com.example.showtrack.databinding.ActivityLoginBinding;
 import com.example.showtrack.ui.prev.signup.SignUpActivity;
 

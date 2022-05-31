@@ -9,7 +9,7 @@ import android.preference.PreferenceManager;
 
 import com.example.showtrack.MainActivity;
 import com.example.showtrack.R;
-import com.example.showtrack.data.model.User;
+import com.example.showtrack.data.model.user.User;
 import com.example.showtrack.ui.prev.login.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity {

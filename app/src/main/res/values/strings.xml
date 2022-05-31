@@ -33,7 +33,7 @@
     <string name="toolbarTittleSeries">Series</string>
     <string name="toolbarTittleFilms">Películas</string>
     <string name="toolbarTittleProfile">Mi Perfil</string>
-    <string name="action_aboutus_tittle">Sobre nosotros...</string>
+    <string name="action_settings_tittle">Ajustes</string>
     <string name="action_search_tittle">Buscar</string>
     <string name="tieFilmSearch_hint">Buscar...</string>
 
@@ -61,4 +61,7 @@
     <string name="tvTittleMyFilmsProfileFragment_text">Mis Peliculas</string>
     <string name="btnSettingsProfileFragment_text">Ajustes</string>
     <string name="btnAboutUsProfileFragment_text">Sorbe nosotros...</string>
+    <string name="btngoAboutUsProfileFragment_text">Sobre Nosotros...</string>
+    <string name="btnDeleteAccountProfileFragment_text">Eliminar cuenta</string>
+    <string name="btnLogOutProfileFragment_text">Cerrar Sesión...</string>
 </resources>

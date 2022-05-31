@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_aboutUsFragment"
             app:destination="@id/aboutUsFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/recyclerFilmsFragment"
@@ -102,13 +105,8 @@
             app:destination="@id/serieItemFragment" />
     </fragment>
     <fragment
-        android:id="@+id/profileSectionFragment"
-        android:name="com.example.showtrack.ui.prf.profile.profilesection.ProfileSectionFragment"
-        android:label="fragment_profile_section"
-        tools:layout="@layout/fragment_profile_section" />
-    <fragment
-        android:id="@+id/settingsSectionFragment"
-        android:name="com.example.showtrack.ui.prf.profile.settingssection.SettingsSectionFragment"
-        android:label="fragment_settings_section"
-        tools:layout="@layout/fragment_settings_section" />
+        android:id="@+id/settingsFragment"
+        android:name="com.example.showtrack.ui.prf.profile.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

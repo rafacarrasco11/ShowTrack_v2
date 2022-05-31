@@ -10,12 +10,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.showtrack.R;
 import com.example.showtrack.data.model.Film;
 import com.example.showtrack.data.model.serie.Serie;
+import com.example.showtrack.data.model.user.Stat;
 import com.example.showtrack.databinding.FragmentProfileBinding;
 import com.example.showtrack.ui.ShowTrackApplication;
 import com.example.showtrack.ui.flm.filmsrecycler.FilmsAdapter;
@@ -29,6 +33,8 @@ public class ProfileFragment extends Fragment implements ProfileContract.View, F
 
     private FilmsAdapter adapterFilms;
     private SerieAdapter adapterSeries;
+
+    private StatAdapter adapterStats;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,12 +52,40 @@ public class ProfileFragment extends Fragment implements ProfileContract.View, F
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        setHasOptionsMenu(true);
 
         initRvFilms();
         initRvSeries();
+        initRvStats();
 
         presenter.cargarFilmsRv();
         presenter.cargarSeriesRv();
+        presenter.cargarStatsRv();
+    }
+
+    private void initRvStats() {
+        adapterStats = new StatAdapter();
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false);
+
+        binding.rvStatsProfileFragment.setLayoutManager(layoutManager);
+        binding.rvStatsProfileFragment.setAdapter(adapterStats);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.profile_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                goSettings();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
@@ -62,7 +96,6 @@ public class ProfileFragment extends Fragment implements ProfileContract.View, F
 
     private void initRvFilms() {
         adapterFilms = new FilmsAdapter(this);
-
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false);
 
         binding.rvFilmProfileFragment.setLayoutManager(layoutManager);
@@ -71,7 +104,6 @@ public class ProfileFragment extends Fragment implements ProfileContract.View, F
 
     private void initRvSeries() {
         adapterSeries = new SerieAdapter(this);
-
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false);
 
         binding.rvSerieProfileFragment.setLayoutManager(layoutManager);
@@ -96,7 +128,7 @@ public class ProfileFragment extends Fragment implements ProfileContract.View, F
 
     @Override
     public void onChangeFilm(Film film) {
-//
+        //
     }
 
     @Override
@@ -110,6 +142,11 @@ public class ProfileFragment extends Fragment implements ProfileContract.View, F
     }
 
     @Override
+    public void onSuccessCargarStatsRv(ArrayList<Stat> rvList) {
+        adapterStats.update(rvList);
+    }
+
+    @Override
     public void onVisitSerie(Serie serie) {
         ShowTrackApplication.setSerieTemp(serie);
         NavHostFragment.findNavController(this).navigate(R.id.action_dashboardFragment_to_serieItemFragment);
@@ -117,7 +154,11 @@ public class ProfileFragment extends Fragment implements ProfileContract.View, F
 
     @Override
     public void onChangeSerie(Serie serie) {
-//
+        //
+    }
+
+    private void goSettings() {
+        NavHostFragment.findNavController(this).navigate(R.id.action_dashboardFragment_to_settingsFragment);
     }
 
 }

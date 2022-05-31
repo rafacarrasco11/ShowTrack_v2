@@ -1,26 +1,38 @@
-package com.example.showtrack.data.model;
+package com.example.showtrack.data.model.user;
 
+import com.example.showtrack.data.model.Genres;
 import com.example.showtrack.data.model.serie.Serie;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class User {
     public static final String TAG = "user";
 
     int id;
     String username;
-    String password;
-    String email;
 
     List<Genres> favGenres;
 
     List<String> mySeries;
     List<String> myFilms;
 
-    public User(String username, String password, String email) {
+    List<Stat> myStats;
+
+    public User(String username) {
         this.username = username;
-        this.password = password;
-        this.email = email;
+        myStats = new ArrayList<>();
+        generateStats();
+    }
+
+    public void generateStats() {
+        myStats.add(new Stat("Weeks Watched",3));
+        myStats.add(new Stat("Days Watched",3 * 7));
+        myStats.add(new Stat("Hours Watched",3 * 7 * 24));
+        myStats.add(new Stat("Minutes Watched",3 * 7 * 24 * 60));
+        myStats.add(new Stat("Seconds Watched",3 * 7 * 24 * 60 * 60));
     }
 
     public static String getTAG() {
@@ -41,22 +53,6 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public List<Genres> getFavGenres() {
@@ -81,5 +77,13 @@ public class User {
 
     public void setMyFilms(List<String> myFilms) {
         this.myFilms = myFilms;
+    }
+
+    public List<Stat> getMyStats() {
+        return myStats;
+    }
+
+    public void setMyStats(List<Stat> myStats) {
+        this.myStats = myStats;
     }
 }
