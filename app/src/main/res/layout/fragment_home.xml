@@ -1,52 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.hm.home.HomeFragment" >
+    tools:context=".ui.hm.HomeFragment" >
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvTittleHomeFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/tvTittleHomeFragment_text"
+        android:textSize="@dimen/tvTittleHomeFragment_marginLeft"
+        android:layout_marginLeft="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <TextView
+        android:id="@+id/tvTittleUserNameHomeFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/tvTittleUserNameHomeFragment_marginStart"
+        android:text="Usuario"
+        android:textSize="@dimen/tvTittleUserNameHomeFragment_textSize"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTittleHomeFragment" />
+
+    <LinearLayout
+        android:id="@+id/llButtonsHomeFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/llButtonsHomeFragment_marginTop"
+        android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/tvTittleUserNameHomeFragment">
 
         <Button
-            android:id="@+id/button5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Button" />
+            android:id="@+id/btnGoFilmsHomeFragment"
+            android:layout_width="@dimen/btnGoFilmsHomeFragment_width"
+            android:layout_height="@dimen/btnGoFilmsHomeFragment_height"
+
+            android:text="DESCUBRIR PELICULAS" />
 
         <Button
-            android:id="@+id/button6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Button" />
+            android:id="@+id/btnSeparatorHomeFragment"
+            android:layout_width="@dimen/btnSeparatorHomeFragment_width"
+            android:layout_height="0dp"
+            android:text="DESCUBRIR PELICULAS" />
+
+        <Button
+            android:id="@+id/btnGoSeriesHomeFragment"
+            android:layout_width="@dimen/btnGoSeriesHomeFragment_width"
+            android:layout_height="@dimen/btnGoSeriesHomeFragment_height"
+            android:text="DESCUBRIR SERIES" />
     </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/container"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvNews"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llButtonsHomeFragment">
 
-    </FrameLayout>
-
+    </androidx.recyclerview.widget.RecyclerView>
 </androidx.constraintlayout.widget.ConstraintLayout>

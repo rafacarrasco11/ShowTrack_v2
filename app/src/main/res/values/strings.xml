@@ -64,4 +64,5 @@
     <string name="btngoAboutUsProfileFragment_text">Sobre Nosotros...</string>
     <string name="btnDeleteAccountProfileFragment_text">Eliminar cuenta</string>
     <string name="btnLogOutProfileFragment_text">Cerrar Sesión...</string>
+    <string name="tvTittleHomeFragment_text">Bienvenido de nuevo,</string>
 </resources>

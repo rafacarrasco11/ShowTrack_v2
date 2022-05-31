@@ -34,23 +34,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setupNews();
-    }
-
-    private void setupNews() {
-        try {
-
-            String str_tag = "News_Fragment";
-            String str_addToBackStack = "News_Fragment";;
-            Bundle bundle_news=new Bundle();
-
-
-
-
-        } catch (Exception e)
-        {
-
-        }
     }
 
     public static Fragment newInstance(Bundle bundle) {

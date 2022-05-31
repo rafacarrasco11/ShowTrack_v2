@@ -36,6 +36,7 @@
         <entry key="app/src/main/res/layout/fragment_series.xml" value="0.35885416666666664" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_settings_section.xml" value="0.35885416666666664" />
+        <entry key="app/src/main/res/layout/new_view.xml" value="0.33967391304347827" />
         <entry key="app/src/main/res/layout/recycler_film_view.xml" value="0.35885416666666664" />
         <entry key="app/src/main/res/layout/recycler_serie_view.xml" value="0.35885416666666664" />
         <entry key="app/src/main/res/layout/serie_view.xml" value="0.335" />

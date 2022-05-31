@@ -130,6 +130,15 @@
     <dimen name="tvStatStatView_textSize">38sp</dimen>
     <dimen name="tvTittleStatView_textSize">18sp</dimen>
     <dimen name="rvStatsProfileFragment_marginVertical">20dp</dimen>
+    <dimen name="tvTittleHomeFragment_marginLeft">26sp</dimen>
+    <dimen name="tvTittleUserNameHomeFragment_marginStart">25dp</dimen>
+    <dimen name="tvTittleUserNameHomeFragment_textSize">26sp</dimen>
+    <dimen name="llButtonsHomeFragment_marginTop">20dp</dimen>
+    <dimen name="btnGoFilmsHomeFragment_width">150dp</dimen>
+    <dimen name="btnGoFilmsHomeFragment_height">110dp</dimen>
+    <dimen name="btnSeparatorHomeFragment_width">30dp</dimen>
+    <dimen name="btnGoSeriesHomeFragment_width">150dp</dimen>
+    <dimen name="btnGoSeriesHomeFragment_height">110dp</dimen>
 
 
 </resources>
