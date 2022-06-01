@@ -29,6 +29,8 @@ public class Film implements Serializable {
     String type;
     long boxOffice;
 
+    boolean watched;
+
     public Film( String genre, LocalDate released, String tittle) {
         this.tittle = tittle;
         this.released = released;
@@ -180,6 +182,13 @@ public class Film implements Serializable {
         this.boxOffice = boxOffice;
     }
 
+    public boolean isWatched() {
+        return watched;
+    }
+
+    public void setWatched(boolean watched) {
+        this.watched = watched;
+    }
 
     public int getFilmYear() {
         return this.released.getYear();

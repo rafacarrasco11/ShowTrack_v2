@@ -65,4 +65,7 @@
     <string name="btnDeleteAccountProfileFragment_text">Eliminar cuenta</string>
     <string name="btnLogOutProfileFragment_text">Cerrar Sesión...</string>
     <string name="tvTittleHomeFragment_text">Bienvenido de nuevo,</string>
+    <string name="keyword_cine_apinews">Cine</string>
+    <string name="keyword_peliculas_apinews">Peliculas</string>
+    <string name="keyword_series_apinews">Series</string>
 </resources>

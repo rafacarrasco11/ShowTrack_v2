@@ -51,7 +51,7 @@ public class DashboardFragment extends Fragment {
     }
 
 
-    private void loadFragment(Fragment newInstance) {
+    public void loadFragment(Fragment newInstance) {
         if (newInstance != null) {
             getChildFragmentManager().beginTransaction().replace(R.id.dashboardContent, newInstance).commit();
         }

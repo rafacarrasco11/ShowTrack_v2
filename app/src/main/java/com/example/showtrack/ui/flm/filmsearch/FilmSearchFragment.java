@@ -16,7 +16,10 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.showtrack.R;
+import com.example.showtrack.data.model.Film;
 import com.example.showtrack.databinding.FragmentFilmSearchBinding;
+import com.example.showtrack.ui.ShowTrackApplication;
+import com.example.showtrack.ui.flm.filmsrecycler.FilmsAdapter;
 
 import java.util.ArrayList;
 

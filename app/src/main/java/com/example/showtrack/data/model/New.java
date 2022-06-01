@@ -4,19 +4,22 @@ public class New {
 
     String name;
     String author;
-    String tittle;
+    String title;
     String description;
     String url;
-    String imageUrl;
+    String urlToImage;
     String publishedAt;
     String content;
 
-    public New(String name, String author, String tittle, String description, String publishedAt) {
+    public New(String name, String author, String title, String description, String url, String urlToImage, String publishedAt, String content) {
         this.name = name;
         this.author = author;
-        this.tittle = tittle;
+        this.title = title;
         this.description = description;
+        this.url = url;
+        this.urlToImage = urlToImage;
         this.publishedAt = publishedAt;
+        this.content = content;
     }
 
     public String getName() {
@@ -35,12 +38,12 @@ public class New {
         this.author = author;
     }
 
-    public String getTittle() {
-        return tittle;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTittle(String tittle) {
-        this.tittle = tittle;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
@@ -59,12 +62,12 @@ public class New {
         this.url = url;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getUrlToImage() {
+        return urlToImage;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setUrlToImage(String urlToImage) {
+        this.urlToImage = urlToImage;
     }
 
     public String getPublishedAt() {

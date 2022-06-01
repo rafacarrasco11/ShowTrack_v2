@@ -16,6 +16,7 @@ public interface FilmSearchContract {
 
     interface Presenter {
         void search(String searchText);
+
         void onDestroy();
     }
 

@@ -139,6 +139,8 @@
     <dimen name="btnSeparatorHomeFragment_width">30dp</dimen>
     <dimen name="btnGoSeriesHomeFragment_width">150dp</dimen>
     <dimen name="btnGoSeriesHomeFragment_height">110dp</dimen>
+    <dimen name="rvNews_marginTop">20dp</dimen>
+    <dimen name="tvTittleHomeFragment_marginTop">15dp</dimen>
 
 
 </resources>
