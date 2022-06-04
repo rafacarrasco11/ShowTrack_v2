@@ -58,8 +58,10 @@ public class RecyclerFilmAdapter extends RecyclerView.Adapter<RecyclerFilmAdapte
         holder.nestedRvFilms.setAdapter(adapter);
 
 
-
-        adapter.update(FilmRepository.getInstance().cargarFilmsByGenre(recyclerFilm.getGenre()));
+        if (recyclerFilm.getGenre() == null)
+            adapter.update(FilmRepository.getInstance().cargarFilmsByList(recyclerFilm.getList()));
+        if (recyclerFilm.getList() == null)
+            adapter.update(FilmRepository.getInstance().cargarFilmsByGenre(recyclerFilm.getGenre()));
 
         holder.llTittleFilmsRv.setOnClickListener(v -> {
             listener.onVisitGenre(this.recyclersList.get(position).getGenre());
@@ -82,6 +84,7 @@ public class RecyclerFilmAdapter extends RecyclerView.Adapter<RecyclerFilmAdapte
         RecyclerView nestedRvFilms;
         LinearLayout llTittleFilmsRv;
         ImageView btnVisitGenre;
+
 
 
         public ViewHolderFilms(@NonNull View itemView) {

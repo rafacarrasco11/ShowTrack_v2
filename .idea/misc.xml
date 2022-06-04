@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.21510416666666668" />
+        <entry key="app/src/main/res/drawable/border_black_item.xml" value="0.375" />
+        <entry key="app/src/main/res/drawable/cardviewitem_selector.xml" value="0.21666666666666667" />
         <entry key="app/src/main/res/drawable/ic_add_white.xml" value="0.375" />
         <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.37407407407407406" />
         <entry key="app/src/main/res/drawable/ic_dash_home.xml" value="0.37407407407407406" />
@@ -22,7 +24,7 @@
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_fake_page.xml" value="0.35885416666666664" />
         <entry key="app/src/main/res/layout/fragment_film_genre.xml" value="0.35885416666666664" />
-        <entry key="app/src/main/res/layout/fragment_film_item.xml" value="0.35885416666666664" />
+        <entry key="app/src/main/res/layout/fragment_film_item.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_film_search.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_films.xml" value="0.35885416666666664" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.35885416666666664" />
@@ -37,7 +39,7 @@
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_settings_section.xml" value="0.35885416666666664" />
         <entry key="app/src/main/res/layout/new_view.xml" value="0.33967391304347827" />
-        <entry key="app/src/main/res/layout/recycler_film_view.xml" value="0.35885416666666664" />
+        <entry key="app/src/main/res/layout/recycler_film_view.xml" value="0.21415270018621974" />
         <entry key="app/src/main/res/layout/recycler_serie_view.xml" value="0.35885416666666664" />
         <entry key="app/src/main/res/layout/serie_view.xml" value="0.335" />
         <entry key="app/src/main/res/layout/stat_view.xml" value="0.33" />

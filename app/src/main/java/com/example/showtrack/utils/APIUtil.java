@@ -15,7 +15,6 @@ public class APIUtil {
 
     private JsonReader jsonReader;
     private Gson gson;
-    OkHttpClient client;
 
     private String json;
 
@@ -23,7 +22,6 @@ public class APIUtil {
 
     private APIUtil() {
         this.gson = new Gson();
-        this.client = new OkHttpClient();
         json = "";
     }
 
@@ -41,12 +39,20 @@ public class APIUtil {
         return o;
     }
 
+    public Object getFromApi(Type object, String url, String host, String key) throws IOException {
+        jsonReader = new JsonReader(new StringReader(getJSON(url, host, key)));
+        Object o = gson.fromJson(jsonReader, object);
+        jsonReader.close();
+        return o;
+    }
+
     private String getJSON(String url) throws IOException {
         Thread thread = new Thread(new Runnable() {
 
             @Override
             public void run() {
                 try  {
+                    OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
                             .url(url)
                             .get()
@@ -77,8 +83,9 @@ public class APIUtil {
             @Override
             public void run() {
                 try  {
+                    OkHttpClient client = new OkHttpClient();
                     Request request = new Request.Builder()
-                            .url("https://data-imdb1.p.rapidapi.com/titles?info=mini_info&limit=10&page=1&titleType=movie&genre=Action&year=2022")
+                            .url(url)
                             .get()
                             .addHeader("X-RapidAPI-Host", host)
                             .addHeader("X-RapidAPI-Key", key)

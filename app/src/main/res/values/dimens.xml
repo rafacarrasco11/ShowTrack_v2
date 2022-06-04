@@ -48,14 +48,14 @@
     <dimen name="tvYearFilmView_marginBottom">10dp</dimen>
     <dimen name="FilmView_width">190dp</dimen>
     <dimen name="clBackgroundFilmView_width">160dp</dimen>
-    <dimen name="clBackgroundFilmView_height">260dp</dimen>
+    <dimen name="clBackgroundFilmView_height">220dp</dimen>
     <dimen name="clTittleFilmView_height">60dp</dimen>
 
     <!--endregion-->
 
     <!--region FILM ITEM  -->
 
-    <dimen name="collapsingToolbarFilmItem_height">300dp</dimen>
+    <dimen name="collapsingToolbarFilmItem_height">500dp</dimen>
     <dimen name="collapsingToolbarFilmItem_expandedTittleMarginBottom">94dp</dimen>
     <dimen name="nestedScrollViewFilmItem_overlapTop">78dp</dimen>
     <dimen name="cardViewFilmItem_contentPaddingBottom">16dp</dimen>
@@ -141,6 +141,7 @@
     <dimen name="btnGoSeriesHomeFragment_height">110dp</dimen>
     <dimen name="rvNews_marginTop">20dp</dimen>
     <dimen name="tvTittleHomeFragment_marginTop">15dp</dimen>
+    <dimen name="tittleFilmItem_textSize">20sp</dimen>
 
 
 </resources>

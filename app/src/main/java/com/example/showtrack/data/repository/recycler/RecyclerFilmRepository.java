@@ -1,6 +1,10 @@
 package com.example.showtrack.data.repository.recycler;
 
+import com.example.showtrack.R;
+import com.example.showtrack.data.model.Genres;
+import com.example.showtrack.data.model.Lists;
 import com.example.showtrack.data.model.recycler.RecyclerFilm;
+import com.example.showtrack.ui.ShowTrackApplication;
 import com.example.showtrack.ui.flm.filmsrecycler.RecyclerFilmsContract;
 
 import java.util.ArrayList;
@@ -15,12 +19,14 @@ public class RecyclerFilmRepository implements RecyclerFilmsContract.Repository 
         iniFilmsList();
     }
 
-    private void iniFilmsList() {
-        this.rvList.add(new RecyclerFilm("Accion","Accion"));
-        this.rvList.add(new RecyclerFilm("Aventuras","Aventuras"));
-        this.rvList.add(new RecyclerFilm("Thriller","Thriller"));
-        this.rvList.add(new RecyclerFilm("Comedia","Comedia"));
-        this.rvList.add(new RecyclerFilm("Terror","Terror"));
+    public void iniFilmsList() {
+        this.rvList.add(new RecyclerFilm(ShowTrackApplication.context().getString(R.string.recyclerFilmsTittle_mostPopular),Lists.most_pop_movies.name()) );
+        this.rvList.add(new RecyclerFilm(ShowTrackApplication.context().getString(R.string.recyclerFilmsTittle_topRated), Lists.top_rated_250.name()));
+        this.rvList.add(new RecyclerFilm(ShowTrackApplication.context().getString(R.string.recyclerFilmsTittle_topBoxOffice), Lists.top_boxoffice_200.name()));
+        ShowTrackApplication.setGenreOneTemp(Genres.Crime.name());
+        ShowTrackApplication.setGenreTwoTemp(Genres.Drama.name());
+        this.rvList.add(new RecyclerFilm(ShowTrackApplication.context().getString(R.string.recyclerFilmsTittle_GenreDrama), null, ShowTrackApplication.getGenreOneTemp()));
+        this.rvList.add(new RecyclerFilm(ShowTrackApplication.context().getString(R.string.recyclerFilmsTittle_GenreCrime), null, ShowTrackApplication.getGenreOneTemp()));
     }
 
     public static RecyclerFilmRepository getInstance() {

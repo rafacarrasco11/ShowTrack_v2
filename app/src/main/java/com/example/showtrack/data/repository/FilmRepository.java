@@ -1,6 +1,12 @@
 package com.example.showtrack.data.repository;
 
+import android.util.Log;
+
 import com.example.showtrack.data.model.Film;
+import com.example.showtrack.data.model.Genres;
+import com.example.showtrack.data.model.Lists;
+import com.example.showtrack.data.model.api.APIClasses.APIFilms;
+import com.example.showtrack.ui.ShowTrackApplication;
 import com.example.showtrack.ui.flm.filmgenre.FilmGenreContract;
 import com.example.showtrack.ui.flm.filmitem.FilmItemContract;
 import com.example.showtrack.ui.flm.filmsearch.FilmSearchContract;
@@ -8,34 +14,35 @@ import com.example.showtrack.ui.prf.profile.prof.ProfileContract;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class FilmRepository implements FilmGenreContract.Repository, FilmItemContract.Repository, FilmSearchContract.Repository, ProfileContract.FilmsRepository {
     private static FilmRepository instance;
-    private ArrayList<Film> filmsList;
+
+    private ArrayList<Film> mostPopMovies;
+    private ArrayList<Film> mostRatedMovies;
+    private ArrayList<Film> mostBoxOfficeMovies;
+    private ArrayList<Film> genreOneMovies;
+    private ArrayList<Film> genreTwoMovies;
+    private ArrayList<Film> genreOneMoviesPageTwo;
+    private ArrayList<Film> genreTwoMoviesPageTwo;
 
     private FilmRepository() {
-        this.filmsList = new ArrayList<>();
-        iniFilmsList();
-    }
+        mostPopMovies = new ArrayList<>();
+        mostRatedMovies = new ArrayList<>();
+        mostBoxOfficeMovies = new ArrayList<>();
+        genreOneMovies = new ArrayList<>();
+        genreOneMoviesPageTwo = new ArrayList<>();
+        genreTwoMovies = new ArrayList<>();
+        genreTwoMoviesPageTwo = new ArrayList<>();
 
-    private void iniFilmsList() {
-        this.filmsList.add(new Film("Accion", LocalDate.now().plusYears(10), "Transporter 1"));
-        this.filmsList.add(new Film("Accion",LocalDate.now().plusYears(13), "Transporter 2"));
-        this.filmsList.add(new Film("Accion",LocalDate.now().plusYears(30), "Transporter 3"));
-        this.filmsList.add(new Film("Aventuras",LocalDate.now().plusYears(20), "Uncharted"));
-        this.filmsList.add(new Film("Aventuras",LocalDate.now().plusYears(15), "Uncharted"));
-        this.filmsList.add(new Film("Aventuras",LocalDate.now().plusYears(7), "Uncharted"));
-        this.filmsList.add(new Film("Aventuras",LocalDate.now().plusYears(9), "Uncharted"));
-        this.filmsList.add(new Film("Aventuras",LocalDate.now().plusYears(10), "Uncharted"));
-        this.filmsList.add(new Film("Thriller",LocalDate.now().plusYears(3), "Shutter Island"));
-        this.filmsList.add(new Film("Thriller",LocalDate.now().plusYears(18), "Dont Breathe 2"));
-        this.filmsList.add(new Film("Thriller",LocalDate.now().plusYears(11), "Dont Breathe 1"));
-        this.filmsList.add(new Film("Comedia",LocalDate.now().plusYears(18), "Borat"));
-        this.filmsList.add(new Film("Terror",LocalDate.now().plusYears(25), "Hush"));
-        this.filmsList.add(new Film("Terror",LocalDate.now().plusYears(20), "Hush"));
-        this.filmsList.add(new Film("Terror",LocalDate.now().plusYears(20), "Hush"));
-        this.filmsList.add(new Film("Terror",LocalDate.now().plusYears(50), "Hush"));
-        this.filmsList.add(new Film("Terror",LocalDate.now().plusYears(11), "Hush"));
+        mostPopMovies.addAll(APIFilms.getMostPopFilms());
+        mostRatedMovies.addAll(APIFilms.getMostRatedFilms());
+        mostBoxOfficeMovies.addAll(APIFilms.getMostBoxOfficeFilms());
+        genreOneMovies.addAll(APIFilms.getFilmsByGenre(Genres.Drama.name()));      // GET USER GENRE ONE
+        genreOneMoviesPageTwo.addAll(APIFilms.getFilmsByGenrePageTwo(Genres.Drama.name()));      // GET USER GENRE ONE
+        genreTwoMovies.addAll(APIFilms.getFilmsByGenre(Genres.Crime.name()));      // GET USER GENRE TWO
+        genreTwoMoviesPageTwo.addAll(APIFilms.getFilmsByGenrePageTwo(Genres.Crime.name()));      // GET USER GENRE TWO
     }
 
     public static FilmRepository getInstance() {
@@ -48,18 +55,38 @@ public class FilmRepository implements FilmGenreContract.Repository, FilmItemCon
 
 
     public ArrayList<Film> cargarFilmsByGenre(String genre) {
-        ArrayList<Film> FilmListByGenre = new ArrayList<>();
-        for (Film f : filmsList) {
-            if (f.getGenre().equals(genre))
-                FilmListByGenre.add(f);
+        if (genre == ShowTrackApplication.getGenreOneTemp()) {
+            return genreOneMovies;
         }
+        else if (genre == ShowTrackApplication.getGenreTwoTemp())
+            return genreTwoMovies;
 
-        return FilmListByGenre;
+        return null;
+    }
+
+    public ArrayList<Film> cargarFilmsByGenrePage2(String genre) {
+        if (genre == ShowTrackApplication.getGenreOneTemp()) {
+            return genreOneMoviesPageTwo;
+        }
+        else if (genre == ShowTrackApplication.getGenreTwoTemp())
+            return genreTwoMoviesPageTwo;
+
+        return null;
+    }
+
+    public ArrayList<Film> cargarFilmsByList(String list) {
+        if (list.equals(Lists.most_pop_movies.name()))
+            return mostPopMovies;
+        if (list.equals(Lists.top_rated_250.name()))
+            return mostRatedMovies;
+        if (list.equals(Lists.top_boxoffice_200.name()))
+            return mostBoxOfficeMovies;
+
+        return null;
     }
 
     public void changeFilm(Film film) {
         //filmsList.indexOf(film);
-
     }
 
     @Override
@@ -69,7 +96,7 @@ public class FilmRepository implements FilmGenreContract.Repository, FilmItemCon
 
     @Override
     public void cargarFilmsRvRight(String genre, FilmGenreContract.OnFilmGenreCallback callback) {
-        callback.onSuccessCargarFilmsRvRight(cargarFilmsByGenre(genre));
+        callback.onSuccessCargarFilmsRvRight(cargarFilmsByGenrePage2(genre));
     }
 
     @Override
@@ -91,19 +118,9 @@ public class FilmRepository implements FilmGenreContract.Repository, FilmItemCon
 
     @Override
     public void cargarFilmsRv(ProfileContract.OnProfileGenreCallback callback) {
-        callback.onSuccessCargarFilmsRv(cargarFilmsAlea());
+        callback.onSuccessCargarFilmsRv(mostBoxOfficeMovies);
     }
 
     //#endregion
 
-    //TEMPORAL
-    private ArrayList<Film> cargarFilmsAlea() {
-        ArrayList<Film> list = new ArrayList<>();
-
-        for (int i = 1; i < 11; i++) {
-            list.add(this.filmsList.get(i));
-        }
-
-        return list;
-    }
 }

@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.showtrack.R;
 import com.example.showtrack.data.model.Film;
+import com.example.showtrack.utils.DrawableUtil;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolderFilms> {
@@ -39,9 +41,17 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolderFi
 
     @Override
     public void onBindViewHolder(@NonNull FilmsAdapter.ViewHolderFilms holder, int position) {
-        //holder.clBackgroundFilmView.setBackground(this.FilmsList.get(position).getImage());
-        holder.tvNameFilmView.setText(this.filmsList.get(position).getTittle());
-        holder.tvYearFilmView.setText(Integer.toString(this.filmsList.get(position).getFilmYear()));
+        try {
+            holder.clBackgroundFilmView.setBackground(DrawableUtil.drawableFromUrl(this.filmsList.get(position).getPoster()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (this.filmsList.get(position).getTittle().length() >= 21)
+            holder.tvNameFilmView.setText(this.filmsList.get(position).getTittle().substring(0,18).concat("..."));
+        else holder.tvNameFilmView.setText(this.filmsList.get(position).getTittle());
+
+        holder.tvYearFilmView.setText(this.filmsList.get(position).getYearReleased());
 
         holder.bind(this.filmsList.get(position), listener);
     }
@@ -79,9 +89,9 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolderFi
         }
     }
 
-    public void update(ArrayList<Film> FilmsList) {
+    public void update(ArrayList<Film> filmsList) {
         this.filmsList.clear();
-        this.filmsList.addAll(FilmsList);
+        this.filmsList.addAll(filmsList);
 
         notifyDataSetChanged();
     }

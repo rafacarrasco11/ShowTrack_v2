@@ -17,6 +17,6 @@
     <color name="primaryTextColor">#000000</color>
     <color name="secondaryTextColor">#ffffff</color>
 
-
+    <color name="lowGrey">#9C9C9C</color>
     <color name="greenCheck">#4CAF50</color>
 </resources>

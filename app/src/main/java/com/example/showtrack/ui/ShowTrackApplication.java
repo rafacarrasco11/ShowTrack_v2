@@ -18,6 +18,8 @@ public class ShowTrackApplication extends Application {
     private static Film filmTemp;
     private static Serie serieTemp;
     private static String genreTemp;
+    private static String genreOneTemp;
+    private static String genreTwoTemp;
 
     //#endregion
 
@@ -61,6 +63,22 @@ public class ShowTrackApplication extends Application {
 
     public static void setLastFragment(Fragment lastFragment) {
         ShowTrackApplication.lastFragment = lastFragment;
+    }
+
+    public static String getGenreOneTemp() {
+        return genreOneTemp;
+    }
+
+    public static void setGenreOneTemp(String genreOneTemp) {
+        ShowTrackApplication.genreOneTemp = genreOneTemp;
+    }
+
+    public static String getGenreTwoTemp() {
+        return genreTwoTemp;
+    }
+
+    public static void setGenreTwoTemp(String genreTwoTemp) {
+        ShowTrackApplication.genreTwoTemp = genreTwoTemp;
     }
 
     public static String getGenreTemp() {

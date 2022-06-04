@@ -67,6 +67,7 @@ public class RecyclerFilmsFragment extends Fragment implements RecyclerFilmsCont
 
         binding.rvFilms.setLayoutManager(layoutManager);
         binding.rvFilms.setAdapter(adapter);
+        binding.rvFilms.setAdapter(adapter);
     }
 
     @Override

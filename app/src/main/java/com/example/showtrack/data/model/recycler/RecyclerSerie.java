@@ -3,10 +3,16 @@ package com.example.showtrack.data.model.recycler;
 public class RecyclerSerie {
     String genre;
     String tittle;
+    String list;
 
-    public RecyclerSerie(String genre, String tittle) {
-        this.genre = genre;
+    public RecyclerSerie(String tittle, String list) {
         this.tittle = tittle;
+        this.list = list;
+    }
+
+    public RecyclerSerie(String tittle, String list, String genre) {
+        this.tittle = tittle;
+        this.genre = genre;
     }
 
     public String getGenre() {
@@ -23,5 +29,13 @@ public class RecyclerSerie {
 
     public void setTittle(String tittle) {
         this.tittle = tittle;
+    }
+
+    public String getList() {
+        return list;
+    }
+
+    public void setList(String list) {
+        this.list = list;
     }
 }

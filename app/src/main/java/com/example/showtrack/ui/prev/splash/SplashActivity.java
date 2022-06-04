@@ -10,7 +10,9 @@ import android.preference.PreferenceManager;
 import com.example.showtrack.MainActivity;
 import com.example.showtrack.R;
 import com.example.showtrack.data.model.user.User;
+import com.example.showtrack.data.repository.FilmRepository;
 import com.example.showtrack.ui.prev.login.LoginActivity;
+import com.example.showtrack.ui.prf.profile.prof.ProfileContract;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -20,6 +22,8 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        FilmRepository.getInstance();
     }
 
     /**

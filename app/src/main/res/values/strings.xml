@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">ShowTrack</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
     <!-- Strings used for fragments for navigation -->
@@ -68,4 +67,12 @@
     <string name="keyword_cine_apinews">Cine</string>
     <string name="keyword_peliculas_apinews">Peliculas</string>
     <string name="keyword_series_apinews">Series</string>
+    <string name="recyclerFilmsTittle_topBoxOffice">Peliculas más taquilleras</string>
+    <string name="recyclerFilmsTittle_topRated">Peliculas más valoradas</string>
+    <string name="recyclerFilmsTittle_mostPopular">Peliculas más populares</string>
+    <string name="recyclerFilmsTittle_GenreDrama">Peliculas de Drama</string>
+    <string name="recyclerFilmsTittle_GenreCrime">Peliculas de Crimen</string>
+    <string name="textYearDirectorTittleFilmItem_text">Directores:</string>
+    <string name="textYearActorTittleFilmItem_text">Actores:</string>
+    <string name="textYearWriterTittleFilmItem_text">Escritores:</string>
 </resources>

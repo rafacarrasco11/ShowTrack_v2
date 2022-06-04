@@ -20,20 +20,21 @@
             android:id="@+id/collapsingToolbarFilmItem"
             android:layout_width="match_parent"
             android:layout_height="@dimen/collapsingToolbarFilmItem_height"
-            app:title="Nombre Pelicula"
+
             app:expandedTitleMarginBottom="@dimen/collapsingToolbarFilmItem_expandedTittleMarginBottom"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:expandedTitleTextAppearance="@style/CollapsingTextAppearance.Inverse"
             app:contentScrim="?colorPrimary"
+            android:background="@color/primaryColor"
             >
 
             <ImageView
                 android:id="@+id/imageFilmItem"
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_expand_rv"
+
                 android:scaleType="centerCrop"
-                app:tint="@color/primaryLightColor" />
+                />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbarFilmItem"
@@ -56,7 +57,7 @@
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollViewFilmItem"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:scrollbars="none"
         app:behavior_overlapTop="@dimen/nestedScrollViewFilmItem_overlapTop"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -79,6 +80,7 @@
                 app:cardBackgroundColor="@android:color/white"
                 app:cardElevation="@dimen/cardViewFilmItem_cardElevation"
                 android:layout_margin="@dimen/cardViewFilmItem_margin"
+                android:background="@drawable/cardviewitem_selector"
                 >
 
                 <LinearLayout
@@ -89,15 +91,152 @@
 
                     <TextView
                         android:id="@+id/tittleFilmItem"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Hola"
+                        android:textSize="@dimen/tittleFilmItem_textSize"
                         android:textAppearance="@style/TextAppearance.Header"
                         style="@style/TextComponent.ItemRow"
                         />
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/textYearReleasedFilmItem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-light"
+                            android:lineSpacingExtra="@dimen/textFilmItem_lineSpacingExtra"
+                            android:textSize="@dimen/textFilmItem_textSize"
+                            android:text="Ejemplo de texto"
+                            />
+                        <TextView
+                        android:id="@+id/textRuntimeFilmItem"
+                            android:layout_marginLeft="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:lineSpacingExtra="@dimen/textFilmItem_lineSpacingExtra"
+                        android:textSize="@dimen/textFilmItem_textSize"
+                        android:text="Ejemplo de texto"
+                        />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp">
+                        <TextView
+                            android:id="@+id/textYearGenreFilmItem"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-light"
+                            android:lineSpacingExtra="@dimen/textFilmItem_lineSpacingExtra"
+                            android:textSize="@dimen/textFilmItem_textSize"
+                            android:text="Ejemplo de texto"
+                            />
+                        <TextView
+                            android:id="@+id/textRatingFilmItem"
+                            android:layout_marginLeft="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-light"
+                            android:lineSpacingExtra="@dimen/textFilmItem_lineSpacingExtra"
+                            android:textSize="@dimen/textFilmItem_textSize"
+                            android:textStyle="bold"
+                            android:text="Ejemplo de texto"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp">
+                        <TextView
+                            android:id="@+id/textYearDirectorTittleFilmItem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-light"
+                            android:lineSpacingExtra="@dimen/textFilmItem_lineSpacingExtra"
+                            android:textSize="@dimen/textFilmItem_textSize"
+                            android:text="@string/textYearDirectorTittleFilmItem_text"
+                            android:textStyle="bold"
+                            />
+                        <TextView
+                            android:id="@+id/textDirectorFilmItem"
+                            android:layout_marginLeft="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-light"
+                            android:lineSpacingExtra="@dimen/textFilmItem_lineSpacingExtra"
+                            android:textSize="@dimen/textFilmItem_textSize"
+                            android:text="Ejemplo de texto"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp">
+                        <TextView
+                            android:id="@+id/textYearActorTittleFilmItem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-light"
+                            android:lineSpacingExtra="@dimen/textFilmItem_lineSpacingExtra"
+                            android:textSize="@dimen/textFilmItem_textSize"
+                            android:text="@string/textYearActorTittleFilmItem_text"
+                            android:textStyle="bold"
+                            />
+                        <TextView
+                            android:id="@+id/textActorsFilmItem"
+                            android:layout_marginLeft="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-light"
+                            android:lineSpacingExtra="@dimen/textFilmItem_lineSpacingExtra"
+                            android:textSize="@dimen/textFilmItem_textSize"
+                            android:text="Ejemplo de texto"
+                            />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp">
+                        <TextView
+                            android:id="@+id/textYearWriterTittleFilmItem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-light"
+                            android:lineSpacingExtra="@dimen/textFilmItem_lineSpacingExtra"
+                            android:textSize="@dimen/textFilmItem_textSize"
+                            android:text="@string/textYearWriterTittleFilmItem_text"
+                            android:textStyle="bold"
+                            />
+                        <TextView
+                            android:id="@+id/textWritersFilmItem"
+                            android:layout_marginLeft="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-light"
+                            android:lineSpacingExtra="@dimen/textFilmItem_lineSpacingExtra"
+                            android:textSize="@dimen/textFilmItem_textSize"
+                            android:text="Ejemplo de texto"
+                            />
+                    </LinearLayout>
+
                     <TextView
-                        android:id="@+id/textFilmItem"
+                        android:id="@+id/textPLotFilmItem"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginHorizontal="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
@@ -105,6 +244,17 @@
                         android:textSize="@dimen/textFilmItem_textSize"
                         android:text="Ejemplo de texto"
                         />
+                    <TextView
+                        android:id="@+id/textAwardsFilmItem"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:lineSpacingExtra="@dimen/textFilmItem_lineSpacingExtra"
+                        android:textSize="@dimen/textFilmItem_textSize"
+                        android:text="Ejemplo de texto"
+                        android:textStyle="bold"
+                        />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>

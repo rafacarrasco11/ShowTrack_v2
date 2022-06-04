@@ -1,13 +1,22 @@
 package com.example.showtrack.data.model.recycler;
 
 public class RecyclerFilm {
-    String genre;
-    String tittle;
 
-    public RecyclerFilm(String genre, String tittle) {
-        this.genre = genre;
+    String tittle;
+    String genre;
+    String list;
+
+    public RecyclerFilm(String tittle, String list) {
         this.tittle = tittle;
+        this.list = list;
     }
+
+    public RecyclerFilm(String tittle, String list, String genre) {
+        this.tittle = tittle;
+        this.genre = genre;
+    }
+
+
 
     public String getGenre() {
         return genre;
@@ -23,5 +32,13 @@ public class RecyclerFilm {
 
     public void setTittle(String tittle) {
         this.tittle = tittle;
+    }
+
+    public String getList() {
+        return list;
+    }
+
+    public void setList(String list) {
+        this.list = list;
     }
 }
