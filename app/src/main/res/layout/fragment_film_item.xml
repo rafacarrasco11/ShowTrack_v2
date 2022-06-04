@@ -20,8 +20,6 @@
             android:id="@+id/collapsingToolbarFilmItem"
             android:layout_width="match_parent"
             android:layout_height="@dimen/collapsingToolbarFilmItem_height"
-
-            app:expandedTitleMarginBottom="@dimen/collapsingToolbarFilmItem_expandedTittleMarginBottom"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:expandedTitleTextAppearance="@style/CollapsingTextAppearance.Inverse"
             app:contentScrim="?colorPrimary"

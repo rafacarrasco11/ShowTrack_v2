@@ -11,14 +11,15 @@ public interface FilmGenreContract {
     }
 
     interface Presenter {
-        void cargarFilmsRvLeft(String genre);
-        void cargarFilmsRvRight(String genre);
+        void cargarFilmsRvByGenre(String genre);
+        void cargarFilmsRvByList(String list);
         void onDestroy();
     }
 
     interface Repository {
-        void cargarFilmsRvLeft(String genre, FilmGenreContract.OnFilmGenreCallback callback);
-        void cargarFilmsRvRight(String genre, FilmGenreContract.OnFilmGenreCallback callback);
+        void cargarFilmsRvByGenre(String genre, FilmGenreContract.OnFilmGenreCallback callback);
+        void cargarFilmsRvByList(String list, FilmGenreContract.OnFilmGenreCallback callback);
+
     }
 
     interface OnInteractorListener extends OnFilmGenreCallback {
@@ -26,7 +27,6 @@ public interface FilmGenreContract {
     }
 
     interface OnFilmGenreCallback {
-        void onSuccessCargarFilmsRvLeft(ArrayList<Film> rvList);
-        void onSuccessCargarFilmsRvRight(ArrayList<Film> rvList);
+        void onSuccessCargarFilmsRv(ArrayList<Film> rvList);
     }
 }

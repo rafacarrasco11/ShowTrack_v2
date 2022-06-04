@@ -34,7 +34,7 @@
     <string name="toolbarTittleProfile">Mi Perfil</string>
     <string name="action_settings_tittle">Ajustes</string>
     <string name="action_search_tittle">Buscar</string>
-    <string name="tieFilmSearch_hint">Buscar...</string>
+    <string name="tieFilmSearch_hint">Buscar…</string>
 
     <string name="Login_succesLogin">Inicio de sesión correcto.</string>
     <string name="signIn_failure_login">Inicio de sesión fallido.</string>
@@ -51,18 +51,18 @@
     <string name="signUp_failure">Registro de usuario fallido.</string>
     <string name="tilFilmSearch_emptyError">Introduce algo para buscar.</string>
     <string name="searchFailure">No se han encontrado coincidencias.</string>
-    <string name="tvTittleFilmGenre_tittleText">"Peliculas de "</string>
+
     <string name="action_back">Volver</string>
-    <string name="tieSerieSearch_hint">Buscar...</string>
+    <string name="tieSerieSearch_hint">Buscar…</string>
     <string name="tvTittleSerieGenre_tittleText">"Series de "</string>
     <string name="tilSerieSearch_emptyError">Introduce algo para buscar.</string>
     <string name="tvTittleMySeriesProfileFragment_text">Mis Series</string>
     <string name="tvTittleMyFilmsProfileFragment_text">Mis Peliculas</string>
     <string name="btnSettingsProfileFragment_text">Ajustes</string>
-    <string name="btnAboutUsProfileFragment_text">Sorbe nosotros...</string>
-    <string name="btngoAboutUsProfileFragment_text">Sobre Nosotros...</string>
+    <string name="btnAboutUsProfileFragment_text">Sorbe nosotros…</string>
+    <string name="btngoAboutUsProfileFragment_text">Sobre Nosotros…</string>
     <string name="btnDeleteAccountProfileFragment_text">Eliminar cuenta</string>
-    <string name="btnLogOutProfileFragment_text">Cerrar Sesión...</string>
+    <string name="btnLogOutProfileFragment_text">Cerrar Sesión…</string>
     <string name="tvTittleHomeFragment_text">Bienvenido de nuevo,</string>
     <string name="keyword_cine_apinews">Cine</string>
     <string name="keyword_peliculas_apinews">Peliculas</string>
@@ -75,4 +75,12 @@
     <string name="textYearDirectorTittleFilmItem_text">Directores:</string>
     <string name="textYearActorTittleFilmItem_text">Actores:</string>
     <string name="textYearWriterTittleFilmItem_text">Escritores:</string>
+    <string name="recyclerFilmsTittle">"Peliculas de "</string>
+    <string name="textYearDirectorTittleSerieItem_text">Directores:</string>
+    <string name="textYearActorTittleSerieItem_text">Actores:</string>
+    <string name="textYearWriterTittleSerieItem_text">Escritores:</string>
+    <string name="recyclerSerieTittle_genre">"Series de "</string>
+    <string name="recyclerSerieTittle_mostPopular">Series mas populares </string>
+    <string name="recyclerSerieTittle_mostRated">Series mas valoradas</string>
+    <string name="seasonItemTitle">"Temporada "</string>
 </resources>

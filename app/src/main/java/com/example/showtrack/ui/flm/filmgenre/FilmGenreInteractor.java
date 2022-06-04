@@ -14,20 +14,15 @@ public class FilmGenreInteractor implements FilmGenreContract.OnFilmGenreCallbac
     }
 
     @Override
-    public void onSuccessCargarFilmsRvLeft(ArrayList<Film> rvList) {
-        this.listener.onSuccessCargarFilmsRvLeft(rvList);
+    public void onSuccessCargarFilmsRv(ArrayList<Film> rvList) {
+        this.listener.onSuccessCargarFilmsRv(rvList);
     }
 
-    @Override
-    public void onSuccessCargarFilmsRvRight(ArrayList<Film> rvList) {
-        this.listener.onSuccessCargarFilmsRvRight(rvList);
+    public void cargarFilmsRvByList(String list) {
+        FilmRepository.getInstance().cargarFilmsRvByList(list , this);
     }
 
-    public void cargarFilmsRvLeft(String genre) {
-        FilmRepository.getInstance().cargarFilmsRvLeft(genre, this);
-    }
-
-    public void cargarFilmsRvRight(String genre) {
-        FilmRepository.getInstance().cargarFilmsRvRight(genre, this);
+    public void cargarFilmsRvByGenre(String genre) {
+        FilmRepository.getInstance().cargarFilmsRvByGenre(genre , this);
     }
 }

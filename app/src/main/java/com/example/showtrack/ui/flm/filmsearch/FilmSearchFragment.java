@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -49,23 +50,22 @@ public class FilmSearchFragment extends Fragment implements FilmSearchContract.V
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
 
         binding.btnSearchFilmSearch.setOnClickListener(v -> {
-            presenter.search(binding.tieFilmSearch.getText().toString());
             showProgress();
+            presenter.search(binding.tieFilmSearch.getText().toString());
         });
 
         initRvSearch();
-        hideProgress();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        this.presenter = null;
+        this.presenter.onDestroy();
     }
 
     private void initRvSearch() {
         adapter = new FilmsAdapter(this);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 2, RecyclerView.VERTICAL, false);
 
         binding.rvFilmsSearched.setLayoutManager(layoutManager);
         binding.rvFilmsSearched.setAdapter(adapter);
@@ -78,13 +78,14 @@ public class FilmSearchFragment extends Fragment implements FilmSearchContract.V
 
     @Override
     public void showProgress() {
-        binding.pbFilmSearch.setVisibility(View.VISIBLE);
+
     }
 
     @Override
     public void hideProgress() {
-        binding.pbFilmSearch.setVisibility(View.INVISIBLE);
+
     }
+
 
     @Override
     public void onSuccessSearchFilm(ArrayList<Film> rvList) {

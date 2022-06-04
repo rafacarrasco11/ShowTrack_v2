@@ -1,6 +1,9 @@
 package com.example.showtrack.ui.srs.serieitem;
 
+import com.example.showtrack.data.model.serie.Season;
 import com.example.showtrack.data.model.serie.Serie;
+
+import java.util.List;
 
 public interface SerieItemContract {
 
@@ -11,6 +14,7 @@ public interface SerieItemContract {
     interface Presenter {
         void addSerie(Serie Serie);
         void removeSerie(Serie Serie);
+
         void onDestroy();
     }
 

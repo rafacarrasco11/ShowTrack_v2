@@ -15,13 +15,13 @@ public class FilmGenrePresenter implements FilmGenreContract.Presenter, FilmGenr
     }
 
     @Override
-    public void cargarFilmsRvLeft(String genre) {
-        this.interactor.cargarFilmsRvLeft(genre);
+    public void cargarFilmsRvByGenre(String genre) {
+        this.interactor.cargarFilmsRvByGenre(genre);
     }
 
     @Override
-    public void cargarFilmsRvRight(String genre) {
-        this.interactor.cargarFilmsRvRight(genre);
+    public void cargarFilmsRvByList(String list) {
+        this.interactor.cargarFilmsRvByList(list);
     }
 
     @Override
@@ -31,12 +31,8 @@ public class FilmGenrePresenter implements FilmGenreContract.Presenter, FilmGenr
     }
 
     @Override
-    public void onSuccessCargarFilmsRvLeft(ArrayList<Film> rvList) {
-        this.view.onSuccessCargarFilmsRvLeft(rvList);
+    public void onSuccessCargarFilmsRv(ArrayList<Film> rvList) {
+        this.view.onSuccessCargarFilmsRv(rvList);
     }
 
-    @Override
-    public void onSuccessCargarFilmsRvRight(ArrayList<Film> rvList) {
-        this.view.onSuccessCargarFilmsRvRight(rvList);
-    }
 }

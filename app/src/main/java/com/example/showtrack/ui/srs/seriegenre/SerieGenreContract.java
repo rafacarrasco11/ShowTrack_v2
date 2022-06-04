@@ -10,14 +10,14 @@ public interface SerieGenreContract {
     }
 
     interface Presenter {
-        void cargarSeriesRvLeft(String genre);
-        void cargarSeriesRvRight(String genre);
+        void cargarSeriesRvByGenre(String genre);
+        void cargarSeriesRvByList(String list);
         void onDestroy();
     }
 
     interface Repository {
-        void cargarSeriesRvLeft(String genre, SerieGenreContract.OnSerieGenreCallback callback);
-        void cargarSeriesRvRight(String genre, SerieGenreContract.OnSerieGenreCallback callback);
+        void cargarSeriesRvGenre(String genre, SerieGenreContract.OnSerieGenreCallback callback);
+        void cargarSeriesRvList(String list, SerieGenreContract.OnSerieGenreCallback callback);
     }
 
     interface OnInteractorListener extends SerieGenreContract.OnSerieGenreCallback {
@@ -25,7 +25,6 @@ public interface SerieGenreContract {
     }
 
     interface OnSerieGenreCallback {
-        void onSuccessCargarSeriesRvLeft(ArrayList<Serie> rvList);
-        void onSuccessCargarSeriesRvRight(ArrayList<Serie> rvList);
+        void onSuccessCargarSeriesRv(ArrayList<Serie> rvList);
     }
 }

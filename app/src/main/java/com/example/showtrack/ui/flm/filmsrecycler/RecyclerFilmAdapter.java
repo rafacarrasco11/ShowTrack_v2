@@ -14,25 +14,26 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.showtrack.R;
 import com.example.showtrack.data.model.Film;
 import com.example.showtrack.data.model.recycler.RecyclerFilm;
+import com.example.showtrack.data.model.serie.Season;
 import com.example.showtrack.data.repository.FilmRepository;
 import com.example.showtrack.ui.ShowTrackApplication;
+import com.example.showtrack.ui.flm.filmgenre.FilmGenreFragment;
+import com.example.showtrack.ui.srs.serieitem.SeasonAdapter;
 
 import java.util.ArrayList;
 
 public class RecyclerFilmAdapter extends RecyclerView.Adapter<RecyclerFilmAdapter.ViewHolderFilms> implements FilmsAdapter.OnFilmsListener{
     private ArrayList<RecyclerFilm> recyclersList;
-    private RecyclerFilmsFragment fragment;
     private OnRecyclerFilmListener listener;
 
     public interface OnRecyclerFilmListener {
-        void onVisitGenre(String genre);
+        void onVisitGenre(RecyclerFilm recyclerFilm, int numberGenre);
 
         void onVisitFilm(Film film);
     }
 
-    public RecyclerFilmAdapter(RecyclerFilmsFragment fragment, OnRecyclerFilmListener listener) {
+    public RecyclerFilmAdapter(OnRecyclerFilmListener listener) {
         this.recyclersList = new ArrayList<>();
-        this.fragment = fragment;
         this.listener =listener;
     }
 
@@ -59,16 +60,16 @@ public class RecyclerFilmAdapter extends RecyclerView.Adapter<RecyclerFilmAdapte
 
 
         if (recyclerFilm.getGenre() == null)
-            adapter.update(FilmRepository.getInstance().cargarFilmsByList(recyclerFilm.getList()));
+            adapter.update(FilmRepository.getInstance().cargarFilmsByList(recyclerFilm.getList(),10));
         if (recyclerFilm.getList() == null)
-            adapter.update(FilmRepository.getInstance().cargarFilmsByGenre(recyclerFilm.getGenre()));
+            adapter.update(FilmRepository.getInstance().cargarFilmsByGenre(recyclerFilm.getGenre(),10));
 
         holder.llTittleFilmsRv.setOnClickListener(v -> {
-            listener.onVisitGenre(this.recyclersList.get(position).getGenre());
+            listener.onVisitGenre(this.recyclersList.get(position),position );
         });
 
         holder.btnVisitGenre.setOnClickListener(v -> {
-            listener.onVisitGenre(this.recyclersList.get(position).getGenre());
+            listener.onVisitGenre(this.recyclersList.get(position), position);
         });
     }
 
@@ -96,6 +97,7 @@ public class RecyclerFilmAdapter extends RecyclerView.Adapter<RecyclerFilmAdapte
             btnVisitGenre = itemView.findViewById(R.id.btnVisitGenre);
 
         }
+
     }
 
     public void update(ArrayList<RecyclerFilm> recyclersList) {

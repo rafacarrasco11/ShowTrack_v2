@@ -1,6 +1,10 @@
 package com.example.showtrack.ui.srs.serieitem;
 
+import com.example.showtrack.data.model.serie.Season;
 import com.example.showtrack.data.model.serie.Serie;
+import com.example.showtrack.data.repository.SerieRepository;
+
+import java.util.List;
 
 public class SerieItemInteractor implements SerieItemContract.OnSerieItemCallback{
 
@@ -28,6 +32,5 @@ public class SerieItemInteractor implements SerieItemContract.OnSerieItemCallbac
     public void onSuccessRemoveSerie(String message) {
         listener.onSuccessRemoveSerie(message);
     }
-
 
 }

@@ -28,7 +28,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:padding="10dp"
+                android:padding="@dimen/tvTittleFilmsRv_padding"
+                android:textSize="@dimen/tvTittleFilmsRv_textsize"
                 android:text="Accion" />
 
             <ImageView
@@ -36,7 +37,7 @@
                 android:id="@+id/btnVisitGenre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
+                android:padding="@dimen/btnVisitGenre_padding"
                 android:clickable="true"
                 android:src="@drawable/ic_expand_rv" />
         </LinearLayout>
@@ -45,7 +46,7 @@
             android:id="@+id/nestedRvFilms"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/nestedRvFilms_marginTop"
             />
 
     </LinearLayout>

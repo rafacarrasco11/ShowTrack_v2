@@ -8,6 +8,7 @@ import com.example.showtrack.data.model.api.JSONObjects.seriesandfilms.films.JSO
 import com.example.showtrack.data.model.api.JSONObjects.seriesandfilms.films.JSONFilmSearch;
 import com.example.showtrack.data.model.api.JSONObjects.seriesandfilms.films.JSONFilmSearchFilm;
 import com.example.showtrack.data.model.api.JSONObjects.seriesandfilms.films.JSONFilms;
+import com.example.showtrack.data.model.serie.Serie;
 import com.example.showtrack.utils.APIUtil;
 
 import java.io.IOException;
@@ -15,18 +16,19 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-/*********************************************************
- * ********************   APIS USADAS ********************
- * ******************************************************
- * **************** The OmdB Api ************************
- * ******** https://www.omdbapi.com/
- * ******************************************************
- * **************** Movies Database (RapidApi) *********
- * ******** https://rapidapi.com/SAdrian/api/moviesdatabase/
- * ****************************************v*************
- * ******************************************************
- * ******************************************************
- *  RAPID API --> https://rapidapi.com/
+/***************************************************************
+ * ********************   APIS USADAS **************************
+ * *************************************************************
+ * **************** The OmdB Api *******************************
+ * ******** https://www.omdbapi.com/ ***************************
+ * *************************************************************
+ * **************** Movies Database (RapidApi) *****************
+ * ******** https://rapidapi.com/SAdrian/api/moviesdatabase/ ***
+ * ****************************************v********************
+ * *************************************************************
+ * *************************************************************
+ * **** RAPID API --> https://rapidapi.com/ ********************
+ * *************************************************************
  */
 public class APIFilms {
 
@@ -34,7 +36,7 @@ public class APIFilms {
     private static final String API_KEY = "365724d226msh0e5daf87ac95f51p1ede08jsn57250a1f6fe0";
     private static final String URL_MD = "https://moviesdatabase.p.rapidapi.com/titles?";
 
-    private static final String URL_OMDB = "http://www.omdbapi.com/?apikey=c0693bf7&plot=full&";
+    private static final String URL_OMDB = "http://www.omdbapi.com/?apikey=c0693bf7&plot=full&type=movie&";
 
     // PARAMETROS
     private static final String info = "mini_info";
@@ -77,7 +79,7 @@ public class APIFilms {
      * @return
      */
     private static String generateURLBySearch(String search) {
-        return URL_OMDB + "s=" + search;
+        return URL_OMDB + "s=" + search ;
     }
 
     /**
@@ -209,35 +211,6 @@ public class APIFilms {
         return films;
     }
 
-    public static List<Film> getFilmsByGenrePageTwo(String name) {
-        List<Film> films = new ArrayList<>();
-
-        JSONFilms jsonFilms3 = null;
-        try {
-            jsonFilms3 = (JSONFilms) APIUtil.getInstance().getFromApi(JSONFilms.class, generateURLByGenre(name, "2"), HOST, API_KEY);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        if (jsonFilms3 != null) {
-            if (!jsonFilms3.getEntries().equals("0")) {
-                for (JSONResult result : jsonFilms3.getResults()) {
-                    if (result.getPrimaryImage() != null) {
-                        films.add(new Film(
-                                result.getTitleText().getText(),
-                                result.getReleaseYear().getYear(),
-                                result.getImdbID(),
-                                result.getTitleType().getText(),
-                                result.getPrimaryImage().getUrl()
-                        ));
-                    }
-                }
-            }
-        }
-
-        return films;
-    }
-
     public static Film getFilmFullInfo(Film film) {
 
         Film f = film;
@@ -277,15 +250,17 @@ public class APIFilms {
             e.printStackTrace();
         }
 
-        if (jsonFilmSearch != null) {
+        if (jsonFilmSearch.getSearch() != null) {
             for (JSONFilmSearchFilm jsonF : jsonFilmSearch.getSearch()) {
-                films.add(new Film(
-                        jsonF.getTitle(),
-                        jsonF.getYear(),
-                        jsonF.getImdbID(),
-                        jsonF.getType(),
-                        jsonF.getPoster()
-                ));
+                if (jsonF != null) {
+                    films.add(new Film(
+                            jsonF.getTitle(),
+                            jsonF.getYear(),
+                            jsonF.getImdbID(),
+                            jsonF.getType(),
+                            jsonF.getPoster()
+                    ));
+                }
 
             }
         }
@@ -302,8 +277,11 @@ public class APIFilms {
             e.printStackTrace();
         }
 
+
+
         return jsonFilmSearch.getPoster();
     }
+
 
 }
 

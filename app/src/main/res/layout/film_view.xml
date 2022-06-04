@@ -17,34 +17,38 @@
         android:background="@drawable/border_black_item"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:padding="2dp"
         >
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:id="@+id/clBackgroundFilmView"
             android:layout_width="@dimen/clBackgroundFilmView_width"
             android:layout_height="@dimen/clBackgroundFilmView_height"
+            android:padding="1dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="horizontal">
+        </LinearLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/clTittleFilmView"
         android:layout_width="@dimen/clBackgroundFilmView_width"
         android:layout_height="@dimen/clTittleFilmView_height"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tvNameFilmView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/tvNameFilmView_marginTop"
-            android:text="Film Nameaaaaaaaaaaaa"
+            android:text="Film "
+            android:layout_gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -54,11 +58,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/tvYearFilmView_marginBottom"
+            android:layout_gravity="center"
             android:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

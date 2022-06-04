@@ -22,19 +22,17 @@ import java.util.ArrayList;
 public class RecyclerSerieAdapter extends RecyclerView.Adapter<RecyclerSerieAdapter.ViewHolderSeries> implements SerieAdapter.OnSeriesListener{
 
     private ArrayList<RecyclerSerie> recyclersList;
-    private RecyclerSerieFragment fragment;
     private OnRecyclerSerieListener listener;
 
     public interface OnRecyclerSerieListener {
-        void onVisitGenre(String genre);
+        void onVisitGenre(RecyclerSerie recyclerSerie, int numberGenre);
 
         void onVisitSerie(Serie serie);
     }
 
-    public RecyclerSerieAdapter(RecyclerSerieFragment fragment, OnRecyclerSerieListener listener) {
+    public RecyclerSerieAdapter( OnRecyclerSerieListener listener) {
         this.recyclersList = new ArrayList<>();
-        this.fragment = fragment;
-        this.listener =listener;
+        this.listener = listener;
     }
 
     @NonNull
@@ -59,15 +57,20 @@ public class RecyclerSerieAdapter extends RecyclerView.Adapter<RecyclerSerieAdap
         holder.nestedRvSeries.setAdapter(adapter);
 
 
+        if (recyclerSerie.getGenre() == null) {
+            adapter.update(SerieRepository.getInstance().cargarSeriesByList(recyclerSerie.getList(),10));
+        }
+        if (recyclerSerie.getList() == null) {
+            adapter.update(SerieRepository.getInstance().cargarSeriesByGenre(recyclerSerie.getGenre(),10));
+        }
 
-        adapter.update(SerieRepository.getInstance().cargarSeries(recyclerSerie.getGenre()));
 
         holder.llTittleSeriesRv.setOnClickListener(v -> {
-            listener.onVisitGenre(this.recyclersList.get(position).getGenre());
+            listener.onVisitGenre(this.recyclersList.get(position),position );
         });
 
         holder.btnVisitGenre.setOnClickListener(v -> {
-            listener.onVisitGenre(this.recyclersList.get(position).getGenre());
+            listener.onVisitGenre(this.recyclersList.get(position), position);
         });
     }
 

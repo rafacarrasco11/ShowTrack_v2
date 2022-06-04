@@ -24,25 +24,20 @@ public class FilmRepository implements FilmGenreContract.Repository, FilmItemCon
     private ArrayList<Film> mostBoxOfficeMovies;
     private ArrayList<Film> genreOneMovies;
     private ArrayList<Film> genreTwoMovies;
-    private ArrayList<Film> genreOneMoviesPageTwo;
-    private ArrayList<Film> genreTwoMoviesPageTwo;
 
     private FilmRepository() {
         mostPopMovies = new ArrayList<>();
         mostRatedMovies = new ArrayList<>();
         mostBoxOfficeMovies = new ArrayList<>();
         genreOneMovies = new ArrayList<>();
-        genreOneMoviesPageTwo = new ArrayList<>();
         genreTwoMovies = new ArrayList<>();
-        genreTwoMoviesPageTwo = new ArrayList<>();
 
         mostPopMovies.addAll(APIFilms.getMostPopFilms());
         mostRatedMovies.addAll(APIFilms.getMostRatedFilms());
         mostBoxOfficeMovies.addAll(APIFilms.getMostBoxOfficeFilms());
-        genreOneMovies.addAll(APIFilms.getFilmsByGenre(Genres.Drama.name()));      // GET USER GENRE ONE
-        genreOneMoviesPageTwo.addAll(APIFilms.getFilmsByGenrePageTwo(Genres.Drama.name()));      // GET USER GENRE ONE
-        genreTwoMovies.addAll(APIFilms.getFilmsByGenre(Genres.Crime.name()));      // GET USER GENRE TWO
-        genreTwoMoviesPageTwo.addAll(APIFilms.getFilmsByGenrePageTwo(Genres.Crime.name()));      // GET USER GENRE TWO
+        genreOneMovies.addAll(APIFilms.getFilmsByGenre(Genres.Drama.name()));
+        genreTwoMovies.addAll(APIFilms.getFilmsByGenre(Genres.Crime.name()));
+
 
         mostPopMovies.remove(0);
     }
@@ -56,34 +51,44 @@ public class FilmRepository implements FilmGenreContract.Repository, FilmItemCon
     }
 
 
-    public ArrayList<Film> cargarFilmsByGenre(String genre) {
-        if (genre == ShowTrackApplication.getGenreOneTemp()) {
-            return genreOneMovies;
+    public ArrayList<Film> cargarFilmsByGenre(String genre, int pages) {
+        if (genre.equals(Genres.Drama.name())) {
+            if (genreOneMovies.size() <= pages)
+                pages = genreOneMovies.size();
+            List<Film> listTmp = genreOneMovies.subList(0,pages);
+            return new ArrayList<>(listTmp);
         }
-        else if (genre == ShowTrackApplication.getGenreTwoTemp())
-            return genreTwoMovies;
+        else if (genre.equals(Genres.Crime.name())) {
+            if (genreTwoMovies.size() <= pages)
+                pages = genreTwoMovies.size();
+            List<Film> listTmp = genreTwoMovies.subList(0,pages);
+            return new ArrayList<>(listTmp);
+        }
 
         return null;
+
     }
 
-    public ArrayList<Film> cargarFilmsByGenrePage2(String genre) {
-        if (genre == ShowTrackApplication.getGenreOneTemp()) {
-            return genreOneMoviesPageTwo;
+
+    public ArrayList<Film> cargarFilmsByList(String list, int pages) {
+        if (list.equals(Lists.most_pop_movies.name())) {
+            if (mostPopMovies.size() <= pages)
+                pages = mostPopMovies.size();
+             List<Film> listTmp = mostPopMovies.subList(0,pages);
+            return new ArrayList<>(listTmp);
         }
-        else if (genre == ShowTrackApplication.getGenreTwoTemp())
-            return genreTwoMoviesPageTwo;
-
-        return null;
-    }
-
-    public ArrayList<Film> cargarFilmsByList(String list) {
-        if (list.equals(Lists.most_pop_movies.name()))
-            return mostPopMovies;
-        if (list.equals(Lists.top_rated_250.name()))
-            return mostRatedMovies;
-        if (list.equals(Lists.top_boxoffice_200.name()))
-            return mostBoxOfficeMovies;
-
+        if (list.equals(Lists.top_rated_250.name())) {
+            if (mostRatedMovies.size() <= pages)
+                pages = mostRatedMovies.size();
+            List<Film> listTmp = mostRatedMovies.subList(0,pages);
+            return new ArrayList<>(listTmp);
+        }
+        if (list.equals(Lists.top_boxoffice_200.name())) {
+            if (mostBoxOfficeMovies.size() <= pages)
+                pages = mostBoxOfficeMovies.size();
+            List<Film> listTmp = mostBoxOfficeMovies.subList(0,pages);
+            return new ArrayList<>(listTmp);
+        }
         return null;
     }
 
@@ -91,14 +96,15 @@ public class FilmRepository implements FilmGenreContract.Repository, FilmItemCon
         //filmsList.indexOf(film);
     }
 
+
     @Override
-    public void cargarFilmsRvLeft(String genre, FilmGenreContract.OnFilmGenreCallback callback) {
-        callback.onSuccessCargarFilmsRvLeft(cargarFilmsByGenre(genre));
+    public void cargarFilmsRvByGenre(String genre, FilmGenreContract.OnFilmGenreCallback callback) {
+        callback.onSuccessCargarFilmsRv(cargarFilmsByGenre(genre,20));
     }
 
     @Override
-    public void cargarFilmsRvRight(String genre, FilmGenreContract.OnFilmGenreCallback callback) {
-        callback.onSuccessCargarFilmsRvRight(cargarFilmsByGenrePage2(genre));
+    public void cargarFilmsRvByList(String list, FilmGenreContract.OnFilmGenreCallback callback) {
+        callback.onSuccessCargarFilmsRv(cargarFilmsByList(list,20));
     }
 
     @Override
@@ -113,6 +119,7 @@ public class FilmRepository implements FilmGenreContract.Repository, FilmItemCon
 
     @Override
     public void search(String searchText, FilmSearchContract.OnFilmSearchCallback callback) {
+        callback.onSuccessSearchFilm((ArrayList<Film>) APIFilms.getFilmsBySearch(searchText));
 
     }
 

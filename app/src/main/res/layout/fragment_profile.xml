@@ -70,7 +70,6 @@
                 android:layout_width="wrap_content"
                 android:textSize="@dimen/tvTittleMySeriesProfileFragment_textSize"
                 android:text="@string/tvTittleMySeriesProfileFragment_text"
-                android:layout_marginBottom="@dimen/tvTittleMySeriesProfileFragment_marginBottom"
                 android:layout_marginLeft="@dimen/tvTittleMySeriesProfileFragment_marginLeft"
                 />
             <androidx.recyclerview.widget.RecyclerView
@@ -87,7 +86,6 @@
                 android:layout_marginTop="@dimen/tvTittleMyFilmsProfileFragment_marginTop"
                 android:text="@string/tvTittleMyFilmsProfileFragment_text"
                 android:layout_marginLeft="@dimen/tvTittleMyFilmsProfileFragment_marginLeft"
-                android:layout_marginBottom="@dimen/tvTittleMyFilmsProfileFragment_marginBottom"
                 />
 
             <androidx.recyclerview.widget.RecyclerView

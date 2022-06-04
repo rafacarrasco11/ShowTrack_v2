@@ -5,12 +5,18 @@ import java.util.List;
 public class Season {
     int id;
 
-    int serieImdbID;
+    String serieImdbID;
     String serieTittle;
     int seasonNumber;
 
     List<Episode> episodes;
 
+    public Season( String serieImdbID, String serieTittle, int seasonNumber, List<Episode> episodes) {
+        this.serieImdbID = serieImdbID;
+        this.serieTittle = serieTittle;
+        this.seasonNumber = seasonNumber;
+        this.episodes = episodes;
+    }
 
     public int getId() {
         return id;
@@ -20,11 +26,11 @@ public class Season {
         this.id = id;
     }
 
-    public int getSerieImdbID() {
+    public String getSerieImdbID() {
         return serieImdbID;
     }
 
-    public void setSerieImdbID(int serieImdbID) {
+    public void setSerieImdbID(String serieImdbID) {
         this.serieImdbID = serieImdbID;
     }
 

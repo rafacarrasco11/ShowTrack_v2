@@ -16,9 +16,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.showtrack.R;
+import com.example.showtrack.data.model.recycler.RecyclerSerie;
 import com.example.showtrack.data.model.serie.Serie;
 import com.example.showtrack.databinding.FragmentSerieGenreBinding;
 import com.example.showtrack.ui.ShowTrackApplication;
+import com.example.showtrack.ui.srs.seriesrecycler.RecyclerSerieFragment;
 import com.example.showtrack.ui.srs.seriesrecycler.SerieAdapter;
 
 import java.util.ArrayList;
@@ -28,13 +30,16 @@ public class SerieGenreFragment extends Fragment implements SerieGenreContract.V
     private FragmentSerieGenreBinding binding;
     private SerieGenrePresenter presenter;
 
-    private SerieAdapter adapterL;
-    private SerieAdapter adapterR;
+    private SerieAdapter adapter;
+
+    private RecyclerSerie recyclerSerie;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.presenter = new SerieGenrePresenter(this);
+
+        this.recyclerSerie = ShowTrackApplication.getRecyclerSerieTemp();
     }
 
     @Override
@@ -49,13 +54,14 @@ public class SerieGenreFragment extends Fragment implements SerieGenreContract.V
 
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
 
-        initRvLeft();
-        initRvRight();
+        initRv();
 
-        presenter.cargarSeriesRvLeft(ShowTrackApplication.getGenreTemp());
-        presenter.cargarSeriesRvRight(ShowTrackApplication.getGenreTemp());
+        if (this.recyclerSerie.getGenre() == null)
+            presenter.cargarSeriesRvByList(this.recyclerSerie.getList());
+        else if (this.recyclerSerie.getList() == null)
+            presenter.cargarSeriesRvByGenre(this.recyclerSerie.getGenre());
 
-        binding.tvTittleSerieGenre.setText(getString(R.string.tvTittleSerieGenre_tittleText) + ShowTrackApplication.getGenreTemp());
+        binding.tvTittleSerieGenre.setText( this.recyclerSerie.getTittle());
     }
 
     @Override
@@ -64,22 +70,15 @@ public class SerieGenreFragment extends Fragment implements SerieGenreContract.V
         this.presenter.onDestroy();
     }
 
-    private void initRvRight() {
-        adapterR = new SerieAdapter(this);
+    private void initRv() {
+        adapter = new SerieAdapter(this);
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 2, RecyclerView.VERTICAL, false);
 
-        binding.rvRightSerieGenre.setLayoutManager(layoutManager);
-        binding.rvRightSerieGenre.setAdapter(adapterR);
+        binding.rvSerieGenre.setLayoutManager(layoutManager);
+        binding.rvSerieGenre.setAdapter(adapter);
     }
 
-    private void initRvLeft() {
-        adapterL = new SerieAdapter(this);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
-
-        binding.rvLeftSerieGenre.setLayoutManager(layoutManager);
-        binding.rvLeftSerieGenre.setAdapter(adapterL);
-    }
 
     @Override
     public void onVisitSerie(Serie serie) {
@@ -89,16 +88,11 @@ public class SerieGenreFragment extends Fragment implements SerieGenreContract.V
 
     @Override
     public void onChangeSerie(Serie serie) {
-
+//
     }
 
     @Override
-    public void onSuccessCargarSeriesRvLeft(ArrayList<Serie> rvList) {
-        adapterL.update(rvList);
-    }
-
-    @Override
-    public void onSuccessCargarSeriesRvRight(ArrayList<Serie> rvList) {
-        adapterR.update(rvList);
+    public void onSuccessCargarSeriesRv(ArrayList<Serie> rvList) {
+        adapter.update(rvList);
     }
 }

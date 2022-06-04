@@ -32,13 +32,10 @@ public class RecyclerSerieFragment extends Fragment implements RecyclerSerieCont
     private RecyclerSerieAdapter adapter;
     private RecyclerSerieFragmentPresenter presenter;
 
-    private RecyclerSerieFragment fragment;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        fragment = this;
         presenter = new RecyclerSerieFragmentPresenter(this);
     }
 
@@ -63,7 +60,7 @@ public class RecyclerSerieFragment extends Fragment implements RecyclerSerieCont
 
 
     private void initAdapterSeriesRv() {
-        adapter = new RecyclerSerieAdapter(this, this);
+        adapter = new RecyclerSerieAdapter( this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
 
         binding.rvSeries.setLayoutManager(layoutManager);
@@ -110,8 +107,10 @@ public class RecyclerSerieFragment extends Fragment implements RecyclerSerieCont
 
 
     @Override
-    public void onVisitGenre(String genre) {
-        ShowTrackApplication.setGenreTemp(genre);
+    public void onVisitGenre(RecyclerSerie serie, int numberGenre) {
+        ShowTrackApplication.setGenreTemp(serie.getGenre());
+        ShowTrackApplication.setGenreTemp(serie.getGenre());
+        ShowTrackApplication.setRecyclerSerieTemp(serie);
         NavHostFragment.findNavController(this).navigate(R.id.action_dashboardFragment_to_serieGenreFragment);
     }
 

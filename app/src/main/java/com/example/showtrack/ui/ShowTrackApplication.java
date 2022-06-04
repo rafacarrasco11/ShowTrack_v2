@@ -6,6 +6,9 @@ import android.content.Context;
 import androidx.fragment.app.Fragment;
 
 import com.example.showtrack.data.model.Film;
+import com.example.showtrack.data.model.recycler.RecyclerFilm;
+import com.example.showtrack.data.model.recycler.RecyclerSerie;
+import com.example.showtrack.data.model.serie.Season;
 import com.example.showtrack.data.model.serie.Serie;
 
 public class ShowTrackApplication extends Application {
@@ -17,9 +20,18 @@ public class ShowTrackApplication extends Application {
 
     private static Film filmTemp;
     private static Serie serieTemp;
+    private static RecyclerFilm recyclerFilmTemp;
+    private static RecyclerSerie recyclerSerieTemp;
     private static String genreTemp;
-    private static String genreOneTemp;
-    private static String genreTwoTemp;
+    private static Season seasonTemp;
+
+    public static RecyclerFilm getRecyclerFilmTemp() {
+        return recyclerFilmTemp;
+    }
+
+    public static void setRecyclerFilmTemp(RecyclerFilm recyclerFilmTemp) {
+        ShowTrackApplication.recyclerFilmTemp = recyclerFilmTemp;
+    }
 
     //#endregion
 
@@ -65,27 +77,27 @@ public class ShowTrackApplication extends Application {
         ShowTrackApplication.lastFragment = lastFragment;
     }
 
-    public static String getGenreOneTemp() {
-        return genreOneTemp;
-    }
-
-    public static void setGenreOneTemp(String genreOneTemp) {
-        ShowTrackApplication.genreOneTemp = genreOneTemp;
-    }
-
-    public static String getGenreTwoTemp() {
-        return genreTwoTemp;
-    }
-
-    public static void setGenreTwoTemp(String genreTwoTemp) {
-        ShowTrackApplication.genreTwoTemp = genreTwoTemp;
-    }
-
     public static String getGenreTemp() {
         return genreTemp;
     }
 
     public static void setGenreTemp(String genreTemp) {
         ShowTrackApplication.genreTemp = genreTemp;
+    }
+
+    public static RecyclerSerie getRecyclerSerieTemp() {
+        return recyclerSerieTemp;
+    }
+
+    public static void setRecyclerSerieTemp(RecyclerSerie recyclerSerieTemp) {
+        ShowTrackApplication.recyclerSerieTemp = recyclerSerieTemp;
+    }
+
+    public static Season getSeasonTemp() {
+        return seasonTemp;
+    }
+
+    public static void setSeasonTemp(Season seasonTemp) {
+        ShowTrackApplication.seasonTemp = seasonTemp;
     }
 }

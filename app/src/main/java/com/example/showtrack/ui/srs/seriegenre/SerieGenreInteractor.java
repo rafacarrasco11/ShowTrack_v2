@@ -14,20 +14,15 @@ public class SerieGenreInteractor implements SerieGenreContract.OnSerieGenreCall
     }
 
     @Override
-    public void onSuccessCargarSeriesRvLeft(ArrayList<Serie> rvList) {
-        this.listener.onSuccessCargarSeriesRvLeft(rvList);
+    public void onSuccessCargarSeriesRv(ArrayList<Serie> rvList) {
+        this.listener.onSuccessCargarSeriesRv(rvList);
     }
 
-    @Override
-    public void onSuccessCargarSeriesRvRight(ArrayList<Serie> rvList) {
-        this.listener.onSuccessCargarSeriesRvRight(rvList);
+    public void cargarSeriesRvByGenre(String genre) {
+        SerieRepository.getInstance().cargarSeriesRvGenre(genre, this);
     }
 
-    public void cargarSeriesRvLeft(String genre) {
-        SerieRepository.getInstance().cargarSeriesRvLeft(genre, this);
-    }
-
-    public void cargarSeriesRvRight(String genre) {
-        SerieRepository.getInstance().cargarSeriesRvRight(genre, this);
+    public void cargarSeriesRvByList(String list) {
+        SerieRepository.getInstance().cargarSeriesRvList(list, this);
     }
 }

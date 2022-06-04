@@ -3,6 +3,7 @@ package com.example.showtrack.ui.srs.seriesrecycler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,8 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.showtrack.R;
+import com.example.showtrack.data.model.api.APIClasses.APISeries;
 import com.example.showtrack.data.model.serie.Serie;
+import com.example.showtrack.utils.DrawableUtil;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class SerieAdapter extends RecyclerView.Adapter<SerieAdapter.ViewHolderSeries> {
@@ -39,9 +43,16 @@ public class SerieAdapter extends RecyclerView.Adapter<SerieAdapter.ViewHolderSe
 
     @Override
     public void onBindViewHolder(@NonNull SerieAdapter.ViewHolderSeries holder, int position) {
-        //holder.clBackgroundSerieView.setBackground(this.SeriesList.get(position).getImage());
-        holder.tvNameSerieView.setText(this.seriesList.get(position).getTittle());
-        holder.tvYearSerieView.setText(Integer.toString(this.seriesList.get(position).getSerieYear()));
+        try {
+            holder.clBackgroundSerieView.setBackground(DrawableUtil.drawableFromUrl(APISeries.getNewBackground(this.seriesList.get(position))));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (this.seriesList.get(position).getTittle().length() >= 21)
+            holder.tvNameSerieView.setText(this.seriesList.get(position).getTittle().substring(0,18).concat("..."));
+        else holder.tvNameSerieView.setText(this.seriesList.get(position).getTittle());
+
+        holder.tvYearSerieView.setText(this.seriesList.get(position).getYearReleased());
 
         holder.bind(this.seriesList.get(position), listener);
     }
@@ -54,7 +65,7 @@ public class SerieAdapter extends RecyclerView.Adapter<SerieAdapter.ViewHolderSe
 
     public class ViewHolderSeries extends RecyclerView.ViewHolder{
 
-        ConstraintLayout clBackgroundSerieView;
+        LinearLayout clBackgroundSerieView;
         TextView tvNameSerieView;
         TextView tvYearSerieView;
 

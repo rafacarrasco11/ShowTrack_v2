@@ -56,7 +56,7 @@
     <!--region FILM ITEM  -->
 
     <dimen name="collapsingToolbarFilmItem_height">500dp</dimen>
-    <dimen name="collapsingToolbarFilmItem_expandedTittleMarginBottom">94dp</dimen>
+    <!--<dimen name="cTFilmItem_expandedTittleMarginBottom">94dp</dimen>-->
     <dimen name="nestedScrollViewFilmItem_overlapTop">78dp</dimen>
     <dimen name="cardViewFilmItem_contentPaddingBottom">16dp</dimen>
     <dimen name="cardViewFilmItem_contentPaddingLeft">16dp</dimen>
@@ -79,7 +79,7 @@
     <dimen name="rvFilmsSearched_marginTop">30dp</dimen>
     <dimen name="tvTittleFilmGenre_margintop">20dp</dimen>
     <dimen name="tvTittleFilmGenre_textSize">30sp</dimen>
-    <dimen name="llRecyclersFilmGenre_marginTop">90dp</dimen>
+    <dimen name="llRecyclersFilmGenre_marginTop">65dp</dimen>
 
     <!--endregion-->
 
@@ -91,7 +91,7 @@
     <dimen name="serieview_padding">20dp</dimen>
     <dimen name="tvTittleSerieGenre_margintop">20dp</dimen>
     <dimen name="tvTittleSerieGenre_textSize">30sp</dimen>
-    <dimen name="llRecyclersSerieGenre_marginTop">90dp</dimen>
+    <dimen name="llRecyclersSerieGenre_marginTop">65dp</dimen>
     <dimen name="collapsingToolbarSerieItem_height">300dp</dimen>
     <dimen name="collapsingToolbarSerieItem_expandedTittleMarginBottom">94dp</dimen>
     <dimen name="nestedScrollViewSerieItem_overlapTop">78dp</dimen>
@@ -117,16 +117,13 @@
     <dimen name="tvUserNameProfileFragment_textSize">25sp</dimen>
     <dimen name="tvUserNameProfileFragment_height">28dp</dimen>
     <dimen name="tvTittleMySeriesProfileFragment_textSize">25sp</dimen>
-    <dimen name="tvTittleMySeriesProfileFragment_marginBottom">15dp</dimen>
+
     <dimen name="tvTittleMyFilmsProfileFragment_textSize">25sp</dimen>
     <dimen name="tvTittleMyFilmsProfileFragment_marginTop">15dp</dimen>
-    <dimen name="tvTittleMyFilmsProfileFragment_marginBottom">15dp</dimen>
     <dimen name="tvTittleMySeriesProfileFragment_marginLeft">15dp</dimen>
     <dimen name="tvTittleMyFilmsProfileFragment_marginLeft">15dp</dimen>
     <dimen name="btnSettingsProfileFragment_marginTop">10dp</dimen>
     <dimen name="btnAboutUsProfileFragment_marginTop">10dp</dimen>
-    <dimen name="conatinerLLStatView_paddingHorizontal">35dp</dimen>
-    <dimen name="conatinerLLStatView_paddingVertical">20dp</dimen>
     <dimen name="tvStatStatView_textSize">38sp</dimen>
     <dimen name="tvTittleStatView_textSize">18sp</dimen>
     <dimen name="rvStatsProfileFragment_marginVertical">20dp</dimen>
@@ -142,6 +139,21 @@
     <dimen name="rvNews_marginTop">20dp</dimen>
     <dimen name="tvTittleHomeFragment_marginTop">15dp</dimen>
     <dimen name="tittleFilmItem_textSize">20sp</dimen>
+    <dimen name="tvTittleFilmsRv_textsize">16sp</dimen>
+    <dimen name="tvTittleFilmsRv_padding">10dp</dimen>
+    <dimen name="nestedRvFilms_marginTop">10dp</dimen>
+    <dimen name="btnVisitGenre_padding">10dp</dimen>
+    <dimen name="tvTittleSeriesRv_padding">10dp</dimen>
+    <dimen name="tvTittleSeriesRv_textsize">16sp</dimen>
+    <dimen name="nestedRvSeries_marginTop">10dp</dimen>
+    <dimen name="tittleSerieItem_textSize">20sp</dimen>
+    <dimen name="containerStatView_padding">10dp</dimen>
+    <dimen name="secondaryLightColor_padding">20dp</dimen>
+    <dimen name="seasonViewContainer_padding">10dp</dimen>
+    <dimen name="llTitleSeason_height">50dp</dimen>
+    <dimen name="tvTitleSeasonNumber_marginLeft">30dp</dimen>
+    <dimen name="tvTitleSeasonNumber_textSize">20sp</dimen>
+    <dimen name="imgBtnSeeEpisodes_marginEnd">30dp</dimen>
 
 
 </resources>

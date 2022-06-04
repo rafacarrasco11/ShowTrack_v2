@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -49,12 +50,11 @@ public class SerieSearchFragment extends Fragment implements SerieSearchContract
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
 
         binding.btnSearchSerieSearch.setOnClickListener(v -> {
-            presenter.search(binding.tieSerieSearch.getText().toString());
             showProgress();
+            presenter.search(binding.tieSerieSearch.getText().toString());
         });
 
         initRvSearch();
-        hideProgress();
     }
 
     @Override
@@ -65,7 +65,7 @@ public class SerieSearchFragment extends Fragment implements SerieSearchContract
 
     private void initRvSearch() {
         adapter = new SerieAdapter(this);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 2, RecyclerView.VERTICAL, false);
 
         binding.rvSeriesSearched.setLayoutManager(layoutManager);
         binding.rvSeriesSearched.setAdapter(adapter);
@@ -78,12 +78,12 @@ public class SerieSearchFragment extends Fragment implements SerieSearchContract
 
     @Override
     public void showProgress() {
-        binding.pbSerieSearch.setVisibility(View.VISIBLE);
+        //binding.pbSerieSearch.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideProgress() {
-        binding.pbSerieSearch.setVisibility(View.INVISIBLE);
+        //binding.pbSerieSearch.setVisibility(View.INVISIBLE);
     }
 
     @Override

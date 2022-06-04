@@ -15,14 +15,15 @@ public class SerieGenrePresenter implements SerieGenreContract.Presenter, SerieG
         this.interactor = new SerieGenreInteractor(this);
     }
 
+
     @Override
-    public void cargarSeriesRvLeft(String genre) {
-        this.interactor.cargarSeriesRvLeft(genre);
+    public void cargarSeriesRvByGenre(String genre) {
+        this.interactor.cargarSeriesRvByGenre(genre);
     }
 
     @Override
-    public void cargarSeriesRvRight(String genre) {
-        this.interactor.cargarSeriesRvRight(genre);
+    public void cargarSeriesRvByList(String list) {
+        this.interactor.cargarSeriesRvByList(list);
     }
 
     @Override
@@ -32,13 +33,8 @@ public class SerieGenrePresenter implements SerieGenreContract.Presenter, SerieG
     }
 
     @Override
-    public void onSuccessCargarSeriesRvLeft(ArrayList<Serie> rvList) {
-        this.view.onSuccessCargarSeriesRvLeft(rvList);
-    }
-
-    @Override
-    public void onSuccessCargarSeriesRvRight(ArrayList<Serie> rvList) {
-        this.view.onSuccessCargarSeriesRvRight(rvList);
+    public void onSuccessCargarSeriesRv(ArrayList<Serie> rvList) {
+        this.view.onSuccessCargarSeriesRv(rvList);
     }
 }
 

@@ -11,6 +11,8 @@ import com.example.showtrack.MainActivity;
 import com.example.showtrack.R;
 import com.example.showtrack.data.model.user.User;
 import com.example.showtrack.data.repository.FilmRepository;
+import com.example.showtrack.data.repository.SerieRepository;
+import com.example.showtrack.ui.ShowTrackApplication;
 import com.example.showtrack.ui.prev.login.LoginActivity;
 import com.example.showtrack.ui.prf.profile.prof.ProfileContract;
 
@@ -24,6 +26,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         FilmRepository.getInstance();
+        SerieRepository.getInstance();
     }
 
     /**

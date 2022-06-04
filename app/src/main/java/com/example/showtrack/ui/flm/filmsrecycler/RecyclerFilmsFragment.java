@@ -32,13 +32,10 @@ public class RecyclerFilmsFragment extends Fragment implements RecyclerFilmsCont
     private RecyclerFilmAdapter adapter;
     private RecyclerFilmsFragmentPresenter presenter;
 
-    private RecyclerFilmsFragment fragment;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        fragment = this;
         presenter = new RecyclerFilmsFragmentPresenter(this);
     }
 
@@ -62,11 +59,10 @@ public class RecyclerFilmsFragment extends Fragment implements RecyclerFilmsCont
 
 
     private void initAdapterFilmsRv() {
-        adapter = new RecyclerFilmAdapter(this, this);
+        adapter = new RecyclerFilmAdapter( this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
 
         binding.rvFilms.setLayoutManager(layoutManager);
-        binding.rvFilms.setAdapter(adapter);
         binding.rvFilms.setAdapter(adapter);
     }
 
@@ -110,8 +106,10 @@ public class RecyclerFilmsFragment extends Fragment implements RecyclerFilmsCont
 
 
     @Override
-    public void onVisitGenre(String genre) {
-        ShowTrackApplication.setGenreTemp(genre);
+    public void onVisitGenre(RecyclerFilm recyclerFilm, int numberGenre) {
+        ShowTrackApplication.setGenreTemp(recyclerFilm.getGenre());
+        ShowTrackApplication.setGenreTemp(recyclerFilm.getGenre());
+        ShowTrackApplication.setRecyclerFilmTemp(recyclerFilm);
         NavHostFragment.findNavController(this).navigate(R.id.action_dashboardFragment_to_filmGenreFragment);
     }
 

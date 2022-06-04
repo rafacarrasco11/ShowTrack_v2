@@ -1,6 +1,10 @@
 package com.example.showtrack.ui.srs.serieitem;
 
+
+import com.example.showtrack.data.model.serie.Season;
 import com.example.showtrack.data.model.serie.Serie;
+
+import java.util.List;
 
 public class SerieItemPresenter implements SerieItemContract.Presenter, SerieItemContract.OnInteractorListener {
 
@@ -24,9 +28,10 @@ public class SerieItemPresenter implements SerieItemContract.Presenter, SerieIte
 
     @Override
     public void onDestroy() {
-        this.view = null;
         this.interactor = null;
+        this.view = null;
     }
+
 
     @Override
     public void onSuccessAddSerie(String message) {
@@ -37,5 +42,5 @@ public class SerieItemPresenter implements SerieItemContract.Presenter, SerieIte
     public void onSuccessRemoveSerie(String message) {
         this.view.onSuccessRemoveSerie(message);
     }
-}
 
+}

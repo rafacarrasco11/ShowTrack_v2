@@ -8,31 +8,33 @@ import java.util.List;
 public class Serie {
     int id;
 
-    int imdbID;
+    String imdbID;
     String tittle;
-    LocalDate released;
-    int ageRestriction;
-    int time;
+    String yearReleased;
+    String ageRestriction;
+    String time;
     String genre;
     String language;
     String plot;
     String country;
     String awards;
-    Drawable poster;
+    String poster;
 
     String director;
     String writers;
     String actors;
 
-    double imdbRating;
+    String imdbRating;
     String type;
     int totalSeasons;
 
     List<Season> seasons;
 
-    public Serie( String genre, LocalDate released, String tittle) {
+    public Serie(String tittle, String yearReleased, String imdbID, String genre,  String poster) {
+        this.imdbID = imdbID;
         this.tittle = tittle;
-        this.released = released;
+        this.poster = poster;
+        this.yearReleased = yearReleased;
         this.genre = genre;
     }
 
@@ -45,13 +47,6 @@ public class Serie {
         this.id = id;
     }
 
-    public int getImdbID() {
-        return imdbID;
-    }
-
-    public void setImdbID(int imdbID) {
-        this.imdbID = imdbID;
-    }
 
     public String getTittle() {
         return tittle;
@@ -61,29 +56,6 @@ public class Serie {
         this.tittle = tittle;
     }
 
-    public LocalDate getReleased() {
-        return released;
-    }
-
-    public void setReleased(LocalDate released) {
-        this.released = released;
-    }
-
-    public int getAgeRestriction() {
-        return ageRestriction;
-    }
-
-    public void setAgeRestriction(int ageRestriction) {
-        this.ageRestriction = ageRestriction;
-    }
-
-    public int getTime() {
-        return time;
-    }
-
-    public void setTime(int time) {
-        this.time = time;
-    }
 
     public String getGenre() {
         return genre;
@@ -125,11 +97,11 @@ public class Serie {
         this.awards = awards;
     }
 
-    public Drawable getPoster() {
+    public String getPoster() {
         return poster;
     }
 
-    public void setPoster(Drawable poster) {
+    public void setPoster(String poster) {
         this.poster = poster;
     }
 
@@ -157,14 +129,6 @@ public class Serie {
         this.actors = actors;
     }
 
-    public double getImdbRating() {
-        return imdbRating;
-    }
-
-    public void setImdbRating(double imdbRating) {
-        this.imdbRating = imdbRating;
-    }
-
     public String getType() {
         return type;
     }
@@ -189,8 +153,44 @@ public class Serie {
         this.seasons = seasons;
     }
 
-    public int getSerieYear() {
-        return this.released.getYear();
+    public String getYearReleased() {
+        return yearReleased;
+    }
+
+    public void setYearReleased(String yearReleased) {
+        this.yearReleased = yearReleased;
+    }
+
+    public String getImdbID() {
+        return imdbID;
+    }
+
+    public void setImdbID(String imdbID) {
+        this.imdbID = imdbID;
+    }
+
+    public String getAgeRestriction() {
+        return ageRestriction;
+    }
+
+    public void setAgeRestriction(String ageRestriction) {
+        this.ageRestriction = ageRestriction;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getImdbRating() {
+        return imdbRating;
+    }
+
+    public void setImdbRating(String imdbRating) {
+        this.imdbRating = imdbRating;
     }
 
     public String makePlot() {
