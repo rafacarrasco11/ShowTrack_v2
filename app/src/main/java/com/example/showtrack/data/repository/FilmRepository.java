@@ -43,6 +43,8 @@ public class FilmRepository implements FilmGenreContract.Repository, FilmItemCon
         genreOneMoviesPageTwo.addAll(APIFilms.getFilmsByGenrePageTwo(Genres.Drama.name()));      // GET USER GENRE ONE
         genreTwoMovies.addAll(APIFilms.getFilmsByGenre(Genres.Crime.name()));      // GET USER GENRE TWO
         genreTwoMoviesPageTwo.addAll(APIFilms.getFilmsByGenrePageTwo(Genres.Crime.name()));      // GET USER GENRE TWO
+
+        mostPopMovies.remove(0);
     }
 
     public static FilmRepository getInstance() {

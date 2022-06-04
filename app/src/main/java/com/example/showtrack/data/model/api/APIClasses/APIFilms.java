@@ -294,7 +294,15 @@ public class APIFilms {
     }
 
     public static String getNewBackground(Film film) {
+        JSONFilm jsonFilmSearch = null;
 
+        try {
+            jsonFilmSearch = (JSONFilm) APIUtil.getInstance().getFromApi(JSONFilm.class, generateURLByID(film.getImdbID()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return jsonFilmSearch.getPoster();
     }
 
 }

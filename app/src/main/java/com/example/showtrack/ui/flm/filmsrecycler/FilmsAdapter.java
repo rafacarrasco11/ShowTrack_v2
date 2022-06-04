@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.showtrack.R;
 import com.example.showtrack.data.model.Film;
+import com.example.showtrack.data.model.api.APIClasses.APIFilms;
 import com.example.showtrack.utils.DrawableUtil;
 
 import java.io.IOException;
@@ -42,7 +43,7 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolderFi
     @Override
     public void onBindViewHolder(@NonNull FilmsAdapter.ViewHolderFilms holder, int position) {
         try {
-            holder.clBackgroundFilmView.setBackground(DrawableUtil.drawableFromUrl(this.filmsList.get(position).getPoster()));
+            holder.clBackgroundFilmView.setBackground(DrawableUtil.drawableFromUrl(APIFilms.getNewBackground(this.filmsList.get(position))));
         } catch (IOException e) {
             e.printStackTrace();
         }
