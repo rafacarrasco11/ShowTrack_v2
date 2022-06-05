@@ -6,6 +6,7 @@
         <entry key="../../../../layout/custom_preview.xml" value="0.21510416666666668" />
         <entry key="app/src/main/res/drawable/border_black_item.xml" value="0.375" />
         <entry key="app/src/main/res/drawable/cardviewitem_selector.xml" value="0.21666666666666667" />
+        <entry key="app/src/main/res/drawable/episode_button_shape.xml" value="0.375" />
         <entry key="app/src/main/res/drawable/ic_add_white.xml" value="0.375" />
         <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.37407407407407406" />
         <entry key="app/src/main/res/drawable/ic_dash_home.xml" value="0.37407407407407406" />
@@ -15,6 +16,7 @@
         <entry key="app/src/main/res/drawable/ic_down_arrow.xml" value="0.375" />
         <entry key="app/src/main/res/drawable/ic_search_black_24dp.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/drawable/ic_up_arrow.xml" value="0.375" />
+        <entry key="app/src/main/res/drawable/ic_watched.xml" value="0.375" />
         <entry key="app/src/main/res/drawable/shape_btn_login.xml" value="0.375" />
         <entry key="app/src/main/res/drawable/stat_style_border.xml" value="0.375" />
         <entry key="app/src/main/res/drawable/user_image_login_background.xml" value="0.375" />
@@ -22,6 +24,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.35885416666666664" />
+        <entry key="app/src/main/res/layout/episode_view.xml" value="0.5" />
         <entry key="app/src/main/res/layout/film_view.xml" value="0.35885416666666664" />
         <entry key="app/src/main/res/layout/fragment_about_us.xml" value="0.28306159420289856" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.165" />

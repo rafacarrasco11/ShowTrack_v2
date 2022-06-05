@@ -40,28 +40,34 @@ public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderSeasons holder, int position) {
-        holder.tvTitleSeasonNumber.setText(ShowTrackApplication.getContext().getString(R.string.seasonItemTitle).concat(String.valueOf(position)));
+        holder.tvTitleSeasonNumber.setText(ShowTrackApplication.getContext().getString(R.string.seasonItemTitle).concat(String.valueOf(position+1)));
+
+        EpisodeAdapter episodeAdapter = new EpisodeAdapter();
+        RecyclerView.LayoutManager linearLayoutManager = new LinearLayoutManager(ShowTrackApplication.context(), RecyclerView.VERTICAL, false);
+
+        holder.rvEpisodes.setLayoutManager(linearLayoutManager);
+        holder.rvEpisodes.setAdapter(episodeAdapter);
+
 
         holder.imgBtnSeeEpisodes.setOnClickListener(v -> {
-            holder.rvSeasons.setVisibility(View.VISIBLE);
+            holder.rvEpisodes.setVisibility(View.VISIBLE);
+            episodeAdapter.update((ArrayList<Episode>) this.seasonList.get(position).getEpisodes());
+
             holder.imgBtnSeeEpisodes.setVisibility(View.GONE);
             holder.imgBtnCloseEpisodes.setVisibility(View.VISIBLE);
         });
 
         holder.imgBtnCloseEpisodes.setOnClickListener(v -> {
-            holder.rvSeasons.setVisibility(View.GONE);
+            holder.rvEpisodes.setVisibility(View.GONE);
+
             holder.imgBtnSeeEpisodes.setVisibility(View.VISIBLE);
             holder.imgBtnCloseEpisodes.setVisibility(View.GONE);
         });
 
-        EpisodeAdapter episodeAdapter = new EpisodeAdapter();
-        RecyclerView.LayoutManager linearLayoutManager = new LinearLayoutManager(ShowTrackApplication.context(), RecyclerView.VERTICAL, false);
-
-        holder.rvSeasons.setLayoutManager(linearLayoutManager);
-        holder.rvSeasons.setAdapter(episodeAdapter);
-
-        episodeAdapter.update((ArrayList<Episode>) this.seasonList.get(position).getEpisodes());
-        //holder.rvSeasons.
+        if (this.seasonList.get(position).getEpisodes().size() == 0) {
+            holder.imgBtnSeeEpisodes.setVisibility(View.GONE);
+            holder.imgBtnCloseEpisodes.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -72,14 +78,14 @@ public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.ViewHolder
     public class ViewHolderSeasons extends RecyclerView.ViewHolder {
 
         TextView tvTitleSeasonNumber;
-        RecyclerView rvSeasons;
+        RecyclerView rvEpisodes;
         ImageView imgBtnSeeEpisodes;
         ImageView imgBtnCloseEpisodes;
 
         public ViewHolderSeasons(@NonNull View itemView) {
             super(itemView);
             tvTitleSeasonNumber = itemView.findViewById(R.id.tvTitleSeasonNumber);
-            rvSeasons = itemView.findViewById(R.id.rvSeasons);
+            rvEpisodes = itemView.findViewById(R.id.rvEpisodes);
             imgBtnSeeEpisodes = itemView.findViewById(R.id.imgBtnSeeEpisodes);
             imgBtnCloseEpisodes = itemView.findViewById(R.id.imgBtnCloseEpisodes);
         }
@@ -92,6 +98,5 @@ public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.ViewHolder
 
         notifyDataSetChanged();
     }
-
-
+    
 }

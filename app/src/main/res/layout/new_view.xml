@@ -6,70 +6,77 @@
     android:layout_width="match_parent"
     android:layout_height="130dp">
 
-    <LinearLayout
-        android:id="@+id/llContainerNewView"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
-        <ImageView
-            android:id="@+id/imgNewView"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.4"
-            android:src="@drawable/user_avatar_preview" />
-
         <LinearLayout
-            android:id="@+id/llCOntainerTextNewView"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:id="@+id/llContainerNewView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/tvTittleNewView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:text="The Questions Congress Needs to Ask Mark Zuckenbergaaaaaaaaaaa"/>
 
-            <TextView
-                android:id="@+id/tvSubtittleNewView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="13sp"
-                android:text="Marck Zuckenberg is probably wearing out his flashcards as he prepares to be asdasda"/>
+            <ImageView
+                android:id="@+id/imgNewView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4"
+                android:src="@drawable/user_avatar_preview" />
 
             <LinearLayout
-                android:layout_gravity="bottom"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/imgIconTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_news_released" />
+                android:id="@+id/llCOntainerTextNewView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="10dp">
 
                 <TextView
-                    android:id="@+id/tvReleasedNewView"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tvTittleNewView"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:text="12/08/2001 13:40"
-                    />
-            </LinearLayout>
+                    android:text="The Questions Congress Needs to Ask Mark Zuckenbergaaaaaaaaaaa"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
+                <TextView
+                    android:id="@+id/tvSubtittleNewView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Marck Zuckenberg is probably wearing out his flashcards as he prepares to be asdasda"
+                    android:textSize="13sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom">
+
+                    <ImageView
+                        android:id="@+id/imgIconTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_news_released" />
+
+                    <TextView
+                        android:id="@+id/tvReleasedNewView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:text="12/08/2001 13:40"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

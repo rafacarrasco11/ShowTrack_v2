@@ -48,6 +48,10 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
             presenter.login(binding.tieUserLogin.getText().toString(),binding.tiePaswdLogin.getText().toString());
         });
 
+        binding.btnSignInWGoogleLogin.setOnClickListener(v -> {
+            goApp();
+        });
+
         presenter = new LoginPresenter(this);
     }
 
