@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.prev.login.LoginActivity">
+
+    <ImageView
+        android:id="@+id/imgUserLogin"
+        android:layout_width="156dp"
+        android:layout_height="117dp"
+        android:layout_marginTop="@dimen/imgUserLogin_marginTop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@mipmap/icno_showtrack"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilUserLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgUserLogin"
+        android:layout_marginTop="@dimen/tilUserLogin_marginTop"
+        android:layout_marginHorizontal="@dimen/tilUserLogin_marginHorizn"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tieUserLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            android:hint="@string/tieUserLogin_hint"
+            android:inputType="text"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilPaswdLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/tilPaswdLogin_marginTop"
+        android:layout_marginHorizontal="@dimen/tilPaswdLogin_marginHorizn"
+        app:layout_constraintTop_toBottomOf="@+id/tilUserLogin">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiePaswdLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            android:inputType="textPassword"
+            android:hint="@string/tiePaswdLogin_hint" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <CheckBox
+        android:id="@+id/chkRembMeLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/chkRembMeLogin_marginHorinz"
+        android:text="@string/chkRembMeLogin_text"
+        android:fontFamily="@font/robotoregular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilPaswdLogin" />
+
+    <Button
+        android:id="@+id/btnSignInLogin"
+        style="@style/simpleBtnColored"
+        android:text="@string/btnSignInLogin_text"
+        android:layout_marginTop="@dimen/btnSignInLogin_margintop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chkRembMeLogin" />
+
+    <Button
+        android:id="@+id/btnSignInWGoogleLogin"
+        style="@style/simpleBtnTransparent"
+        android:layout_marginTop="@dimen/btnSignInWGoogleLogin_marginTop"
+        android:text="@string/btnSignInWGoogleLogin_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSignInLogin" />
+
+    <Button
+        android:id="@+id/btnSignUpLogin"
+        style="@style/simpleBtnTransparent"
+        android:text="@string/btnSignUpLogin_text"
+        android:layout_marginBottom="@dimen/btnSignUpLogin_marginBottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/pbLogin"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/pbLogin_marginHorizontal"
+        android:backgroundTint="@color/secondaryLightColor"
+        app:layout_constraintBottom_toTopOf="@+id/btnSignUpLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSignInWGoogleLogin" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
