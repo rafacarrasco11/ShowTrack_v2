@@ -20,6 +20,8 @@ import com.example.showtrack.R;
 import com.example.showtrack.data.model.api.APIClasses.APISeries;
 import com.example.showtrack.data.model.serie.Season;
 import com.example.showtrack.data.model.serie.Serie;
+import com.example.showtrack.data.repository.FilmRepository;
+import com.example.showtrack.data.repository.SerieRepository;
 import com.example.showtrack.databinding.FragmentSerieItemBinding;
 import com.example.showtrack.ui.ShowTrackApplication;
 import com.example.showtrack.utils.DrawableUtil;
@@ -73,8 +75,11 @@ public class SerieItemFragment extends Fragment implements SerieItemContract.Vie
             NavHostFragment.findNavController(this).navigateUp();
         });
 
-        initRvSeasons();
+        binding.btnDeleteSerieFilmItem.setOnClickListener(v -> {
+            presenter.removeSerie(this.serie);
+        });
 
+        initRvSeasons();
         adapter.update((ArrayList<Season>) this.serie.getSeasons());
     }
 
@@ -96,13 +101,16 @@ public class SerieItemFragment extends Fragment implements SerieItemContract.Vie
     public void onSuccessAddSerie(String message) {
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
 
-        binding.btnAddSerieFilmItem.setImageDrawable(AppCompatResources.getDrawable(getContext(), R.drawable.ic_check_item_added));
-        binding.btnAddSerieFilmItem.setBackgroundColor(getActivity().getColor(R.color.greenCheck));
+        binding.btnAddSerieFilmItem.setVisibility(View.GONE);
+        binding.btnDeleteSerieFilmItem.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onSuccessRemoveSerie(String message) {
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+
+        binding.btnAddSerieFilmItem.setVisibility(View.VISIBLE);
+        binding.btnDeleteSerieFilmItem.setVisibility(View.GONE);
     }
 
 
@@ -120,6 +128,12 @@ public class SerieItemFragment extends Fragment implements SerieItemContract.Vie
             binding.textWritersSerieItem.setText(serie.getWriters());
             binding.textPLotSerieItem.setText(serie.getPlot());
             binding.textAwardsSerieItem.setText(serie.getAwards());
+
+            if (SerieRepository.getInstance().isWatched(this.serie, ShowTrackApplication.getUserTemp())) {
+                binding.btnAddSerieFilmItem.setVisibility(View.GONE);
+                binding.btnDeleteSerieFilmItem.setVisibility(View.VISIBLE);
+            }
+
             return true;
         } catch (Exception e) {
             e.printStackTrace();

@@ -10,8 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.showtrack.R;
+import com.example.showtrack.data.model.database.ShowTrackDatabase;
 import com.example.showtrack.data.model.serie.Episode;
 import com.example.showtrack.data.model.serie.Season;
+import com.example.showtrack.data.repository.SerieRepository;
+import com.example.showtrack.data.repository.UserRepository;
+import com.example.showtrack.ui.ShowTrackApplication;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +23,16 @@ import java.util.List;
 public class EpisodeAdapter extends RecyclerView.Adapter<EpisodeAdapter.ViewHolderEpisodes> {
 
     private List<Episode> episodesList;
+    private OnEpisodeListener listener;
 
-    public EpisodeAdapter() {
+    public interface OnEpisodeListener {
+        void addEpisode(Episode episode);
+        void deleteEpisode(Episode episode);
+    }
+
+    public EpisodeAdapter(OnEpisodeListener listener) {
         this.episodesList = new ArrayList<>();
+        this.listener = listener;
     }
 
     @NonNull
@@ -43,6 +54,26 @@ public class EpisodeAdapter extends RecyclerView.Adapter<EpisodeAdapter.ViewHold
             holder.tvTittleEpisode.setText(this.episodesList.get(position).getTitle());
 
         holder.tvTittleEpisodeRating.setText(this.episodesList.get(position).getImdbRating());
+
+        if (SerieRepository.getInstance().isEpisodeWatched(this.episodesList.get(position), ShowTrackApplication.getUserTemp())) {
+            holder.imgBtnEpisodeNoWatched.setVisibility(View.GONE);
+            holder.imgBtnEpisodeWatched.setVisibility(View.VISIBLE);
+        }
+
+
+        holder.imgBtnEpisodeNoWatched.setOnClickListener(v -> {
+            holder.imgBtnEpisodeNoWatched.setVisibility(View.GONE);
+            holder.imgBtnEpisodeWatched.setVisibility(View.VISIBLE);
+
+            listener.addEpisode(this.episodesList.get(position));
+        });
+
+        holder.imgBtnEpisodeWatched.setOnClickListener(v -> {
+            listener.deleteEpisode(this.episodesList.get(position));
+
+            holder.imgBtnEpisodeNoWatched.setVisibility(View.VISIBLE);
+            holder.imgBtnEpisodeWatched.setVisibility(View.GONE);
+        });
     }
 
     @Override
@@ -54,6 +85,7 @@ public class EpisodeAdapter extends RecyclerView.Adapter<EpisodeAdapter.ViewHold
 
         TextView tvTittleEpisode;
         ImageButton imgBtnEpisodeWatched;
+        ImageButton imgBtnEpisodeNoWatched;
         TextView tvNumberEpisode;
         TextView tvTittleEpisodeRating;
 
@@ -64,9 +96,9 @@ public class EpisodeAdapter extends RecyclerView.Adapter<EpisodeAdapter.ViewHold
             imgBtnEpisodeWatched = itemView.findViewById(R.id.imgBtnEpisodeWatched);
             tvNumberEpisode = itemView.findViewById(R.id.tvNumberEpisode);
             tvTittleEpisodeRating = itemView.findViewById(R.id.tvTittleEpisodeRating);
+            imgBtnEpisodeNoWatched = itemView.findViewById(R.id.imgBtnEpisodeNoWatched);
 
         }
-
     }
 
 

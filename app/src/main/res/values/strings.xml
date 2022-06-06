@@ -84,4 +84,7 @@
     <string name="recyclerSerieTittle_mostRated">Series mas valoradas</string>
     <string name="seasonItemTitle">"Temporada "</string>
     <string name="addFilmSucces">Pelicula añadida con exito.</string>
+    <string name="removeFilmSucces">Pelicula eliminada con éxito.</string>
+    <string name="removeSerieSucces">Serie eliminada con éxito.</string>
+    <string name="addSerieSucces">Serie añadida con éxito.</string>
 </resources>

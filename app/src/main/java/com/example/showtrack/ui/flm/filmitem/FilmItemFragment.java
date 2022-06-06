@@ -1,5 +1,6 @@
 package com.example.showtrack.ui.flm.filmitem;
 
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -26,6 +27,8 @@ import android.widget.Toast;
 import com.example.showtrack.R;
 import com.example.showtrack.data.model.Film;
 import com.example.showtrack.data.model.api.APIClasses.APIFilms;
+import com.example.showtrack.data.repository.FilmRepository;
+import com.example.showtrack.data.repository.UserRepository;
 import com.example.showtrack.databinding.FragmentFilmItemBinding;
 import com.example.showtrack.ui.ShowTrackApplication;
 import com.example.showtrack.utils.DrawableUtil;
@@ -70,6 +73,10 @@ public class FilmItemFragment extends Fragment implements FilmItemContract.View 
         binding.btnBackFilmItem.setOnClickListener(v -> {
             NavHostFragment.findNavController(this).navigateUp();
         });
+
+        binding.btnDeleteFilmFilmItem.setOnClickListener(v -> {
+            presenter.removeFilm(this.film);
+        });
     }
 
     @Override
@@ -82,13 +89,16 @@ public class FilmItemFragment extends Fragment implements FilmItemContract.View 
     public void onSuccessAddFilm(String message) {
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
 
-        binding.btnAddFilmFilmItem.setImageDrawable(AppCompatResources.getDrawable(getContext(), R.drawable.ic_check_item_added));
-        binding.btnAddFilmFilmItem.setBackgroundColor(getActivity().getColor(R.color.greenCheck));
+        binding.btnAddFilmFilmItem.setVisibility(View.GONE);
+        binding.btnDeleteFilmFilmItem.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onSuccessRemoveFilm(String message) {
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+
+        binding.btnAddFilmFilmItem.setVisibility(View.VISIBLE);
+        binding.btnDeleteFilmFilmItem.setVisibility(View.GONE);
     }
 
     private boolean cargarPelicula() {
@@ -105,6 +115,12 @@ public class FilmItemFragment extends Fragment implements FilmItemContract.View 
             binding.textWritersFilmItem.setText(film.getWriters());
             binding.textPLotFilmItem.setText(film.getPlot());
             binding.textAwardsFilmItem.setText(film.getAwards());
+
+            if (FilmRepository.getInstance().isWatched(this.film, ShowTrackApplication.getUserTemp())) {
+                binding.btnAddFilmFilmItem.setVisibility(View.GONE);
+                binding.btnDeleteFilmFilmItem.setVisibility(View.VISIBLE);
+            }
+
             return true;
         } catch (Exception e) {
             e.printStackTrace();

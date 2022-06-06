@@ -271,4 +271,18 @@
         app:tint="@color/primaryLightColor"
         android:backgroundTint="@color/secondaryLightColor"
         android:src="@drawable/ic_add_white" />
+    <ImageButton
+        android:visibility="gone"
+        android:id="@+id/btnDeleteFilmFilmItem"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:background="@drawable/episode_button_shape"
+        android:layout_marginRight="@dimen/btnAddSerieFilmItem_marginRight"
+        android:elevation="@dimen/btnAddSerieFilmItem_elevation"
+        app:layout_anchor="@id/cardViewFilmItem"
+        app:layout_anchorGravity="top|right|end"
+        app:tint="@color/white"
+        android:backgroundTint="@color/greenCheck"
+        android:src="@drawable/ic_check_item_added" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

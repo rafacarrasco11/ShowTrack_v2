@@ -31,10 +31,6 @@ public class LoginInteractor implements LoginContract.OnLoginCallback {
                     listener.onPasswordEmptyError(ShowTrackApplication.getContext().getString(R.string.Login_passwdEmptyError));
                     return;
                 }
-                if (!CommonUtils.isPasswordValid(passwd)) {
-                    listener.onPasswordError(ShowTrackApplication.getContext().getString(R.string.Login_passwdEmptyError));
-                    return;
-                }
 
                 LoginRepository.getInstance().login(email,passwd, callback);
             }

@@ -3,6 +3,7 @@ package com.example.showtrack.ui.srs.serieitem;
 import com.example.showtrack.data.model.serie.Season;
 import com.example.showtrack.data.model.serie.Serie;
 import com.example.showtrack.data.repository.SerieRepository;
+import com.example.showtrack.data.repository.UserRepository;
 
 import java.util.List;
 
@@ -14,12 +15,12 @@ public class SerieItemInteractor implements SerieItemContract.OnSerieItemCallbac
         this.listener = listener;
     }
 
-    public void addSerie(Serie Serie) {
-        //
+    public void addSerie(Serie serie) {
+        UserRepository.getInstance().addSerie(serie, this);
     }
 
-    public void removeSerie(Serie Serie) {
-        //
+    public void removeSerie(Serie serie) {
+        UserRepository.getInstance().removeSerie(serie, this);
     }
 
 

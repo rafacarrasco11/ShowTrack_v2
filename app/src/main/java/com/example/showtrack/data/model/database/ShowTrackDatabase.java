@@ -7,7 +7,9 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.example.showtrack.data.model.Film;
+import com.example.showtrack.data.model.dao.EpisodeDao;
 import com.example.showtrack.data.model.dao.FilmDao;
+import com.example.showtrack.data.model.dao.SerieDao;
 import com.example.showtrack.data.model.dao.UserDao;
 import com.example.showtrack.data.model.serie.Episode;
 import com.example.showtrack.data.model.serie.Season;
@@ -27,6 +29,8 @@ public abstract class ShowTrackDatabase extends RoomDatabase {
     // DAO
     public abstract UserDao userDao();
     public abstract FilmDao filmDao();
+    public abstract SerieDao serieDao();
+    public abstract EpisodeDao episodeDao();
 
     static ShowTrackDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {

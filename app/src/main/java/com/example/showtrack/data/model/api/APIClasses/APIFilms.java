@@ -9,6 +9,7 @@ import com.example.showtrack.data.model.api.JSONObjects.seriesandfilms.films.JSO
 import com.example.showtrack.data.model.api.JSONObjects.seriesandfilms.films.JSONFilmSearchFilm;
 import com.example.showtrack.data.model.api.JSONObjects.seriesandfilms.films.JSONFilms;
 import com.example.showtrack.data.model.serie.Serie;
+import com.example.showtrack.data.model.user.User;
 import com.example.showtrack.utils.APIUtil;
 
 import java.io.IOException;
@@ -139,13 +140,14 @@ public class APIFilms {
         if (jsonFilms != null) {
             for (JSONResult result : jsonFilms.getResults()) {
                 if (result.getPrimaryImage() != null) {
-                    filmsMRatedList.add(new Film(
-                            result.getTitleText().getText(),
-                            result.getReleaseYear().getYear(),
-                            result.getImdbID(),
-                            result.getTitleType().getText(),
-                            result.getPrimaryImage().getUrl()
-                    ));
+                    Film f = new Film();
+                    f.setTittle(result.getTitleText().getText());
+                    f.setYearReleased(result.getReleaseYear().getYear());
+                    f.setImdbID(result.getImdbID());
+                    f.setType(result.getTitleType().getText());
+                    f.setPoster(result.getPrimaryImage().getUrl());
+
+                    filmsMRatedList.add(f);
                 }
             }
         }
@@ -168,13 +170,14 @@ public class APIFilms {
             if (!jsonFilms2.getEntries().equals("0")) {
                 for (JSONResult result : jsonFilms2.getResults()) {
                     if (result.getPrimaryImage() != null) {
-                        filmsMBOfficeList.add(new Film(
-                                result.getTitleText().getText(),
-                                result.getReleaseYear().getYear(),
-                                result.getImdbID(),
-                                result.getTitleType().getText(),
-                                result.getPrimaryImage().getUrl()
-                        ));
+                        Film f = new Film();
+                        f.setTittle(result.getTitleText().getText());
+                        f.setYearReleased(result.getReleaseYear().getYear());
+                        f.setImdbID(result.getImdbID());
+                        f.setType(result.getTitleType().getText());
+                        f.setPoster(result.getPrimaryImage().getUrl());
+
+                        filmsMBOfficeList.add(f);
                     }
                 }
             }
@@ -197,14 +200,14 @@ public class APIFilms {
             if (!jsonFilms3.getEntries().equals("0")) {
                 for (JSONResult result : jsonFilms3.getResults()) {
                     if (result.getPrimaryImage() != null) {
-                        films.add(
-                                new Film(
-                                result.getTitleText().getText(),
-                                result.getReleaseYear().getYear(),
-                                result.getImdbID(),
-                                result.getTitleType().getText(),
-                                result.getPrimaryImage().getUrl()
-                        ));
+                        Film f = new Film();
+                        f.setTittle(result.getTitleText().getText());
+                        f.setYearReleased(result.getReleaseYear().getYear());
+                        f.setImdbID(result.getImdbID());
+                        f.setType(result.getTitleType().getText());
+                        f.setPoster(result.getPrimaryImage().getUrl());
+
+                        films.add(f);
                     }
                 }
             }
@@ -255,13 +258,14 @@ public class APIFilms {
         if (jsonFilmSearch.getSearch() != null) {
             for (JSONFilmSearchFilm jsonF : jsonFilmSearch.getSearch()) {
                 if (jsonF != null) {
-                    films.add(new Film(
-                            jsonF.getTitle(),
-                            jsonF.getYear(),
-                            jsonF.getImdbID(),
-                            jsonF.getType(),
-                            jsonF.getPoster()
-                    ));
+                    Film f = new Film();
+                    f.setTittle(jsonF.getTitle());
+                    f.setYearReleased(jsonF.getYear());
+                    f.setImdbID(jsonF.getImdbID());
+                    f.setType(jsonF.getType());
+                    f.setPoster(jsonF.getPoster());
+
+                    films.add(f);
                 }
 
             }
@@ -283,7 +287,6 @@ public class APIFilms {
 
         return jsonFilmSearch.getPoster();
     }
-
 
 }
 

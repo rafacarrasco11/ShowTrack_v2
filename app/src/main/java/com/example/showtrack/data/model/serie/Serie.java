@@ -75,6 +75,10 @@ public class Serie {
         this.genre = genre;
     }
 
+    @Ignore
+    public Serie() {
+
+    }
 
     public int getId() {
         return id;

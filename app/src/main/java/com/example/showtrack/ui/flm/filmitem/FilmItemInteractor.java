@@ -17,7 +17,7 @@ public class FilmItemInteractor implements FilmItemContract.OnFilmItemCallback{
     }
 
     public void removeFIlm(Film film) {
-        //
+        UserRepository.getInstance().removeFilm(film, this);
     }
 
 

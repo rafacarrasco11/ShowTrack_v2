@@ -6,12 +6,12 @@ import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-import com.example.showtrack.data.model.user.User;
-
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(foreignKeys = @ForeignKey(entity = Serie.class, parentColumns = "id", childColumns = "serie_id"))
 public class Season {
+
     @PrimaryKey(autoGenerate = true)
     int id;
 
@@ -20,17 +20,18 @@ public class Season {
     int seasonNumber;
 
     @ColumnInfo(name = "serie_id", index = true)
-    public long serie;
+    public long serie_id;
 
     @Ignore
     List<Episode> episodes;
 
-    public Season(int id, String serieImdbID, String serieTittle, int seasonNumber, long serie) {
+    public Season(int id, String serieImdbID, String serieTittle, int seasonNumber, long serie_id) {
         this.id = id;
         this.serieImdbID = serieImdbID;
         this.serieTittle = serieTittle;
         this.seasonNumber = seasonNumber;
-        this.serie = serie;
+        this.serie_id = serie_id;
+        this.episodes = new ArrayList<>();
     }
 
     @Ignore
@@ -40,6 +41,9 @@ public class Season {
         this.seasonNumber = seasonNumber;
         this.episodes = episodes;
     }
+
+    @Ignore
+    public Season() {}
 
     public int getId() {
         return id;
@@ -73,12 +77,12 @@ public class Season {
         this.seasonNumber = seasonNumber;
     }
 
-    public long getSerie() {
-        return serie;
+    public long getSerie_id() {
+        return serie_id;
     }
 
-    public void setSerie(long serie) {
-        this.serie = serie;
+    public void setSerie_id(long serie_id) {
+        this.serie_id = serie_id;
     }
 
     public List<Episode> getEpisodes() {

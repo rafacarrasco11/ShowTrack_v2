@@ -8,6 +8,7 @@ import com.example.showtrack.data.model.Lists;
 import com.example.showtrack.data.model.api.APIClasses.APIFilms;
 import com.example.showtrack.data.model.dao.FilmDao;
 import com.example.showtrack.data.model.database.ShowTrackDatabase;
+import com.example.showtrack.data.model.user.User;
 import com.example.showtrack.ui.ShowTrackApplication;
 import com.example.showtrack.ui.flm.filmgenre.FilmGenreContract;
 import com.example.showtrack.ui.flm.filmitem.FilmItemContract;
@@ -133,5 +134,20 @@ public class FilmRepository implements FilmGenreContract.Repository, FilmSearchC
     }
 
     //#endregion
+
+    public boolean isWatched(Film film, User userTemp) {
+        try {
+            List<Film> films = ShowTrackDatabase.databaseWriteExecutor.submit(() -> filmDao.getFilmUser(userTemp.getId(),film.getImdbID())).get();
+            if (films.size() == 1)
+                return true;
+
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
 
 }

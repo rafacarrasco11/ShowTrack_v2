@@ -12,10 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.showtrack.R;
+import com.example.showtrack.data.model.dao.EpisodeDao;
 import com.example.showtrack.data.model.recycler.RecyclerFilm;
 import com.example.showtrack.data.model.serie.Episode;
 import com.example.showtrack.data.model.serie.Season;
 import com.example.showtrack.data.repository.SerieRepository;
+import com.example.showtrack.data.repository.UserRepository;
 import com.example.showtrack.ui.ShowTrackApplication;
 import com.example.showtrack.ui.flm.filmsrecycler.RecyclerFilmAdapter;
 
@@ -23,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.ViewHolderSeasons> {
+public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.ViewHolderSeasons> implements EpisodeAdapter.OnEpisodeListener {
 
     private List<Season> seasonList;
 
@@ -42,7 +44,7 @@ public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolderSeasons holder, int position) {
         holder.tvTitleSeasonNumber.setText(ShowTrackApplication.getContext().getString(R.string.seasonItemTitle).concat(String.valueOf(position+1)));
 
-        EpisodeAdapter episodeAdapter = new EpisodeAdapter();
+        EpisodeAdapter episodeAdapter = new EpisodeAdapter(this);
         RecyclerView.LayoutManager linearLayoutManager = new LinearLayoutManager(ShowTrackApplication.context(), RecyclerView.VERTICAL, false);
 
         holder.rvEpisodes.setLayoutManager(linearLayoutManager);
@@ -73,6 +75,16 @@ public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.ViewHolder
     @Override
     public int getItemCount() {
         return this.seasonList.size();
+    }
+
+    @Override
+    public void addEpisode(Episode episode) {
+        UserRepository.getInstance().addEpisode(episode);
+    }
+
+    @Override
+    public void deleteEpisode(Episode episode) {
+        UserRepository.getInstance().removeEpisode(episode);
     }
 
     public class ViewHolderSeasons extends RecyclerView.ViewHolder {

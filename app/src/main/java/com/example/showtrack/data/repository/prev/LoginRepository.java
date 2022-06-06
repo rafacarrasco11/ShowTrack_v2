@@ -46,7 +46,7 @@ public class LoginRepository implements LoginContract.Repository {
 
                                 for ( User user : users) {
                                     if (user.getEmail().equals(email)) {
-                                        callback.onSuccess(String.valueOf(R.string.Login_succesLogin));
+                                        callback.onSuccess(ShowTrackApplication.context().getString(R.string.Login_succesLogin));
                                         ShowTrackApplication.setUserTemp(user);
                                         return;
                                     }
@@ -62,7 +62,7 @@ public class LoginRepository implements LoginContract.Repository {
 
                                 ShowTrackDatabase.databaseWriteExecutor.submit(() -> userDao.insert(user));
                                 ShowTrackApplication.setUserTemp(user);
-                                callback.onSuccess(String.valueOf(R.string.Login_succesLogin));
+                                callback.onSuccess(String.valueOf(ShowTrackApplication.context().getString(R.string.Login_succesLogin)));
                             } catch (ExecutionException e) {
                                 e.printStackTrace();
                             } catch (InterruptedException e) {
@@ -70,7 +70,7 @@ public class LoginRepository implements LoginContract.Repository {
                             }
                         }
                         else
-                            callback.onFailure(String.valueOf(R.string.signIn_failure_login));
+                            callback.onFailure(ShowTrackApplication.context().getString(R.string.signIn_failure_login));
                     }
                 });
 

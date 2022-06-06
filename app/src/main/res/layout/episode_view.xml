@@ -103,11 +103,22 @@
 
 
                 <ImageButton
+                    android:id="@+id/imgBtnEpisodeNoWatched"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/episode_button_shape"
+                    android:src="@drawable/ic_watched"
+                    />
+                <ImageButton
+                    android:visibility="gone"
                     android:id="@+id/imgBtnEpisodeWatched"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="@drawable/episode_button_shape"
+                    android:backgroundTint="@color/greenCheck"
+                    app:tint="@color/white"
                     android:src="@drawable/ic_watched" />
 
             </LinearLayout>

@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey;
 
 import com.example.showtrack.data.model.user.User;
 
-@Entity(foreignKeys = @ForeignKey(entity = Season.class, parentColumns = "id", childColumns = "season_id"))
+@Entity(foreignKeys = {@ForeignKey(entity = Season.class, parentColumns = "id", childColumns = "season_id"), @ForeignKey(entity = User.class, parentColumns = "id", childColumns = "user_id")})
 public class Episode {
     @PrimaryKey(autoGenerate = true)
     int id;
@@ -20,16 +20,21 @@ public class Episode {
     String imdbRating;
 
     @ColumnInfo(name = "season_id", index = true)
-    public long season;
+    public long season_id;
 
-    public Episode(int id, int episodeNumber, String released, String imdbID, String title, String imdbRating, long season) {
+    @ColumnInfo(name = "user_id", index = true)
+    public long user_id;
+
+
+    public Episode(int id, int episodeNumber, String released, String imdbID, String title, String imdbRating, long season_id, long user_id) {
         this.id = id;
         this.episodeNumber = episodeNumber;
         this.released = released;
         this.imdbID = imdbID;
         this.title = title;
         this.imdbRating = imdbRating;
-        this.season = season;
+        this.season_id = season_id;
+        this.user_id = user_id;
     }
 
     @Ignore
@@ -40,6 +45,9 @@ public class Episode {
         this.title = title;
         this.imdbRating = imdbRating;
     }
+
+    @Ignore
+    public Episode() {}
 
     public int getEpisodeNumber() {
         return episodeNumber;
@@ -79,6 +87,30 @@ public class Episode {
 
     public void setImdbRating(String imdbRating) {
         this.imdbRating = imdbRating;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public long getSeason_id() {
+        return season_id;
+    }
+
+    public void setSeason_id(long season_id) {
+        this.season_id = season_id;
+    }
+
+    public long getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(long user_id) {
+        this.user_id = user_id;
     }
 
     @Override

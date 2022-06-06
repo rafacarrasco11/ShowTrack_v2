@@ -18,9 +18,6 @@ import android.view.ViewGroup;
 
 import com.example.showtrack.R;
 import com.example.showtrack.data.model.Film;
-import com.example.showtrack.data.model.dao.UserDao;
-import com.example.showtrack.data.model.database.ShowTrackDatabase;
-import com.example.showtrack.data.model.database.ShowTrackDatabase_Impl;
 import com.example.showtrack.data.model.serie.Serie;
 import com.example.showtrack.data.model.user.Stat;
 import com.example.showtrack.databinding.FragmentProfileBinding;

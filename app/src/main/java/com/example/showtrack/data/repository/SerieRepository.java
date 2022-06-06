@@ -1,11 +1,18 @@
 package com.example.showtrack.data.repository;
 
 
+import com.example.showtrack.data.model.Film;
 import com.example.showtrack.data.model.Genres;
 import com.example.showtrack.data.model.Lists;
 import com.example.showtrack.data.model.api.APIClasses.APISeries;
+import com.example.showtrack.data.model.dao.EpisodeDao;
+import com.example.showtrack.data.model.dao.SerieDao;
+import com.example.showtrack.data.model.database.ShowTrackDatabase;
+import com.example.showtrack.data.model.serie.Episode;
 import com.example.showtrack.data.model.serie.Season;
 import com.example.showtrack.data.model.serie.Serie;
+import com.example.showtrack.data.model.user.User;
+import com.example.showtrack.ui.ShowTrackApplication;
 import com.example.showtrack.ui.prf.profile.prof.ProfileContract;
 import com.example.showtrack.ui.srs.seriegenre.SerieGenreContract;
 import com.example.showtrack.ui.srs.serieitem.SerieItemContract;
@@ -14,8 +21,9 @@ import com.example.showtrack.ui.srs.seriesearch.SerieSearchContract;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
-public class SerieRepository implements SerieGenreContract.Repository, SerieItemContract.Repository, SerieSearchContract.Repository, ProfileContract.SeriesRepository {
+public class SerieRepository implements SerieGenreContract.Repository,  SerieSearchContract.Repository, ProfileContract.SeriesRepository {
 
     private static SerieRepository instance;
 
@@ -24,6 +32,9 @@ public class SerieRepository implements SerieGenreContract.Repository, SerieItem
     private ArrayList<Serie> genreThreeSeries;
     private ArrayList<Serie> genreOneSeries;
     private ArrayList<Serie> genreTwoSeries;
+
+    private SerieDao serieDao;
+    private EpisodeDao episodeDao;
 
     private SerieRepository() {
         mostPopSeries = new ArrayList<>();
@@ -38,6 +49,8 @@ public class SerieRepository implements SerieGenreContract.Repository, SerieItem
         genreTwoSeries.addAll(APISeries.getSeriesByGenre(Genres.History.name()));
         genreThreeSeries.addAll(APISeries.getSeriesByGenre(Genres.Comedy.name()));
 
+        this.serieDao = ShowTrackDatabase.getDatabase().serieDao();
+        this.episodeDao = ShowTrackDatabase.getDatabase().episodeDao();
 
         mostPopSeries.remove(0);
     }
@@ -46,6 +59,8 @@ public class SerieRepository implements SerieGenreContract.Repository, SerieItem
         if (instance == null) {
             instance = new SerieRepository();
         }
+
+
 
         return instance;
     }
@@ -99,18 +114,6 @@ public class SerieRepository implements SerieGenreContract.Repository, SerieItem
         callback.onSuccessCargarSeriesRv(cargarSeriesByList(list,20));
     }
 
-
-    @Override
-    public void addSerie(Serie Serie, SerieItemContract.OnSerieItemCallback callback) {
-
-    }
-
-
-    @Override
-    public void removeSerie(Serie Serie, SerieItemContract.OnSerieItemCallback callback) {
-
-    }
-
     @Override
     public void search(String searchText, SerieSearchContract.OnSerieSearchCallback callback) {
         callback.onSuccessSearchSerie((ArrayList<Serie>) APISeries.getSeriesBySearch(searchText));
@@ -119,11 +122,46 @@ public class SerieRepository implements SerieGenreContract.Repository, SerieItem
     //region PROFILE (ROOM)
     @Override
     public void cargarSeriesRv(ProfileContract.OnProfileGenreCallback callback) {
-        callback.onSuccessCargarSeriessRv(mostPopSeries);
+        try {
+            callback.onSuccessCargarSeriessRv((ArrayList<Serie>) ShowTrackDatabase.databaseWriteExecutor.submit(() -> serieDao.getUserSeries(ShowTrackApplication.getUserTemp().getId())).get());
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
-
 
     //endregion
 
+
+    public boolean isWatched(Serie serie, User userTemp) {
+        try {
+            List<Serie> series = ShowTrackDatabase.databaseWriteExecutor.submit(() -> serieDao.getSerieUser(userTemp.getId(),serie.getImdbID())).get();
+            if (series.size() == 1)
+                return true;
+
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public boolean isEpisodeWatched(Episode episode, User userTemp) {
+        try {
+            List<Episode> episodes = ShowTrackDatabase.databaseWriteExecutor.submit(() -> episodeDao.getEpisodeUser(userTemp.getId(),episode.getImdbID())).get();
+            if (episodes.size() == 1)
+                return true;
+
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
 
 }

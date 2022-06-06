@@ -123,13 +123,15 @@ public class APISeries {
         if (!jsonSeries1.getEntries().equals("0")) {
             for (JSONResult result : jsonSeries1.getResults()) {
                 if (result.getPrimaryImage() != null) {
-                    SeriesPopList.add(new Serie(
-                            result.getTitleText().getText(),
-                            result.getReleaseYear().getYear(),
-                            result.getImdbID(),
-                            result.getTitleType().getText(),
-                            result.getPrimaryImage().getUrl()
-                    ));
+                    Serie s = new Serie();
+
+                    s.setTittle(result.getTitleText().getText());
+                    s.setYearReleased(result.getReleaseYear().getYear());
+                    s.setImdbID(result.getImdbID());
+                    s.setType(result.getTitleType().getText());
+                    s.setPoster(result.getPrimaryImage().getUrl());
+
+                    SeriesPopList.add(s);
                 }
             }
         }
@@ -153,13 +155,15 @@ public class APISeries {
         if (jsonSeries != null) {
             for (JSONResult result : jsonSeries.getResults()) {
                 if (result.getPrimaryImage() != null) {
-                    SeriesMRatedList.add(new Serie(
-                            result.getTitleText().getText(),
-                            result.getReleaseYear().getYear(),
-                            result.getImdbID(),
-                            result.getTitleType().getText(),
-                            result.getPrimaryImage().getUrl()
-                    ));
+                    Serie s = new Serie();
+
+                    s.setTittle(result.getTitleText().getText());
+                    s.setYearReleased(result.getReleaseYear().getYear());
+                    s.setImdbID(result.getImdbID());
+                    s.setType(result.getTitleType().getText());
+                    s.setPoster(result.getPrimaryImage().getUrl());
+
+                    SeriesMRatedList.add(s);
                 }
             }
         }
@@ -181,13 +185,15 @@ public class APISeries {
             if (!jsonSeries3.getEntries().equals("0")) {
                 for (JSONResult result : jsonSeries3.getResults()) {
                     if (result.getPrimaryImage() != null) {
-                        Series.add(new Serie(
-                                result.getTitleText().getText(),
-                                result.getReleaseYear().getYear(),
-                                result.getImdbID(),
-                                result.getTitleType().getText(),
-                                result.getPrimaryImage().getUrl()
-                        ));
+                        Serie s = new Serie();
+
+                        s.setTittle(result.getTitleText().getText());
+                        s.setYearReleased(result.getReleaseYear().getYear());
+                        s.setImdbID(result.getImdbID());
+                        s.setType(result.getTitleType().getText());
+                        s.setPoster(result.getPrimaryImage().getUrl());
+
+                        Series.add(s);
                     }
                 }
             }
@@ -235,12 +241,14 @@ public class APISeries {
             JSONSearchSeason jsonSearchSeason = (JSONSearchSeason) APIUtil.getInstance().getFromApi(JSONSearchSeason.class, generateURLBySerieAndSeason(serie,i));
 
             if (jsonSearchSeason != null) {
-                seasons.add(new Season(
-                        serie.getImdbID(),
-                        serie.getTittle(),
-                        (i+1),
-                        getEpisodes(jsonSearchSeason.getEpisodes())
-                ));
+                Season s = new Season();
+
+                s.setSerieImdbID(serie.getImdbID());
+                s.setSerieTittle(serie.getTittle());
+                s.setSeasonNumber((i + 1));
+                s.setEpisodes(getEpisodes(jsonSearchSeason.getEpisodes()));
+
+                seasons.add(s);
             }
         }
 
@@ -253,13 +261,15 @@ public class APISeries {
 
         if (episodes != null) {
             for (JSONEpisode jsonEpisode : episodes) {
-                ep.add(new Episode(
-                        jsonEpisode.getEpisode(),
-                        jsonEpisode.getReleased(),
-                        jsonEpisode.getImdbID(),
-                        jsonEpisode.getTitle(),
-                        jsonEpisode.getImdbRating()
-                ));
+                Episode e = new Episode();
+
+                e.setEpisodeNumber(jsonEpisode.getEpisode());
+                e.setReleased(jsonEpisode.getReleased());
+                e.setImdbID(jsonEpisode.getImdbID());
+                e.setTitle(jsonEpisode.getTitle());
+                e.setImdbRating(jsonEpisode.getImdbRating());
+
+                ep.add(e);
             }
         }
 
@@ -280,13 +290,15 @@ public class APISeries {
         if (jsonSerieSearch.getSearch() != null) {
             for (JSONSerieSearchSerie jsonF : jsonSerieSearch.getSearch()) {
                 if (jsonF != null) {
-                    series.add(new Serie(
-                            jsonF.getTitle(),
-                            jsonF.getYear(),
-                            jsonF.getImdbID(),
-                            jsonF.getType(),
-                            jsonF.getPoster()
-                    ));
+                    Serie s = new Serie();
+
+                    s.setTittle(jsonF.getTitle());
+                    s.setYearReleased(jsonF.getYear());
+                    s.setImdbID(jsonF.getImdbID());
+                    s.setType(jsonF.getType());
+                    s.setPoster(jsonF.getPoster());
+
+                    series.add(s);
                 }
 
             }
