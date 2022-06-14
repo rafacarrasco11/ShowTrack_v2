@@ -19,6 +19,13 @@ import com.example.showtrack.data.model.user.User;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * Esta es la clase de la Base de Datos ed ROOM.
+ *
+ * Desde aqui creamos la instancia de la abse de datos y asignamos los objetos dao.
+ *
+ * Desde aqui tambien la podemos obtener y observamos el campo constante databaseWriteExecutor, el cual usamos para hacer las operaciones de la base de datos
+ */
 @Database(entities = {User.class, Film.class, Serie.class, Episode.class, Season.class}, version = 1, exportSchema = false)
 public abstract class ShowTrackDatabase extends RoomDatabase {
 

@@ -1,5 +1,10 @@
 package com.example.showtrack.data.model.recycler;
 
+/**
+ * Clase POJO para la entidad de una lista de peliculas.
+ *
+ * esta entidad aparece en los recycler view de la pantalla Peliculas
+ */
 public class RecyclerFilm {
 
     String tittle;

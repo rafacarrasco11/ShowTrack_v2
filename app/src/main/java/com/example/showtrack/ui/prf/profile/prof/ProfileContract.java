@@ -3,6 +3,7 @@ package com.example.showtrack.ui.prf.profile.prof;
 import com.example.showtrack.data.model.Film;
 import com.example.showtrack.data.model.serie.Serie;
 import com.example.showtrack.data.model.user.Stat;
+import com.example.showtrack.ui.prf.profile.settings.SettingsFragmentContract;
 
 import java.util.ArrayList;
 
@@ -10,6 +11,11 @@ public interface ProfileContract {
 
     interface View extends OnProfileGenreCallback {
 
+        void showDataFilms();
+        void showDataSeries();
+
+        void noDataFilms();
+        void noDataSeries();
     }
 
     interface Presenter {
@@ -17,6 +23,9 @@ public interface ProfileContract {
         void cargarFilmsRv();
 
         void cargarStatsRv();
+
+        void deleteAllFilms();
+        void deleteAllSeries();
 
         void onDestroy();
     }
@@ -31,6 +40,10 @@ public interface ProfileContract {
 
     interface UserRepository {
         void cargarStatsRv(OnProfileGenreCallback callback);
+
+        void deleteAllFilms(OnProfileGenreCallback callback);
+        void deleteAllSeries(OnProfileGenreCallback callback);
+
     }
 
     interface OnInteractorListener extends OnProfileGenreCallback {
@@ -40,6 +53,12 @@ public interface ProfileContract {
     interface OnProfileGenreCallback {
         void onSuccessCargarSeriessRv(ArrayList<Serie> rvList);
         void onSuccessCargarFilmsRv(ArrayList<Film> rvList);
+        void onCargarSeriesRvNoData();
+        void onCargarFilmsRvNoData();
         void onSuccessCargarStatsRv(ArrayList<Stat> rvList);
+
+
+        void onSuccessDeleteSeries(String message);
+        void onSuccessDeleteFilms(String message);
     }
 }

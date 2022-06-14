@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.prev.login.LoginActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/imgUserLogin"
+                android:layout_width="156dp"
+                android:layout_height="117dp"
+                android:layout_marginTop="@dimen/imgUserLogin_marginTop"
+                android:src="@mipmap/icno_showtrack"
+                android:layout_gravity="center"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilUserLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+                android:layout_marginHorizontal="@dimen/tilUserLogin_marginHorizn"
+                android:layout_marginTop="@dimen/tilUserLogin_marginTop">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tieUserLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:hint="@string/tieUserLogin_hint"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPaswdLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/tilPaswdLogin_marginHorizn"
+                android:layout_marginTop="@dimen/tilPaswdLogin_marginTop">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiePaswdLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:hint="@string/tiePaswdLogin_hint"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <CheckBox
+                android:id="@+id/chkRembMeLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/chkRembMeLogin_marginHorinz"
+                android:fontFamily="@font/robotoregular"
+                android:text="@string/chkRembMeLogin_text" />
+
+            <Button
+                android:id="@+id/btnSignInLogin"
+                style="@style/simpleBtnColored"
+                android:layout_marginTop="@dimen/btnSignInLogin_margintop"
+                android:text="@string/btnSignInLogin_text" />
+
+
+            <ProgressBar
+                android:id="@+id/pbLogin"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/pbLogin_marginHorizontal"
+                android:backgroundTint="@color/secondaryLightColor"
+                android:layout_marginBottom="@dimen/pbLogin_marginbottom"
+                android:layout_marginTop="@dimen/pbLoginmarginTop"/>
+
+            <Button
+                android:id="@+id/btnSignUpLogin"
+                style="@style/simpleBtnTransparent"
+                android:layout_height="@dimen/btnSignUpLogin_height"
+                android:text="@string/btnSignUpLogin_text" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,20 @@
 package com.example.showtrack.ui;
 
+import android.app.Activity;
 import android.app.Application;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.graphics.Color;
+import android.os.Build;
+import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDeepLinkBuilder;
 
+import com.example.showtrack.R;
 import com.example.showtrack.data.model.Film;
 import com.example.showtrack.data.model.database.ShowTrackDatabase;
 import com.example.showtrack.data.model.recycler.RecyclerFilm;
@@ -15,7 +25,16 @@ import com.example.showtrack.data.model.user.User;
 import com.example.showtrack.data.repository.FilmRepository;
 import com.example.showtrack.data.repository.SerieRepository;
 
+import java.util.Random;
+
+/**
+ * Clase Application de la aplicacion.
+ *
+ * En la clase se guardan diferentes instancias estaticas de entidades de la aplicacion las cyuales funcionan com memoria temporal.
+ */
 public class ShowTrackApplication extends Application {
+    public static final String IDCHANNEL = "676789";
+
     private static Context context;
 
     private static Fragment lastFragment;
@@ -46,14 +65,94 @@ public class ShowTrackApplication extends Application {
         context = getApplicationContext();
 
         ShowTrackDatabase.create(this);
-
-        FilmRepository.getInstance();
-        SerieRepository.getInstance();
-//        createNotificationChannel();
-
+        createNotificationChannel();
     }
 
-    public static Context context() { return context;}
+    private void createNotificationChannel() {
+        //Se crea una clase Notificationchannel, es necesario que la API sea 26 o mas,
+        //porque no se ha incluido en la librería de soporte
+        //Si tenemos el minSdk 26 podemos quitar el if
+
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+            int importace = NotificationManager.IMPORTANCE_DEFAULT;
+            String nameChannel = getString(R.string.name_channel);
+            NotificationChannel notificationChannel = new NotificationChannel(IDCHANNEL, nameChannel, importace);
+
+            notificationChannel.enableLights(true);
+            notificationChannel.setLightColor(Color.RED);
+
+            getSystemService(NotificationManager.class).createNotificationChannel(notificationChannel);
+        }
+    }
+
+    public static void newNotification(Bundle bundle, Activity activity, int destinationId, int smallIcon, String title, String contentText) {
+
+        PendingIntent pendingIntent = new NavDeepLinkBuilder(activity)
+                .setGraph(R.navigation.nav_graph)
+                .setDestination(destinationId)
+                .setArguments(bundle)
+                .createPendingIntent();
+
+        Notification.Builder builder = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            builder = new Notification.Builder(activity, ShowTrackApplication.IDCHANNEL)
+                    .setSmallIcon(smallIcon)
+                    .setAutoCancel(true)
+                    .setContentTitle(title)
+                    .setContentText(contentText)
+                    .setContentIntent(pendingIntent);
+        }
+
+        NotificationManager notificationManager = (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(new Random().nextInt(), builder.build());
+    }
+
+    public static void newNotification(Activity activity, int destinationId, int smallIcon, String title, String contentText) {
+
+        PendingIntent pendingIntent = new NavDeepLinkBuilder(activity)
+                .setGraph(R.navigation.nav_graph)
+                .setDestination(destinationId)
+                .createPendingIntent();
+
+        Notification.Builder builder = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            builder = new Notification.Builder(activity, ShowTrackApplication.IDCHANNEL)
+                    .setSmallIcon(smallIcon)
+                    .setAutoCancel(true)
+                    .setContentTitle(title)
+                    .setContentText(contentText)
+                    .setContentIntent(pendingIntent);
+        }
+
+        NotificationManager notificationManager = (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(new Random().nextInt(), builder.build());
+    }
+
+
+    public static void newNotification(Activity activity, int smallIcon, String title, String contentText) {
+
+        PendingIntent pendingIntent = new NavDeepLinkBuilder(activity)
+                .setGraph(R.navigation.nav_graph)
+                .setDestination(R.id.dashboardFragment)
+                .createPendingIntent();
+
+        Notification.Builder builder = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            builder = new Notification.Builder(activity, ShowTrackApplication.IDCHANNEL)
+                    .setSmallIcon(smallIcon)
+                    .setAutoCancel(true)
+                    .setContentTitle(title)
+                    .setContentText(contentText)
+                    .setContentIntent(pendingIntent);
+        }
+
+        NotificationManager notificationManager = (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(new Random().nextInt(), builder.build());
+    }
+
+    public static Context context() {
+        return context;}
+
 
     public static Film getFilmTemp() {
         return filmTemp;

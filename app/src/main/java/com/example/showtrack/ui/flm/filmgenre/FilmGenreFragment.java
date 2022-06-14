@@ -24,6 +24,11 @@ import com.example.showtrack.ui.flm.filmsrecycler.FilmsAdapter;
 
 import java.util.ArrayList;
 
+/**
+ * Clase para el fragmento donde se enseña una lista en recycler view con peliculas sobre un genero.
+ *
+ * Funciona con un modelo Vista-Presentador.
+ */
 public class FilmGenreFragment extends Fragment implements FilmGenreContract.View, FilmsAdapter.OnFilmsListener {
 
     private FragmentFilmGenreBinding binding;

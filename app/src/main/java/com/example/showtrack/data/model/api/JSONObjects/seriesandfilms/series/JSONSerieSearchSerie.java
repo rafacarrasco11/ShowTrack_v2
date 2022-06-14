@@ -1,5 +1,8 @@
 package com.example.showtrack.data.model.api.JSONObjects.seriesandfilms.series;
 
+/**
+ * Clase POJO para los objetos JSON que deveulve la API de series y peliculas
+ */
 public class JSONSerieSearchSerie {
     String Title;
     String Year;

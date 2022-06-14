@@ -14,6 +14,11 @@ import java.net.URL;
 import okhttp3.Request;
 import okhttp3.Response;
 
+/**
+ * Clase utilizada para obtener un drawable de una url la cual almacena una imagen.
+ *
+ * Se utiliza un Hilo para poder realizar la conexion Http (Causante de perdidas en rendimiento)
+ */
 public class DrawableUtil {
 
     static Bitmap x;

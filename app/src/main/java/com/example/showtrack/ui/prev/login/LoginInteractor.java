@@ -34,7 +34,7 @@ public class LoginInteractor implements LoginContract.OnLoginCallback {
 
                 LoginRepository.getInstance().login(email,passwd, callback);
             }
-        }, 2000);
+        }, 1000);
     }
 
     @Override

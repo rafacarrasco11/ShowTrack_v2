@@ -11,6 +11,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+/**
+ * Clase para la Activity SIGN UP.
+ *
+ * En esta actividad se realiza el registro en la aplicacion usando Firebase.
+ *
+ * Se utiliza el modelo Vista Presentador, por el cual se cotnrolan los errores y nos devuelve un callback con lar respuesta al registro.
+ */
 public class SignUpActivity extends AppCompatActivity implements SignUpContract.View {
 
     private ActivitySignUpBinding binding;

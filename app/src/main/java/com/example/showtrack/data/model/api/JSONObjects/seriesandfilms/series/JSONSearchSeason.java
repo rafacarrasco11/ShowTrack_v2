@@ -2,6 +2,9 @@ package com.example.showtrack.data.model.api.JSONObjects.seriesandfilms.series;
 
 import java.util.List;
 
+/**
+ * Clase POJO para los objetos JSON que deveulve la API de series y peliculas
+ */
 public class JSONSearchSeason {
     String Title;
     String Season;

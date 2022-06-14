@@ -18,41 +18,53 @@
         <LinearLayout
             android:id="@+id/llBackgroundProfileFragment"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/llBackgroundProfileFragment_height"
-            android:background="@color/primaryLightColor"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:tileMode="repeat">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imgAvatarProfileFragment"
                 android:layout_width="@dimen/imgAvatarProfileFragment_width"
                 android:layout_height="@dimen/imgAvatarProfileFragment_height"
-                android:src="@drawable/user_avatar_preview"
+                android:src="@drawable/ic_profile_picture"
                 android:layout_marginTop="@dimen/imgAvatarProfileFragment_marginTop"
-                android:layout_gravity="center"/>
-
-            <TextView
-                android:id="@+id/tvUserNameProfileFragment"
-                android:text="User"
-                android:textSize="@dimen/tvUserNameProfileFragment_textSize"
-                android:textStyle="bold"
+                android:layout_gravity="center"
+                app:civ_border_width="0dp"
+                app:civ_border_color="#FF000000"/>
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/tvUserNameProfileFragment_height"
-                android:layout_gravity="center"/>
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/stat_style_border"
+                android:layout_marginTop="10dp"
+                android:padding="10dp">
+                <TextView
+                    android:id="@+id/tvUserNameProfileFragment"
+                    android:text="User"
+                    android:textSize="@dimen/tvUserNameProfileFragment_textSize"
+                    android:textStyle="bold"
+                    android:textColor="@color/primaryColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/stat_style_border"
+                android:layout_marginTop="3dp"
+                android:padding="8dp">
             <TextView
                 android:id="@+id/tvUserUserNameProfileFragment"
                 android:text="\@user"
+                android:textColor="@color/primaryColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"/>
-        </LinearLayout>
+            </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/llRvSeriesAndFilmsProfileFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/rvStatsProfileFragment">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvStatsProfileFragment"
@@ -61,8 +73,18 @@
                 android:layout_marginVertical="@dimen/rvStatsProfileFragment_marginVertical"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
-
             </androidx.recyclerview.widget.RecyclerView>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llRvSeriesAndFilmsProfileFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/rvStatsProfileFragment"
+            android:layout_margin="@dimen/llRvSeriesAndFilmsProfileFragment_margin">
 
             <TextView
                 android:id="@+id/tvTittleMySeriesProfileFragment"
@@ -78,6 +100,21 @@
                 android:layout_height="wrap_content">
 
             </androidx.recyclerview.widget.RecyclerView>
+            <LinearLayout
+                android:id="@+id/llNoDataSeries"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:background="@drawable/border_black_item"
+                android:layout_margin="@dimen/llNoDataSeries_margin">
+                <TextView
+                    android:id="@+id/tvNodataSerie"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/tvNodataSerie_height"
+                    android:gravity="center"
+                    android:text="@string/tvNodataSerie_text"/>
+            </LinearLayout>
+
             <TextView
                 android:id="@+id/tvTittleMyFilmsProfileFragment"
                 android:layout_height="wrap_content"
@@ -91,23 +128,66 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvFilmProfileFragment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="@dimen/rvFilmProfileFragment_height">
 
             </androidx.recyclerview.widget.RecyclerView>
 
-            <Button
-                android:id="@+id/btnSettingsProfileFragment"
-                style="@style/simpleBtnTransparent"
-                android:layout_marginTop="@dimen/btnSettingsProfileFragment_marginTop"
-                android:text="@string/btnSettingsProfileFragment_text"/>
+            <LinearLayout
+                android:id="@+id/llNoDataFilms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:background="@drawable/border_black_item">
+                <TextView
+                    android:id="@+id/tvNodataFilm"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/tvNodataFilm_height"
+                    android:gravity="center"
+                    android:text="@string/tvNodataFilm_text"
+                    />
+            </LinearLayout>
 
             <Button
-                android:id="@+id/btnAboutUsProfileFragment"
-                style="@style/simpleBtnTransparent"
-                android:layout_marginTop="@dimen/btnAboutUsProfileFragment_marginTop"
-                android:text="@string/btnAboutUsProfileFragment_text"/>
+                android:id="@+id/btnDeleteAllSeries"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="@string/btnDeleteAllSeries_text"
+                android:textAllCaps="false"
+                android:textSize="@dimen/btnDeleteAllSeries_textSize"
+                android:textColor="@android:color/black"
+                android:layout_weight="1"
+                />
+            <Button
+                android:id="@+id/btnDeleteAllFilms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="@string/btnDeleteAllFilms_text"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/btnAboutUsSettingsFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:text="@string/btnAboutUs_text"
+                android:textAllCaps="false"
+                android:textSize="@dimen/btnAboutUsSettingsFragment_textSize"
+                android:textColor="@color/black"
+                android:layout_weight="1"/>
+
         </LinearLayout>
 
+
+
+
+
     </LinearLayout>
+
+
 
 </ScrollView>

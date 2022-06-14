@@ -1,5 +1,8 @@
 package com.example.showtrack.data.model;
 
+/**
+ * Enumeracion para los diferentes tipos de listas que hay
+ */
 public enum Lists {
     most_pop_movies,
     most_pop_series,

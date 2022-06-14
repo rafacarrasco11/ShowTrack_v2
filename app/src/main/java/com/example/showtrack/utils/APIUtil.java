@@ -11,6 +11,13 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+/**
+ * Clase utilizada para obtener las respuestas JSON de las APIs.
+ *
+ * Esta respuesta json contiene la info necesaria para mostrar las series y las peliuclas y se presenta  en forma de String.
+ *
+ * Se utiliza un Hilo para poder realizar la conexion Http (Causante de perdidas en rendimiento)
+ */
 public class APIUtil {
 
     private JsonReader jsonReader;

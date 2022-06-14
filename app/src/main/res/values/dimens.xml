@@ -37,7 +37,7 @@
     <dimen name="tvNameSerieView_marginTop">10dp</dimen>
     <dimen name="tvYearSerieView_marginBottom">10dp</dimen>
     <dimen name="clBackgroundSerieView_width">160dp</dimen>
-    <dimen name="clBackgroundSerieView_height">260dp</dimen>
+    <dimen name="clBackgroundSerieView_height">220dp</dimen>
     <dimen name="clTittleSerieView_height">60dp</dimen>
 
     <!--endregion-->
@@ -111,10 +111,10 @@
     <dimen name="pbSerieSearch_marginVertical">20dp</dimen>
 
     <dimen name="llBackgroundProfileFragment_height">200dp</dimen>
-    <dimen name="imgAvatarProfileFragment_width">70dp</dimen>
-    <dimen name="imgAvatarProfileFragment_height">70dp</dimen>
+    <dimen name="imgAvatarProfileFragment_width">80dp</dimen>
+    <dimen name="imgAvatarProfileFragment_height">80dp</dimen>
     <dimen name="imgAvatarProfileFragment_marginTop">28dp</dimen>
-    <dimen name="tvUserNameProfileFragment_textSize">25sp</dimen>
+    <dimen name="tvUserNameProfileFragment_textSize">30sp</dimen>
     <dimen name="tvUserNameProfileFragment_height">28dp</dimen>
     <dimen name="tvTittleMySeriesProfileFragment_textSize">25sp</dimen>
 
@@ -125,7 +125,7 @@
     <dimen name="btnSettingsProfileFragment_marginTop">10dp</dimen>
     <dimen name="btnAboutUsProfileFragment_marginTop">10dp</dimen>
     <dimen name="tvStatStatView_textSize">38sp</dimen>
-    <dimen name="tvTittleStatView_textSize">18sp</dimen>
+    <dimen name="tvTittleStatView_textSize">15sp</dimen>
     <dimen name="rvStatsProfileFragment_marginVertical">20dp</dimen>
     <dimen name="tvTittleHomeFragment_marginLeft">26sp</dimen>
     <dimen name="tvTittleUserNameHomeFragment_marginStart">25dp</dimen>
@@ -147,13 +147,49 @@
     <dimen name="tvTittleSeriesRv_textsize">16sp</dimen>
     <dimen name="nestedRvSeries_marginTop">10dp</dimen>
     <dimen name="tittleSerieItem_textSize">20sp</dimen>
-    <dimen name="containerStatView_padding">10dp</dimen>
+    <dimen name="containerStatView_padding">7dp</dimen>
     <dimen name="secondaryLightColor_padding">20dp</dimen>
     <dimen name="seasonViewContainer_padding">10dp</dimen>
     <dimen name="llTitleSeason_height">50dp</dimen>
     <dimen name="tvTitleSeasonNumber_marginLeft">30dp</dimen>
     <dimen name="tvTitleSeasonNumber_textSize">20sp</dimen>
     <dimen name="imgBtnSeeEpisodes_marginEnd">30dp</dimen>
+    <dimen name="containerLLSettingsFragment_padding">5dp</dimen>
+    <dimen name="llEditAvatarSettingsFragment_marginTop">20dp</dimen>
+    <dimen name="llEditAvatarSettingsFragment_marginBottom">10dp</dimen>
+    <dimen name="imgEditAvatarSettingsFragment_height">60dp</dimen>
+    <dimen name="tvTittleEditAvatarSettingsFragment_marginLeft">20dp</dimen>
+    <dimen name="tvTittleEditAvatarSettingsFragment_textSize">14sp</dimen>
+    <dimen name="llEditNameSettingsFragment_marginvertical">10dp</dimen>
+    <dimen name="editTextNameSettingsFragment_textSize">14sp</dimen>
+    <dimen name="btnChangeNameSettingsFragment_textSize">14sp</dimen>
+    <dimen name="llEditPasswordSettingsFragment_marginvertical">10dp</dimen>
+    <dimen name="editTextPasswordSettingsFragment_textSize">14sp</dimen>
+    <dimen name="llEditActualPasswordSettingsFragment_marginvertical">10dp</dimen>
+    <dimen name="editTextActualPasswordSettingsFragment_textSize">14sp</dimen>
+    <dimen name="btnChangePasswordSettingsFragment_textSize">14sp</dimen>
+    <dimen name="llSpLanguageSettingsFragment_marginVertical">10dp</dimen>
+    <dimen name="spinnerLanguageSettingsFragment_padding">20dp</dimen>
+    <dimen name="btnAboutUsSettingsFragment_marginTop">50dp</dimen>
+    <dimen name="rvFilmProfileFragment_height">350dp</dimen>
+    <dimen name="btnDeleteAllSeries_textSize">14sp</dimen>
+    <dimen name="btnAboutUsSettingsFragment_textSize">14sp</dimen>
+    <dimen name="tvTittleEditAvatarSettingsFragment_marginStart">20dp</dimen>
+    <dimen name="tvTittleEditAvatarSettingsFragment_marginstart">20dp</dimen>
+    <dimen name="tvNodataFilm_height">200dp</dimen>
+    <dimen name="tvNodataSerie_height">200dp</dimen>
+    <dimen name="llRvSeriesAndFilmsProfileFragment_margin">5dp</dimen>
+    <dimen name="llNoDataSeries_margin">5dp</dimen>
+    <dimen name="tvSubtittleNewView_height">30dp</dimen>
+    <dimen name="rvNews_mtop">25dp</dimen>
+    <dimen name="farhgment_home_padding">20dp</dimen>
+    <dimen name="tvTittleNews_textSize">18sp</dimen>
+    <dimen name="rvNewsmaringtop">10dp</dimen>
+    <dimen name="pbLogin_marginbottom">50dp</dimen>
+    <dimen name="pbLoginmarginTop">50dp</dimen>
+    <dimen name="btnSignUpLogin_height">48dp</dimen>
+    <dimen name="imSTLogo_width_land">237dp</dimen>
+    <dimen name="imSTLogo_height_land">353dp</dimen>
 
 
 </resources>

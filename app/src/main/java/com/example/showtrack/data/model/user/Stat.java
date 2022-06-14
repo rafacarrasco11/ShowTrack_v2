@@ -1,6 +1,11 @@
 package com.example.showtrack.data.model.user;
 
-public class Stat {
+import java.io.Serializable;
+
+/**
+ * Clase POJO para la entidad de un Stat, que las almacena el usuario.
+ */
+public class Stat implements Serializable {
 
     String tittle;
     long stat;

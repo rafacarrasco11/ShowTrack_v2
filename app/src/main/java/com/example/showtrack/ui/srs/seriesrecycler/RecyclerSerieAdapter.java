@@ -18,7 +18,11 @@ import com.example.showtrack.data.repository.SerieRepository;
 import com.example.showtrack.ui.ShowTrackApplication;
 
 import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * Adapter para la clase de listas de series que aparecen en la pantalla series.
+ */
 public class RecyclerSerieAdapter extends RecyclerView.Adapter<RecyclerSerieAdapter.ViewHolderSeries> implements SerieAdapter.OnSeriesListener{
 
     private ArrayList<RecyclerSerie> recyclersList;
@@ -57,12 +61,12 @@ public class RecyclerSerieAdapter extends RecyclerView.Adapter<RecyclerSerieAdap
         holder.nestedRvSeries.setAdapter(adapter);
 
 
-        if (recyclerSerie.getGenre() == null) {
-            adapter.update(SerieRepository.getInstance().cargarSeriesByList(recyclerSerie.getList(),10));
-        }
-        if (recyclerSerie.getList() == null) {
+        if (recyclerSerie.getGenre() == null)
+            adapter.update( SerieRepository.getInstance().cargarSeriesByList(recyclerSerie.getList(),10));
+
+        if (recyclerSerie.getList() == null)
             adapter.update(SerieRepository.getInstance().cargarSeriesByGenre(recyclerSerie.getGenre(),10));
-        }
+
 
 
         holder.llTittleSeriesRv.setOnClickListener(v -> {
@@ -86,7 +90,7 @@ public class RecyclerSerieAdapter extends RecyclerView.Adapter<RecyclerSerieAdap
         RecyclerView nestedRvSeries;
         LinearLayout llTittleSeriesRv;
         ImageView btnVisitGenre;
-
+        TextView tvNoDataSerie;
 
         public ViewHolderSeries(@NonNull View itemView) {
             super(itemView);
@@ -95,6 +99,7 @@ public class RecyclerSerieAdapter extends RecyclerView.Adapter<RecyclerSerieAdap
             nestedRvSeries = itemView.findViewById(R.id.nestedRvSeries);
             llTittleSeriesRv = itemView.findViewById(R.id.llTittleSeriesRv);
             btnVisitGenre = itemView.findViewById(R.id.btnVisitGenre);
+            tvNoDataSerie = itemView.findViewById(R.id.tvNodataSerie);
 
         }
     }
@@ -105,6 +110,8 @@ public class RecyclerSerieAdapter extends RecyclerView.Adapter<RecyclerSerieAdap
 
         notifyDataSetChanged();
     }
+
+
 
 
     @Override

@@ -19,7 +19,11 @@ import com.example.showtrack.ui.hm.HomeFragment;
 import com.example.showtrack.ui.prf.profile.prof.ProfileFragment;
 import com.example.showtrack.ui.srs.seriesrecycler.RecyclerSerieFragment;
 
-
+/**
+ * Clase para el fragmento Dashboard, donde se encuentra el menu bottom navigation.
+ *
+ * Los fragmentos se van mostrando en un FrameLayout
+ */
 public class DashboardFragment extends Fragment {
 
     private FragmentDashboardBinding binding;
@@ -42,6 +46,7 @@ public class DashboardFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initNavigation();
+        loadFragment(ShowTrackApplication.getLastFragment());
     }
 
     @Override
@@ -56,6 +61,7 @@ public class DashboardFragment extends Fragment {
             getChildFragmentManager().beginTransaction().replace(R.id.dashboardContent, newInstance).commit();
         }
     }
+
 
 
     private void initNavigation() {

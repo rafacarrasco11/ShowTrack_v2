@@ -1,9 +1,7 @@
 package com.example.showtrack.data.repository;
 
-import android.util.Log;
 
 import com.example.showtrack.data.model.Film;
-import com.example.showtrack.data.model.Genres;
 import com.example.showtrack.data.model.Lists;
 import com.example.showtrack.data.model.api.APIClasses.APIFilms;
 import com.example.showtrack.data.model.dao.FilmDao;
@@ -11,25 +9,33 @@ import com.example.showtrack.data.model.database.ShowTrackDatabase;
 import com.example.showtrack.data.model.user.User;
 import com.example.showtrack.ui.ShowTrackApplication;
 import com.example.showtrack.ui.flm.filmgenre.FilmGenreContract;
-import com.example.showtrack.ui.flm.filmitem.FilmItemContract;
 import com.example.showtrack.ui.flm.filmsearch.FilmSearchContract;
 import com.example.showtrack.ui.prf.profile.prof.ProfileContract;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+
+/**
+ * Clase repositorio local de las listas de peliculas que aparecen en la pantalla peliculas.
+ *
+ * Cada vez que se logea o se carga la pantalla, se cargan en las listas locales de esta clase los resultados de las APIS,
+ * asi, si se actualiza la API irann cambaindo las listas que aparecen.
+ * En el caso de la lista de l=peliculas mas valoradas no, pero en las listas por genero que se generan en funcion a nuestras series y peluclas añadidas si.
+ *
+ * Para los metodos que solicitan las listas se devuielve un callback con el resultado de la operacion (MVP).
+ */
 public class FilmRepository implements FilmGenreContract.Repository, FilmSearchContract.Repository, ProfileContract.FilmsRepository {
     private static FilmRepository instance;
 
-    private ArrayList<Film> mostPopMovies;
-    private ArrayList<Film> mostRatedMovies;
-    private ArrayList<Film> mostBoxOfficeMovies;
-    private ArrayList<Film> genreOneMovies;
-    private ArrayList<Film> genreTwoMovies;
+    private static ArrayList<Film> mostPopMovies;
+    private static ArrayList<Film> mostRatedMovies;
+    private static ArrayList<Film> mostBoxOfficeMovies;
+    private static ArrayList<Film> genreOneMovies;
+    private static ArrayList<Film> genreTwoMovies;
 
-    private FilmDao filmDao;
+    private static FilmDao filmDao;
 
     private FilmRepository() {
         mostPopMovies = new ArrayList<>();
@@ -41,17 +47,28 @@ public class FilmRepository implements FilmGenreContract.Repository, FilmSearchC
         mostPopMovies.addAll(APIFilms.getMostPopFilms());
         mostRatedMovies.addAll(APIFilms.getMostRatedFilms());
         mostBoxOfficeMovies.addAll(APIFilms.getMostBoxOfficeFilms());
-        genreOneMovies.addAll(APIFilms.getFilmsByGenre(Genres.Drama.name()));
-        genreTwoMovies.addAll(APIFilms.getFilmsByGenre(Genres.Crime.name()));
 
-        this.filmDao = ShowTrackDatabase.getDatabase().filmDao();
+        filmDao = ShowTrackDatabase.getDatabase().filmDao();
 
-        mostPopMovies.remove(0);
+
     }
 
-    public static FilmRepository getInstance() {
+    public static FilmRepository getInstance()  {
         if (instance == null) {
             instance = new FilmRepository();
+        }
+
+        if (ShowTrackApplication.getUserTemp() !=null ) {
+            genreOneMovies.clear();
+            genreOneMovies.addAll(APIFilms.getFilmsByGenre(ShowTrackApplication.getUserTemp().getGenreOne()));
+            genreTwoMovies.clear();
+            genreTwoMovies.addAll(APIFilms.getFilmsByGenre(ShowTrackApplication.getUserTemp().getGenreTwo()));
+            mostPopMovies.clear();
+            mostPopMovies.addAll(APIFilms.getMostPopFilms());
+            mostRatedMovies.clear();
+            mostRatedMovies.addAll(APIFilms.getMostRatedFilms());
+            mostBoxOfficeMovies.clear();
+            mostBoxOfficeMovies.addAll(APIFilms.getMostBoxOfficeFilms());
         }
 
         return instance;
@@ -59,13 +76,14 @@ public class FilmRepository implements FilmGenreContract.Repository, FilmSearchC
 
 
     public ArrayList<Film> cargarFilmsByGenre(String genre, int pages) {
-        if (genre.equals(Genres.Drama.name())) {
+
+        if (genre.equals(ShowTrackApplication.getUserTemp().getGenreOne())) {
             if (genreOneMovies.size() <= pages)
                 pages = genreOneMovies.size();
             List<Film> listTmp = genreOneMovies.subList(0,pages);
             return new ArrayList<>(listTmp);
         }
-        else if (genre.equals(Genres.Crime.name())) {
+        else if (genre.equals(ShowTrackApplication.getUserTemp().getGenreTwo())) {
             if (genreTwoMovies.size() <= pages)
                 pages = genreTwoMovies.size();
             List<Film> listTmp = genreTwoMovies.subList(0,pages);
@@ -100,7 +118,7 @@ public class FilmRepository implements FilmGenreContract.Repository, FilmSearchC
     }
 
     public void changeFilm(Film film) {
-        //filmsList.indexOf(film);
+
     }
 
 
@@ -125,7 +143,13 @@ public class FilmRepository implements FilmGenreContract.Repository, FilmSearchC
     @Override
     public void cargarFilmsRv(ProfileContract.OnProfileGenreCallback callback) {
         try {
-            callback.onSuccessCargarFilmsRv((ArrayList<Film>) ShowTrackDatabase.databaseWriteExecutor.submit(() -> filmDao.getUserFilms(ShowTrackApplication.getUserTemp().getId())).get());
+            ArrayList<Film> list = (ArrayList<Film>) ShowTrackDatabase.databaseWriteExecutor.submit(() -> filmDao.getUserFilms(ShowTrackApplication.getUserTemp().getId())).get();
+
+            if (list.size() ==0) {
+                callback.onCargarFilmsRvNoData();
+            } else {
+                callback.onSuccessCargarFilmsRv(list);
+            }
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -138,7 +162,7 @@ public class FilmRepository implements FilmGenreContract.Repository, FilmSearchC
     public boolean isWatched(Film film, User userTemp) {
         try {
             List<Film> films = ShowTrackDatabase.databaseWriteExecutor.submit(() -> filmDao.getFilmUser(userTemp.getId(),film.getImdbID())).get();
-            if (films.size() == 1)
+            if (films.size() > 0)
                 return true;
 
         } catch (ExecutionException e) {
@@ -149,5 +173,10 @@ public class FilmRepository implements FilmGenreContract.Repository, FilmSearchC
 
         return false;
     }
+
+    public ArrayList<Film> getUserFilms() throws ExecutionException, InterruptedException {
+        return (ArrayList<Film>) ShowTrackDatabase.databaseWriteExecutor.submit(() -> filmDao.getUserFilms(ShowTrackApplication.getUserTemp().getId())).get();
+    }
+
 
 }

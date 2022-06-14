@@ -1,24 +1,16 @@
 <resources>
     <string name="app_name">ShowTrack</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="title_activity_sign_up" translatable="false">SignUpActivity</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="first_fragment_label" translatable="false">First Fragment</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="tieUserLogin_hint">Usuario</string>
     <string name="tiePaswdLogin_hint">Contraseña</string>
     <string name="chkRembMeLogin_text">Recordar Usuario</string>
     <string name="btnSignInLogin_text">Iniciar sesion</string>
-    <string name="btnSignInWGoogleLogin_text">Entrar con Google</string>
     <string name="btnSignUpLogin_text">Regístrate</string>
     <string name="tieUserSignUp_hint">Usuario</string>
     <string name="btnSignUpSignUp_text">Regístrate</string>
-    <string name="btnSignUpWGoogleSignUp_text">Regístrate con Google</string>
     <string name="tieEmailSignUp_hint">Email</string>
     <string name="tiePasswdSignUp_hint">Contraseña</string>
     <string name="tieConfirmPasswdSignUp_hint">Confirmar contraseña</string>
@@ -49,17 +41,15 @@
     <string name="tilUserSignUp_EmptyError">Usuario no puede ser vacío.</string>
     <string name="signUp_success">¡Usuario registrado con éxito!</string>
     <string name="signUp_failure">Registro de usuario fallido.</string>
-    <string name="tilFilmSearch_emptyError">Introduce algo para buscar.</string>
     <string name="searchFailure">No se han encontrado coincidencias.</string>
 
-    <string name="action_back">Volver</string>
     <string name="tieSerieSearch_hint">Buscar…</string>
     <string name="tvTittleSerieGenre_tittleText">"Series de "</string>
     <string name="tilSerieSearch_emptyError">Introduce algo para buscar.</string>
     <string name="tvTittleMySeriesProfileFragment_text">Mis Series</string>
     <string name="tvTittleMyFilmsProfileFragment_text">Mis Peliculas</string>
     <string name="btnSettingsProfileFragment_text">Ajustes</string>
-    <string name="btnAboutUsProfileFragment_text">Sorbe nosotros…</string>
+    <string name="btnAboutUs_text">Sobre nosotros…</string>
     <string name="btngoAboutUsProfileFragment_text">Sobre Nosotros…</string>
     <string name="btnDeleteAccountProfileFragment_text">Eliminar cuenta</string>
     <string name="btnLogOutProfileFragment_text">Cerrar Sesión…</string>
@@ -68,10 +58,7 @@
     <string name="keyword_peliculas_apinews">Peliculas</string>
     <string name="keyword_series_apinews">Series</string>
     <string name="recyclerFilmsTittle_topBoxOffice">Peliculas más taquilleras</string>
-    <string name="recyclerFilmsTittle_topRated">Peliculas más valoradas</string>
     <string name="recyclerFilmsTittle_mostPopular">Peliculas más populares</string>
-    <string name="recyclerFilmsTittle_GenreDrama">Peliculas de Drama</string>
-    <string name="recyclerFilmsTittle_GenreCrime">Peliculas de Crimen</string>
     <string name="textYearDirectorTittleFilmItem_text">Directores:</string>
     <string name="textYearActorTittleFilmItem_text">Actores:</string>
     <string name="textYearWriterTittleFilmItem_text">Escritores:</string>
@@ -87,4 +74,59 @@
     <string name="removeFilmSucces">Pelicula eliminada con éxito.</string>
     <string name="removeSerieSucces">Serie eliminada con éxito.</string>
     <string name="addSerieSucces">Serie añadida con éxito.</string>
+    <string name="stats1_tittle">Minutos vistos</string>
+    <string name="stats2_tittle">Horas vistas</string>
+    <string name="stats3_tittle">Peliculas vistas</string>
+    <string name="stats5_tittle">Episodios vistos</string>
+    <string name="stats4_tittle">Series vistas</string>
+    <string name="dashboardFragment_label" translatable="false">ShowTrack</string>
+    <string name="filmSearchFragment_label">Buscar Peliculas</string>
+    <string name="filmGenreFragment_label">Peliculas por género</string>
+    <string name="settingsFragment_label">Ajustes</string>
+    <string name="serieSearchFragment_label">Buscar series</string>
+    <string name="aboutUsFragment_label">Sobre Nosotros...</string>
+    <string name="serieGenreFragment_label">Series por género</string>
+    <string name="description_AboutUs">Esto es ShowTrack!, una aplicacion diseñada para los usuarios mas olvidadizos. Aplicación realizada para entrega de Proyecto Integrado en IES Portada Alta, Rafael Carrasco Sánchez. Esto es una aplicacion de muestra, no sera comercializada.</string>
+    <string name="title_connectwithus">Conecta con nosotros</string>
+    <string name="email_AboutUs" translatable="false">showtrackapp@gmail.com</string>
+    <string name="linkedin_AboutUs" translatable="false">https://www.linkedin.com/in/rafacarrasco11/</string>
+    <string name="twitter_AboutUs" translatable="false">\@imrafaa__</string>
+    <string name="yt_AboutUs" translatable="false">UCRhnfMMG2Gzr_qUSRHutPsA</string>
+    <string name="github_AboutUs" translatable="false">rafacarrasco11</string>
+    <string name="ig_AboutUs" translatable="false">imrafaa</string>
+    <string name="settings_NameEmpty">No puede ser vacio.</string>
+    <string name="settings_NameError">Nombre no válido.</string>
+    <string name="settings_PasswError">Contraseña no valida.</string>
+    <string name="tvTittleEditAvatarSettingsFragment_text">Foto de perfil</string>
+    <string name="editTextNameSettingsFragment_text">Nombre</string>
+    <string name="btnChangeNameSettingsFragment_text">Cambiar</string>
+    <string name="editTextPasswordSettingsFragment_hint">Contraseña</string>
+    <string name="editTextActualPasswordSettingsFragment_hint">Contraseña actual</string>
+    <string name="btnChangePasswordSettingsFragment_text">Cambiar</string>
+    <string name="spinnerLanguageSettingsFragment_tooltiptext">Cambiar Idioma</string>
+    <string name="succes_ChangePasswd">Contraseña cambiada con éxito.</string>
+    <string name="failure_ChangePasswd">No es tu contraseña.</string>
+    <string name="changeNameSuccess">Nombre cambiado con éxito.</string>
+    <string name="name_channel" translatable="false">showtrack_channel</string>
+    <string name="episodeAddedTitle_notification">¡Has visto un nuevo episodio!</string>
+    <string name="addEpisode_notification">"Episodio "</string>
+    <string name="filmAddedTitle_notification">¡Has visto una nueva Pelicula!</string>
+    <string name="serieAddedTitle_notification">¡Has visto una nueva serie!</string>
+    <string name="btnDeleteAllFilms_text">Eliminar todas las peliculas</string>
+    <string name="succes_deleteFilms">Todas las peliculas eliminadas con éxito.</string>
+    <string name="succes_deleteSeries">Todas las series eliminadas con éxito.</string>
+    <string name="btnDeleteAllSeries_text">Eliminar todas las series</string>
+    <string name="erro_profilePhoto">No ha sido posible actualizar la foto de perfil.</string>
+    <string name="erro_profilePhotoNoPicked">No has elegido una foto de perfil.</string>
+    <string name="tvNodataSerie_text">No hay Series añadidas</string>
+
+    <string name="english">Inglés</string>
+    <string name="spanish">Español</string>
+
+    <string name="tilFilmSearch_emptyError">Introduce algo para buscar.</string>
+    <string name="action_back">Volver</string>
+    <string name="recyclerFilmsTittle_topRated">Peliculas más valoradas</string>
+    <string name="tvNodataFilm_text">No hay Peliculas añadidas</string>
+    <string name="select_language">Elige idioma...</string>
+    <string name="tvTittleNews_text">Noticias</string>
 </resources>

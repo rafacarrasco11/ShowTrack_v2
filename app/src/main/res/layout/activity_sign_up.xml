@@ -78,15 +78,6 @@
         app:layout_constraintTop_toBottomOf="@+id/tilConfirmPasswdSignUp" />
 
     <Button
-        android:id="@+id/btnSignUpWGoogleSignUp"
-        style="@style/simpleBtnTransparent"
-        android:text="@string/btnSignUpWGoogleSignUp_text"
-        android:layout_marginTop="@dimen/btnSignUpWGoogleSignUp_marginTop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignUpSignUp" />
-
-    <Button
         android:id="@+id/btnSignInSignUp"
         style="@style/simpleBtnTransparent"
 
@@ -103,7 +94,6 @@
         android:layout_marginHorizontal="@dimen/pbLogin_marginHorizontal"
         app:layout_constraintBottom_toTopOf="@+id/btnSignInSignUp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignUpWGoogleSignUp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

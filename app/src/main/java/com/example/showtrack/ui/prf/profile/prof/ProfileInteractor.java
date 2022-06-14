@@ -41,8 +41,37 @@ public class ProfileInteractor implements ProfileContract.OnProfileGenreCallback
     }
 
     @Override
+    public void onCargarSeriesRvNoData() {
+        this.listener.onCargarSeriesRvNoData();
+    }
+
+    @Override
+    public void onCargarFilmsRvNoData() {
+        this.listener.onCargarFilmsRvNoData();
+    }
+
+    @Override
     public void onSuccessCargarStatsRv(ArrayList<Stat> rvList) {
         this.listener.onSuccessCargarStatsRv(rvList);
+    }
+
+    @Override
+    public void onSuccessDeleteSeries(String message) {
+        listener.onSuccessDeleteSeries(message);
+    }
+
+    @Override
+    public void onSuccessDeleteFilms(String message) {
+        listener.onSuccessDeleteSeries(message);
+    }
+
+
+    public void deleteAllFilms() {
+        UserRepository.getInstance().deleteAllFilms(this);
+    }
+
+    public void deleteAllSeries() {
+        UserRepository.getInstance().deleteAllSeries(this);
     }
 
 }

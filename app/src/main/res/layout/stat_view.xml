@@ -25,7 +25,7 @@
             android:textColor="@color/primaryColor"
             android:text="7000"
             android:textSize="@dimen/tvStatStatView_textSize"
-            android:textStyle="bold" />
+            />
 
         <TextView
             android:id="@+id/tvTittleStatView"

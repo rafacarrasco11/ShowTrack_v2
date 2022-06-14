@@ -16,6 +16,12 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
+/**
+ * Clase repositorio de Registro
+ *
+ * Aqui se relizan las operaciones para registrarse y conectar con Firebase.
+ * Devuelve un callback con el resultado de la operacion (MVP)
+ */
 public class SignUpRepository implements SignUpContract.Repository {
 
     private static SignUpRepository instance;

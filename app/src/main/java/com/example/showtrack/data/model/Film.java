@@ -13,6 +13,14 @@ import com.example.showtrack.data.model.user.User;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+/**
+ * Clase POJO para la entidad de una Pelicula.
+ *
+ * Esta entidad aparece en las listas de las peliculas, asi como en la pantalla de una peliculas cunado la visitas.
+ *
+ * Se almacena en la base de datos al igual que la serie y se identifica mediante el id del usuario que la añade.
+ * Cuando el usuario añade una pelcicula significa que la ha visto.
+ */
 @Entity(foreignKeys = @ForeignKey(entity = User.class, parentColumns = "id", childColumns = "user_id"))
 public class Film implements Serializable {
 

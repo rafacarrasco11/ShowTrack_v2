@@ -19,6 +19,7 @@ public class HomeInteractor implements HomeContract.OnRepositoryHomeFragmentCall
 
     @Override
     public void onSuccessCargarRvNews(ArrayList<New> rvList) {
+        rvList.remove(0);
         this.listener.onSuccessCargarRvNews(rvList);
     }
 }

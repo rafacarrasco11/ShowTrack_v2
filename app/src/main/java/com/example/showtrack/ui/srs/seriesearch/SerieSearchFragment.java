@@ -24,6 +24,13 @@ import com.example.showtrack.ui.srs.seriesrecycler.SerieAdapter;
 
 import java.util.ArrayList;
 
+/**
+ * Fragmento en el cual podemos buscar una serie mediante palabras clave.
+ *
+ * Para introducir la palabra clave hay que escribir, los erroes estan controlados con el MVP.
+ *
+ * Funciona con un modelo Vista-Presentador.
+ */
 public class SerieSearchFragment extends Fragment implements SerieSearchContract.View, SerieAdapter.OnSeriesListener {
 
     private FragmentSerieSearchBinding binding;

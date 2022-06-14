@@ -24,6 +24,13 @@ import com.example.showtrack.ui.flm.filmsrecycler.FilmsAdapter;
 
 import java.util.ArrayList;
 
+/**
+ * Fragmento en el cual podemos buscar una pelicula mediante palabras clave.
+ *
+ * Para introducir la palabra clave hay que escribir, los erroes estan controlados con el MVP.
+ *
+ * Funciona con un modelo Vista-Presentador.
+ */
 public class FilmSearchFragment extends Fragment implements FilmSearchContract.View, FilmsAdapter.OnFilmsListener {
 
     private FragmentFilmSearchBinding binding;

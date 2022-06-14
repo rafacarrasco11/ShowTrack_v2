@@ -11,7 +11,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilFilmSearch"
-        android:layout_width="300dp"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/tilFilmSearch_marginTop"
         android:layout_marginHorizontal="@dimen/tilFilmSearch_marginHorizn"
@@ -32,7 +32,6 @@
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:text="Button"
-
         android:src="@drawable/ic_search_white"
         android:backgroundTint="@color/primaryColor"
         android:layout_marginTop="@dimen/btnSearchFilmSearch_marginTop"

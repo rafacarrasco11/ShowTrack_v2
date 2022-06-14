@@ -22,6 +22,9 @@ import com.example.showtrack.ui.srs.serieitem.SeasonAdapter;
 
 import java.util.ArrayList;
 
+/**
+ * Adapter para la clase de listas de peliculas que aparecen en la pantalla peliculas.
+ */
 public class RecyclerFilmAdapter extends RecyclerView.Adapter<RecyclerFilmAdapter.ViewHolderFilms> implements FilmsAdapter.OnFilmsListener{
     private ArrayList<RecyclerFilm> recyclersList;
     private OnRecyclerFilmListener listener;

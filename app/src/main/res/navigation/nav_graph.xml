@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/dashboardFragment"
         android:name="com.example.showtrack.ui.dashboard.DashboardFragment"
-        android:label="fragment_dashboard"
+        android:label="@string/dashboardFragment_label"
         tools:layout="@layout/fragment_dashboard" >
         <action
             android:id="@+id/action_dashboardFragment_to_filmSearchFragment"
@@ -43,10 +43,14 @@
         android:id="@+id/profileFragment"
         android:name="com.example.showtrack.ui.prf.profile.prof.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.showtrack.ui.hm.home.HomeFragment"
+        android:name="com.example.showtrack.ui.hm.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
@@ -57,12 +61,12 @@
     <fragment
         android:id="@+id/aboutUsFragment"
         android:name="com.example.showtrack.ui.prf.aboutus.AboutUsFragment"
-        android:label="fragment_about_us"
+        android:label="@string/aboutUsFragment_label"
         tools:layout="@layout/fragment_about_us" />
     <fragment
         android:id="@+id/filmGenreFragment"
         android:name="com.example.showtrack.ui.flm.filmgenre.FilmGenreFragment"
-        android:label="fragment_film_genre"
+        android:label="@string/filmGenreFragment_label"
         tools:layout="@layout/fragment_film_genre" >
         <action
             android:id="@+id/action_filmGenreFragment_to_filmItemFragment"
@@ -71,7 +75,7 @@
     <fragment
         android:id="@+id/filmSearchFragment"
         android:name="com.example.showtrack.ui.flm.filmsearch.FilmSearchFragment"
-        android:label="fragment_film_search"
+        android:label="@string/filmSearchFragment_label"
         tools:layout="@layout/fragment_film_search" >
         <action
             android:id="@+id/action_filmSearchFragment_to_filmItemFragment"
@@ -89,7 +93,7 @@
     <fragment
         android:id="@+id/serieGenreFragment"
         android:name="com.example.showtrack.ui.srs.seriegenre.SerieGenreFragment"
-        android:label="fragment_serie_genre"
+        android:label="@string/serieGenreFragment_label"
         tools:layout="@layout/fragment_serie_genre" >
         <action
             android:id="@+id/action_serieGenreFragment_to_serieItemFragment"
@@ -98,7 +102,7 @@
     <fragment
         android:id="@+id/serieSearchFragment"
         android:name="com.example.showtrack.ui.srs.seriesearch.SerieSearchFragment"
-        android:label="fragment_serie_search"
+        android:label="@string/serieSearchFragment_label"
         tools:layout="@layout/fragment_serie_search" >
         <action
             android:id="@+id/action_serieSearchFragment_to_serieItemFragment"
@@ -107,6 +111,6 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.showtrack.ui.prf.profile.settings.SettingsFragment"
-        android:label="fragment_settings"
+        android:label="@string/settingsFragment_label"
         tools:layout="@layout/fragment_settings" />
 </navigation>

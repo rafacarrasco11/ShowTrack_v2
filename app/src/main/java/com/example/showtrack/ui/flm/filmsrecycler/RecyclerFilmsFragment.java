@@ -20,12 +20,21 @@ import android.view.ViewGroup;
 import com.example.showtrack.R;
 import com.example.showtrack.data.model.Film;
 import com.example.showtrack.data.model.recycler.RecyclerFilm;
+import com.example.showtrack.data.repository.FilmRepository;
 import com.example.showtrack.databinding.FragmentRecyclerFilmsBinding;
 import com.example.showtrack.ui.ShowTrackApplication;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
-
+/**
+ * Fragmento PRINCIPAL de la aplicaion. PANTALLA PELICULAS.
+ *
+ * Aqui podemos observar las difernetes listas de peliuclas las cuales se componen de un recycler view de peliculas.
+ * Estas listas son cargadas en otro Recycler View.
+ *
+ * Se usa el modelo Vista-Presentador.
+ */
 public class RecyclerFilmsFragment extends Fragment implements RecyclerFilmsContract.View, RecyclerFilmAdapter.OnRecyclerFilmListener {
 
     private FragmentRecyclerFilmsBinding binding;
@@ -37,6 +46,7 @@ public class RecyclerFilmsFragment extends Fragment implements RecyclerFilmsCont
         super.onCreate(savedInstanceState);
 
         presenter = new RecyclerFilmsFragmentPresenter(this);
+
     }
 
     @Override
@@ -50,11 +60,16 @@ public class RecyclerFilmsFragment extends Fragment implements RecyclerFilmsCont
         super.onViewCreated(view, savedInstanceState);
         setHasOptionsMenu(true);
 
-        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+        //Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).show();
 
         initAdapterFilmsRv();
 
         presenter.cargarFilmsRv();
+
+        ShowTrackApplication.setContext(getContext());
+        FilmRepository.getInstance();
+
+        ShowTrackApplication.setLastFragment(this);
     }
 
 

@@ -20,6 +20,17 @@
         <entry key="app/src/main/res/drawable/shape_btn_login.xml" value="0.375" />
         <entry key="app/src/main/res/drawable/stat_style_border.xml" value="0.375" />
         <entry key="app/src/main/res/drawable/user_image_login_background.xml" value="0.375" />
+        <entry key="app/src/main/res/layout-land/activity_login.xml" value="0.25" />
+        <entry key="app/src/main/res/layout-land/activity_splash.xml" value="0.3037918871252205" />
+        <entry key="app/src/main/res/layout-land/fragment_about_us.xml" value="0.3037918871252205" />
+        <entry key="app/src/main/res/layout-land/fragment_film_genre.xml" value="0.3037918871252205" />
+        <entry key="app/src/main/res/layout-land/fragment_film_item.xml" value="0.3037918871252205" />
+        <entry key="app/src/main/res/layout-land/fragment_film_search.xml" value="0.3037918871252205" />
+        <entry key="app/src/main/res/layout-land/fragment_home.xml" value="0.3037918871252205" />
+        <entry key="app/src/main/res/layout-land/fragment_serie_genre.xml" value="0.3037918871252205" />
+        <entry key="app/src/main/res/layout-land/fragment_serie_item.xml" value="0.3037918871252205" />
+        <entry key="app/src/main/res/layout-land/fragment_serie_search.xml" value="0.3037918871252205" />
+        <entry key="app/src/main/res/layout-v26/fragment_settings.xml" value="0.4005208333333333" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.35885416666666664" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
@@ -30,11 +41,11 @@
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_fake_page.xml" value="0.35885416666666664" />
         <entry key="app/src/main/res/layout/fragment_film_genre.xml" value="0.35885416666666664" />
-        <entry key="app/src/main/res/layout/fragment_film_item.xml" value="0.6451310861423221" />
+        <entry key="app/src/main/res/layout/fragment_film_item.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_film_search.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_films.xml" value="0.35885416666666664" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.35885416666666664" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.27514367816091956" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.29096283783783783" />
         <entry key="app/src/main/res/layout/fragment_profile_section.xml" value="0.35885416666666664" />
         <entry key="app/src/main/res/layout/fragment_recycler_films.xml" value="0.29981884057971014" />
         <entry key="app/src/main/res/layout/fragment_recycler_series.xml" value="0.35885416666666664" />
@@ -44,6 +55,7 @@
         <entry key="app/src/main/res/layout/fragment_series.xml" value="0.35885416666666664" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_settings_section.xml" value="0.35885416666666664" />
+        <entry key="app/src/main/res/layout/language_spinner_item.xml" value="0.67" />
         <entry key="app/src/main/res/layout/new_view.xml" value="0.33967391304347827" />
         <entry key="app/src/main/res/layout/recycler_film_view.xml" value="0.21415270018621974" />
         <entry key="app/src/main/res/layout/recycler_serie_view.xml" value="0.35885416666666664" />

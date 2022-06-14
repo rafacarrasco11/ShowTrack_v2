@@ -35,6 +35,11 @@ import com.example.showtrack.utils.DrawableUtil;
 
 import java.io.IOException;
 
+/**
+ * Clase para el fragmento donde se enseña informacion comlpeta de una pelicula, desde aqui se puede añadir com vista en la base de datos.
+ *
+ * Funciona con un modelo Vista-Presentador.
+ */
 public class FilmItemFragment extends Fragment implements FilmItemContract.View {
 
     private FragmentFilmItemBinding binding;
@@ -88,6 +93,19 @@ public class FilmItemFragment extends Fragment implements FilmItemContract.View 
     @Override
     public void onSuccessAddFilm(String message) {
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+
+        String content = this.film.getTittle();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("film", this.film);
+
+        ShowTrackApplication.newNotification(
+                bundle,
+                getActivity(),
+                R.id.filmItemFragment,
+                R.drawable.ic_watched,
+                ShowTrackApplication.context().getString(R.string.filmAddedTitle_notification),
+                content
+        );
 
         binding.btnAddFilmFilmItem.setVisibility(View.GONE);
         binding.btnDeleteFilmFilmItem.setVisibility(View.VISIBLE);

@@ -20,12 +20,21 @@ import android.view.ViewGroup;
 import com.example.showtrack.R;
 import com.example.showtrack.data.model.recycler.RecyclerSerie;
 import com.example.showtrack.data.model.serie.Serie;
+import com.example.showtrack.data.repository.SerieRepository;
 import com.example.showtrack.databinding.FragmentRecyclerSeriesBinding;
 import com.example.showtrack.ui.ShowTrackApplication;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
-
+/**
+ * Fragmento PRINCIPAL de la aplicaion. PANTALLA SERIES.
+ *
+ * Aqui podemos observar las diferentes listas de series las cuales se componen de un recycler view de series.
+ * Estas listas son cargadas en otro Recycler View.
+ *
+ * Se usa el modelo Vista-Presentador.
+ */
 public class RecyclerSerieFragment extends Fragment implements RecyclerSerieContract.View, RecyclerSerieAdapter.OnRecyclerSerieListener {
 
     private FragmentRecyclerSeriesBinding binding;
@@ -37,6 +46,7 @@ public class RecyclerSerieFragment extends Fragment implements RecyclerSerieCont
         super.onCreate(savedInstanceState);
 
         presenter = new RecyclerSerieFragmentPresenter(this);
+
     }
 
     @Override
@@ -50,11 +60,16 @@ public class RecyclerSerieFragment extends Fragment implements RecyclerSerieCont
         super.onViewCreated(view, savedInstanceState);
         setHasOptionsMenu(true);
 
-        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+        //Objects.requireNonNull(((AppCompatActivity) requireActivity()).getSupportActionBar()).show();
 
         initAdapterSeriesRv();
 
         presenter.cargarSeriesRv();
+
+        ShowTrackApplication.setContext(getContext());
+        SerieRepository.getInstance();
+
+        ShowTrackApplication.setLastFragment(this);
     }
 
 

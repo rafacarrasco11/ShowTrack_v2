@@ -1,5 +1,8 @@
 package com.example.showtrack.data.model.api.JSONObjects.seriesandfilms;
 
+/**
+ * Clase POJO para los objetos JSON que deveulve la API de series y peliculas
+ */
 public class JSONPrimaryImage {
     String width;
     String height;

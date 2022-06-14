@@ -10,11 +10,20 @@ import androidx.room.PrimaryKey;
 
 import com.example.showtrack.data.model.user.User;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * Clase POJO para la entidad de un Serie
+ *
+ * Esta entidad aparece en las listas de las series, asi como en las pantallas de una serie
+ *
+ * Las anotaciones de room son necesarias para que la entidad aparezca en la base de datos, de esta forma el usuario puede añadir o quitar series
+ * a su base de datos (identidicado con la id del usuario). Cuando un usuario añade una serie significa que la ha visto o la esta viendo.
+ */
 @Entity(foreignKeys = @ForeignKey(entity = User.class, parentColumns = "id", childColumns = "user_id"))
-public class Serie {
+public class Serie implements Serializable {
     @PrimaryKey(autoGenerate = true)
     int id;
 

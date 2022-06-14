@@ -4,6 +4,9 @@ import com.example.showtrack.data.model.api.JSONObjects.seriesandfilms.JSONResul
 
 import java.util.List;
 
+/**
+ * Clase POJO para los objetos JSON que deveulve la API de series y peliculas
+ */
 public class JSONFilms {
     String page;
     String next;

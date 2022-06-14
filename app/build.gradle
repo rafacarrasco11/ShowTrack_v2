@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.showtrack"
-        minSdk 26
+        minSdk 23
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -31,9 +31,6 @@ android {
         viewBinding true
     }
 
-    dataBinding {
-        enabled true
-    }
 }
 
 dependencies {
@@ -80,4 +77,11 @@ dependencies {
 
     //OKHTTP
     implementation 'com.squareup.okhttp3:okhttp:4.1.0'
+
+    //ABOUT US
+    implementation 'com.github.medyo:android-about-page:1.2.1'
+
+    //CIRCLE IMAGEVIEW
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 }

@@ -16,27 +16,28 @@ public class RecyclerFilmRepository implements RecyclerFilmsContract.Repository 
 
     private RecyclerFilmRepository() {
         this.rvList = new ArrayList<>();
-        iniFilmsList();
+
     }
 
     public void iniFilmsList() {
+        this.rvList.clear();
         this.rvList.add(new RecyclerFilm(ShowTrackApplication.context().getString(R.string.recyclerFilmsTittle_mostPopular),Lists.most_pop_movies.name()) );
         this.rvList.add(new RecyclerFilm(ShowTrackApplication.context().getString(R.string.recyclerFilmsTittle_topRated), Lists.top_rated_250.name()));
         this.rvList.add(new RecyclerFilm(ShowTrackApplication.context().getString(R.string.recyclerFilmsTittle_topBoxOffice), Lists.top_boxoffice_200.name()));
-        this.rvList.add(new RecyclerFilm(ShowTrackApplication.context().getString(R.string.recyclerFilmsTittle) + Genres.Drama.name(), null, Genres.Drama.name()));
-        this.rvList.add(new RecyclerFilm(ShowTrackApplication.context().getString(R.string.recyclerFilmsTittle) + Genres.Crime.name(), null, Genres.Crime.name()));
+        this.rvList.add(new RecyclerFilm(ShowTrackApplication.context().getString(R.string.recyclerFilmsTittle) + ShowTrackApplication.getUserTemp().getGenreOne(), null, ShowTrackApplication.getUserTemp().getGenreOne()));
+        this.rvList.add(new RecyclerFilm(ShowTrackApplication.context().getString(R.string.recyclerFilmsTittle) + ShowTrackApplication.getUserTemp().getGenreTwo(), null, ShowTrackApplication.getUserTemp().getGenreTwo()));
     }
 
     public static RecyclerFilmRepository getInstance() {
         if (instance == null) {
             instance = new RecyclerFilmRepository();
         }
-
         return instance;
     }
 
     @Override
     public void cargarFilmsRv(RecyclerFilmsContract.OnRepositoryRecyclerFilmFragmentCallback callback) {
+        iniFilmsList();
         callback.onSuccessCargarFilmsRv(this.rvList);
     }
 

@@ -8,6 +8,9 @@ import com.example.showtrack.data.model.api.JSONObjects.seriesandfilms.films.JSO
 import com.example.showtrack.data.model.api.JSONObjects.seriesandfilms.films.JSONFilmSearch;
 import com.example.showtrack.data.model.api.JSONObjects.seriesandfilms.films.JSONFilmSearchFilm;
 import com.example.showtrack.data.model.api.JSONObjects.seriesandfilms.films.JSONFilms;
+import com.example.showtrack.data.model.dao.FilmDao;
+import com.example.showtrack.data.model.dao.UserDao;
+import com.example.showtrack.data.model.database.ShowTrackDatabase;
 import com.example.showtrack.data.model.serie.Serie;
 import com.example.showtrack.data.model.user.User;
 import com.example.showtrack.utils.APIUtil;
@@ -31,12 +34,23 @@ import java.util.List;
  * **** RAPID API --> https://rapidapi.com/ ********************
  * *************************************************************
  */
+
+/**
+ * En esta clase se gestionan las peticiones a las APIS y se devuelven en forma de objeto JAVA.
+ * Se compone de diferentes variables constantes donde se almacenan los datos necesarios para acceder a las APIS y algunos parametros no variables (siempre son el mismo)
+ *
+ * Lo que se hace en esta clase es generar una url que pasa por la clase APIUtils, donde hay metodos que convierten esta url en una respuesta (OkHttp) en formato JSON,
+ * este JSON vienen como una String y aqui en esta clase y usando la libreria GSON se convierte a una entidad de la alpicacion, en este caso a una Pelicula.
+ * En la clase tambien podemos encontrar otros metodos para obtener informacion o algo en especifico de una pelicula desde la API.
+ *
+ * Esta clase contiene metodos los cuales recogen (o no) parametros y devuelven listas de Peliculas, asi se cargan las listas que encontramos en el apartado peliculas de
+ * la aplicacion o en nuestro perfil
+ */
 public class APIFilms {
 
     private static final String HOST = "moviesdatabase.p.rapidapi.com";
     private static final String API_KEY = "365724d226msh0e5daf87ac95f51p1ede08jsn57250a1f6fe0";
     private static final String URL_MD = "https://moviesdatabase.p.rapidapi.com/titles?";
-
     private static final String URL_OMDB = "http://www.omdbapi.com/?apikey=c0693bf7&plot=full&type=movie&";
 
     // PARAMETROS
@@ -45,6 +59,7 @@ public class APIFilms {
     private static final String page = "1";
     private static final String titleType = "movie";
     private static final String listPops = Lists.most_pop_movies.name();
+
 
     /**
      * Este metodo hace una peticion a MoviesDatabase API para obtener info basica como id de una peliucla o serie (Busqueda por Genero)
@@ -106,20 +121,24 @@ public class APIFilms {
             e.printStackTrace();
         }
 
-        if (!jsonFilms1.getEntries().equals("0")) {
-            for (JSONResult result : jsonFilms1.getResults()) {
-                if (result.getPrimaryImage() != null) {
-                    Film f = new Film();
-                    f.setTittle(result.getTitleText().getText());
-                    f.setYearReleased(result.getReleaseYear().getYear());
-                    f.setImdbID(result.getImdbID());
-                    f.setType(result.getTitleType().getText());
-                    f.setPoster(result.getPrimaryImage().getUrl());
+        if (jsonFilms1 != null) {
+            if (!jsonFilms1.getEntries().equals("0")) {
+                for (JSONResult result : jsonFilms1.getResults()) {
+                    if (result.getPrimaryImage() != null) {
+                        Film f = new Film();
+                        f.setTittle(result.getTitleText().getText());
+                        f.setYearReleased(result.getReleaseYear().getYear());
+                        f.setImdbID(result.getImdbID());
+                        f.setType(result.getTitleType().getText());
+                        f.setPoster(result.getPrimaryImage().getUrl());
 
-                    filmsPopList.add(f);
+                        filmsPopList.add(f);
+                    }
                 }
             }
         }
+
+
 
         return filmsPopList;
     }
@@ -155,7 +174,9 @@ public class APIFilms {
         return filmsMRatedList;
     }
 
-
+    /**
+     * Devuelve las peliculas mas taquilleras
+     */
     public static List<Film> getMostBoxOfficeFilms() {
         List<Film> filmsMBOfficeList = new ArrayList<>();
 
@@ -186,7 +207,10 @@ public class APIFilms {
         return filmsMBOfficeList;
     }
 
-    public static List<Film> getFilmsByGenre(String name) {
+    /**
+     * Devuelve las peliculas mas taquilleras
+     */
+    public static List<Film>  getFilmsByGenre(String name) {
         List<Film> films = new ArrayList<>();
 
         JSONFilms jsonFilms3 = null;
@@ -216,6 +240,9 @@ public class APIFilms {
         return films;
     }
 
+    /**
+     * Devuelve la informacion completa (rellena los campos de la pelicula) de una pelicula.
+     */
     public static Film getFilmFullInfo(Film film) {
 
         Film f = film;
@@ -245,6 +272,9 @@ public class APIFilms {
         return f;
     }
 
+    /**
+     * Devuelve una lista de peliculas segun palabras especiales como busqueda
+     */
     public static List<Film> getFilmsBySearch(String search) {
         List<Film> films = new ArrayList<>();
 
@@ -274,6 +304,9 @@ public class APIFilms {
         return films;
     }
 
+    /**
+     * Devuelve una nueva imagen para la pelicula, buscando en otra API.
+     */
     public static String getNewBackground(Film film) {
         JSONFilm jsonFilmSearch = null;
 

@@ -1,5 +1,7 @@
 package com.example.showtrack.data.model.serie;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -8,61 +10,79 @@ import androidx.room.PrimaryKey;
 
 import com.example.showtrack.data.model.user.User;
 
-@Entity(foreignKeys = {@ForeignKey(entity = Season.class, parentColumns = "id", childColumns = "season_id"), @ForeignKey(entity = User.class, parentColumns = "id", childColumns = "user_id")})
-public class Episode {
-    @PrimaryKey(autoGenerate = true)
-    int id;
+import java.io.Serializable;
 
-    int episodeNumber;
-    String released;
+/**
+ * Clase POJO para la entidad de un Episodio
+ *
+ * Esta entidad aparece en la pantalla de una serie, en forma de lista al fondo de la pantalla.
+ *
+ * Podemos observar las anotaciones para la base de datos ROOM, ya que esta almacena objetos de Episodios. Se identifica mediante el id del  usuario ue lo añade.
+ * Cuando el usuario aáde el episodio en la aplicacion significa que lo ha visto.
+ */
+@Entity(foreignKeys =  @ForeignKey(entity = User.class, parentColumns = "id", childColumns = "user_id"))
+public class Episode implements Serializable {
+    @PrimaryKey
+    @NonNull
+    String id;
+
     String imdbID;
-    String title;
+    String tittle;
+    String yearReleased;
+    String ageRestriction;
+    String time;
+    String genre;
+    String language;
+    String plot;
+    String country;
+    String awards;
+    String poster;
+    int episodeNumber;
+
+    String director;
+    String writers;
+    String actors;
+
     String imdbRating;
 
-    @ColumnInfo(name = "season_id", index = true)
-    public long season_id;
+    @Ignore
+    Serie serie;
 
     @ColumnInfo(name = "user_id", index = true)
     public long user_id;
 
-
-    public Episode(int id, int episodeNumber, String released, String imdbID, String title, String imdbRating, long season_id, long user_id) {
+    public Episode(@NonNull String id, String imdbID, String tittle, String yearReleased, String ageRestriction, String time, String genre, String language, String plot, String country, String awards, String poster, int episodeNumber, String director, String writers, String actors, String imdbRating, Serie serie, long user_id) {
         this.id = id;
-        this.episodeNumber = episodeNumber;
-        this.released = released;
         this.imdbID = imdbID;
-        this.title = title;
+        this.tittle = tittle;
+        this.yearReleased = yearReleased;
+        this.ageRestriction = ageRestriction;
+        this.time = time;
+        this.genre = genre;
+        this.language = language;
+        this.plot = plot;
+        this.country = country;
+        this.awards = awards;
+        this.poster = poster;
+        this.episodeNumber = episodeNumber;
+        this.director = director;
+        this.writers = writers;
+        this.actors = actors;
         this.imdbRating = imdbRating;
-        this.season_id = season_id;
+        this.serie = serie;
         this.user_id = user_id;
     }
 
-    @Ignore
-    public Episode(int episodeNumber, String released, String imdbID, String title, String imdbRating) {
-        this.episodeNumber = episodeNumber;
-        this.released = released;
-        this.imdbID = imdbID;
-        this.title = title;
-        this.imdbRating = imdbRating;
+    public Episode() {
     }
 
-    @Ignore
-    public Episode() {}
-
-    public int getEpisodeNumber() {
-        return episodeNumber;
+    @NonNull
+    public String getId() {
+        return id;
     }
 
-    public void setEpisodeNumber(int episodeNumber) {
-        this.episodeNumber = episodeNumber;
-    }
-
-    public String getReleased() {
-        return released;
-    }
-
-    public void setReleased(String released) {
-        this.released = released;
+    public void setId(@NonNull String id) {
+        this.id = id;
     }
 
     public String getImdbID() {
@@ -73,12 +93,116 @@ public class Episode {
         this.imdbID = imdbID;
     }
 
-    public String getTitle() {
-        return title;
+    public String getTittle() {
+        return tittle;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTittle(String tittle) {
+        this.tittle = tittle;
+    }
+
+    public String getYearReleased() {
+        return yearReleased;
+    }
+
+    public void setYearReleased(String yearReleased) {
+        this.yearReleased = yearReleased;
+    }
+
+    public String getAgeRestriction() {
+        return ageRestriction;
+    }
+
+    public void setAgeRestriction(String ageRestriction) {
+        this.ageRestriction = ageRestriction;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public String getPlot() {
+        return plot;
+    }
+
+    public void setPlot(String plot) {
+        this.plot = plot;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getAwards() {
+        return awards;
+    }
+
+    public void setAwards(String awards) {
+        this.awards = awards;
+    }
+
+    public String getPoster() {
+        return poster;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
+    }
+
+    public int getEpisodeNumber() {
+        return episodeNumber;
+    }
+
+    public void setEpisodeNumber(int episodeNumber) {
+        this.episodeNumber = episodeNumber;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    public String getWriters() {
+        return writers;
+    }
+
+    public void setWriters(String writers) {
+        this.writers = writers;
+    }
+
+    public String getActors() {
+        return actors;
+    }
+
+    public void setActors(String actors) {
+        this.actors = actors;
     }
 
     public String getImdbRating() {
@@ -89,20 +213,12 @@ public class Episode {
         this.imdbRating = imdbRating;
     }
 
-    public int getId() {
-        return id;
+    public Serie getSerie() {
+        return serie;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public long getSeason_id() {
-        return season_id;
-    }
-
-    public void setSeason_id(long season_id) {
-        this.season_id = season_id;
+    public void setSerie(Serie serie) {
+        this.serie = serie;
     }
 
     public long getUser_id() {
@@ -116,11 +232,25 @@ public class Episode {
     @Override
     public String toString() {
         return "Episode{" +
-                "episodeNumber=" + episodeNumber +
-                ", released='" + released + '\'' +
-                ", midbID='" + imdbID + '\'' +
-                ", title='" + title + '\'' +
+                "id='" + id + '\'' +
+                ", imdbID='" + imdbID + '\'' +
+                ", tittle='" + tittle + '\'' +
+                ", yearReleased='" + yearReleased + '\'' +
+                ", ageRestriction='" + ageRestriction + '\'' +
+                ", time='" + time + '\'' +
+                ", genre='" + genre + '\'' +
+                ", language='" + language + '\'' +
+                ", plot='" + plot + '\'' +
+                ", country='" + country + '\'' +
+                ", awards='" + awards + '\'' +
+                ", poster='" + poster + '\'' +
+                ", episodeNumber=" + episodeNumber +
+                ", director='" + director + '\'' +
+                ", writers='" + writers + '\'' +
+                ", actors='" + actors + '\'' +
                 ", imdbRating='" + imdbRating + '\'' +
+                ", serie=" + serie +
+                ", user_id=" + user_id +
                 '}';
     }
 }

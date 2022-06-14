@@ -16,6 +16,11 @@ import com.example.showtrack.ui.ShowTrackApplication;
 import com.example.showtrack.ui.prev.login.LoginActivity;
 import com.example.showtrack.ui.prf.profile.prof.ProfileContract;
 
+/**
+ * Clase para el fragmento Splash de la aplicacion.
+ *
+ * Aqui se cargan algunas opciones antes de entrar a la app. Ademas se simula un tiempo de espera con un Handler
+ */
 public class SplashActivity extends AppCompatActivity {
 
     private static final long WAIT_TIME = 2500;
@@ -33,24 +38,8 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if(!saveSession()) {
-            new Handler().postDelayed(() -> startLogin(), WAIT_TIME);
-        } else{
-            new Handler().postDelayed(() -> startApp(), WAIT_TIME);
-        }
-    }
+        new Handler().postDelayed(() -> startLogin(), WAIT_TIME);
 
-    /**
-     * Metodo que comprueba si se ha guardado un email.
-     * @return
-     */
-    private boolean saveSession() {
-        return (PreferenceManager.getDefaultSharedPreferences(this).contains(User.TAG));
-    }
-
-    private void startApp(){
-        startActivity(new Intent(SplashActivity.this, MainActivity.class));
-        finish();
     }
 
     private void startLogin(){

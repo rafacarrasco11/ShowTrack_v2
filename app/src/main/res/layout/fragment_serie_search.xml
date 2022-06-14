@@ -10,7 +10,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilSerieSearch"
-        android:layout_width="300dp"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/tilSerieSearch_marginTop"
         android:layout_marginHorizontal="@dimen/tilSerieSearch_marginHorizn"

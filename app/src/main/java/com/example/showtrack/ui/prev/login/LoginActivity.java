@@ -12,8 +12,16 @@ import android.widget.Toast;
 import com.example.showtrack.MainActivity;
 import com.example.showtrack.data.model.user.User;
 import com.example.showtrack.databinding.ActivityLoginBinding;
+import com.example.showtrack.ui.ShowTrackApplication;
 import com.example.showtrack.ui.prev.signup.SignUpActivity;
 
+/**
+ * Clase para la Activity LOGIN.
+ *
+ * En esta actividad se realiza el logeo en la aplicaicon usando Firebase.
+ *
+ * Se utiliza el modelo Vista Presentador, por el cual se cotnrolan los errores y nos devuelve un callback con lar respuesta al logeo.
+ */
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
 
     private ActivityLoginBinding binding;
@@ -24,6 +32,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ShowTrackApplication.setContext(getApplicationContext());
 
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -48,9 +58,15 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
             presenter.login(binding.tieUserLogin.getText().toString(),binding.tiePaswdLogin.getText().toString());
         });
 
-        binding.btnSignInWGoogleLogin.setOnClickListener(v -> {
-            goApp();
-        });
+
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
+        if (binding.chkRembMeLogin.isChecked()) {
+            editor.putString(User.TAG, binding.tieUserLogin.getText().toString());
+            editor.apply();
+
+            editor.putString("checked","true");
+            editor.apply();
+        }
 
         presenter = new LoginPresenter(this);
     }
@@ -58,7 +74,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        presenter = null;
+        this.presenter.onDestroy();
     }
 
     private void goSignUp() {
@@ -111,16 +127,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Override
     public void onSuccess(String message) {
-        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
-        if (binding.chkRembMeLogin.isChecked()) {
-            editor.putString(User.TAG, binding.tieUserLogin.getText().toString());
-            editor.apply();
-
-            editor.putString("checked","true");
-            editor.apply();
-        }
         hideProgress();
-
         goApp();
     }
 

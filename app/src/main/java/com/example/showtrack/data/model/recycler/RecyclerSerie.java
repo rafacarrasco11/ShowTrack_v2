@@ -1,5 +1,10 @@
 package com.example.showtrack.data.model.recycler;
 
+/**
+ * Clase POJO para la entidad de una lista de series.
+ *
+ * Esta entidad aparece en los recycler view de la pantalla Seeries
+ */
 public class RecyclerSerie {
     String genre;
     String tittle;

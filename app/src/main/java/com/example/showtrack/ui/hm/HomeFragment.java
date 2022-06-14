@@ -25,6 +25,14 @@ import com.example.showtrack.ui.dashboard.DashboardFragment;
 
 import java.util.ArrayList;
 
+/**
+ * PANTALLA HOME.
+ *
+ * Esta es la clase para el fragmento home, donde se muestran las noticias.
+ *
+ * Estas noticias se muestran en un recycler view usando el adaptor para noticias creado.
+ * Se añaden 5 noticias buscadas por keyword: cine, pelicula y serie.
+ */
 public class HomeFragment extends Fragment implements HomeContract.View, NewsAdapter.OnNewsListener {
 
     private FragmentHomeBinding binding;
@@ -35,6 +43,7 @@ public class HomeFragment extends Fragment implements HomeContract.View, NewsAda
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.presenter = new HomePresenter(this);
+        ShowTrackApplication.setContext(getContext());
     }
 
     @Override
@@ -47,11 +56,18 @@ public class HomeFragment extends Fragment implements HomeContract.View, NewsAda
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        binding.tvTittleUserNameHomeFragment.setText(ShowTrackApplication.getUserTemp().getUsername());
 
         initRvNews();
         this.presenter.cargarRvNews();
+        ShowTrackApplication.setLastFragment(this);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        this.presenter.onDestroy();
+    }
 
     private void initRvNews() {
         adapterNews = new NewsAdapter(this);

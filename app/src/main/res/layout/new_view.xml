@@ -13,11 +13,20 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:id="@+id/llContainerNewView"
+            android:id="@+id/llContainerNewViewParent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="10dp"
+            android:paddingVertical="10dp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            android:id="@+id/llContainerNewView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_black_item"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -42,15 +51,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="The Questions Congress Needs to Ask Mark Zuckenbergaaaaaaaaaaa"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvSubtittleNewView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/tvSubtittleNewView_height"
                     android:text="Marck Zuckenberg is probably wearing out his flashcards as he prepares to be asdasda"
-                    android:textSize="13sp" />
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -75,6 +84,7 @@
                 </LinearLayout>
 
             </LinearLayout>
+        </LinearLayout>
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

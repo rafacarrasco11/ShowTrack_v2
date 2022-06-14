@@ -1,5 +1,8 @@
 package com.example.showtrack.data.model;
 
+/**
+ * Enumeracion para los diferentes tipos de generos que hay
+ */
 public enum Genres {
     Action,
     Adult,

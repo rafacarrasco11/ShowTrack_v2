@@ -11,9 +11,10 @@
         android:id="@+id/imSTLogo"
         android:layout_width="@dimen/imSTLogo_width"
         android:layout_height="@dimen/imSTLogo_height"
-        android:layout_marginTop="@dimen/imSTLogo_marginTop"
+
+        android:src="@mipmap/icno_showtrack_adaptive_fore"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@mipmap/icno_showtrack_adaptive_fore" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

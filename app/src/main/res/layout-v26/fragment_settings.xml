@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.prf.profile.settings.SettingsFragment" >
+    <!--        SettingsFragment        -->
+
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:id="@+id/containerLLSettingsFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/containerLLSettingsFragment_padding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/llEditAvatarSettingsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/llEditAvatarSettingsFragment_marginTop"
+            android:layout_marginBottom="@dimen/llEditAvatarSettingsFragment_marginBottom"
+            android:orientation="horizontal">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgAvatarSettingsFragment"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/ic_profile_picture"
+                app:civ_border_width="0dp"
+                app:civ_border_color="#FF000000"/>
+
+            <TextView
+                android:id="@+id/tvTittleEditAvatarSettingsFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/tvTittleEditAvatarSettingsFragment_marginstart"
+                android:gravity="center"
+                android:text="@string/tvTittleEditAvatarSettingsFragment_text"
+                android:textSize="@dimen/tvTittleEditAvatarSettingsFragment_textSize"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llEditNameSettingsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/llEditNameSettingsFragment_marginvertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editTextNameSettingsFragment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.6"
+                android:ems="30"
+                android:inputType="text"
+                android:hint="@string/editTextNameSettingsFragment_text"
+                android:textSize="@dimen/editTextNameSettingsFragment_textSize"
+                android:textColorHint="@color/black"
+                />
+            <Button
+                android:id="@+id/btnChangeNameSettingsFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:text="@string/btnChangeNameSettingsFragment_text"
+                android:textColor="@color/black"
+                android:textSize="@dimen/btnChangeNameSettingsFragment_textSize"
+                android:textAllCaps="false"
+
+                />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/pbName"
+            android:visibility="gone"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:id="@+id/llEditPasswordSettingsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/llEditPasswordSettingsFragment_marginvertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editTextPasswordSettingsFragment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.6"
+                android:ems="30"
+                android:inputType="textPassword"
+                android:hint="@string/editTextPasswordSettingsFragment_hint"
+                android:textSize="@dimen/editTextPasswordSettingsFragment_textSize"
+                android:textColorHint="@color/black"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/llEditActualPasswordSettingsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/llEditActualPasswordSettingsFragment_marginvertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editTextActualPasswordSettingsFragment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.6"
+                android:ems="30"
+                android:inputType="textPassword"
+                android:hint="@string/editTextActualPasswordSettingsFragment_hint"
+                android:textSize="@dimen/editTextActualPasswordSettingsFragment_textSize"
+                android:textColorHint="@color/black"
+                />
+            <Button
+                android:id="@+id/btnChangePasswordSettingsFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:text="@string/btnChangePasswordSettingsFragment_text"
+                android:textColor="@color/black"
+                android:textSize="@dimen/btnChangePasswordSettingsFragment_textSize"
+                android:textAllCaps="false"
+
+                />
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/pbPasswd"
+            android:visibility="gone"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:id="@+id/llSpLanguageSettingsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/llSpLanguageSettingsFragment_marginVertical"
+            android:orientation="horizontal">
+            <Spinner
+                android:tooltipText="@string/spinnerLanguageSettingsFragment_tooltiptext"
+                android:id="@+id/spinnerLanguageSettingsFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/spinnerLanguageSettingsFragment_padding"/>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llBottomButtonsSettingsFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <Button
+            android:id="@+id/btnDeleteAccountProfileFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="@string/btnDeleteAccountProfileFragment_text"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            android:textColor="@android:color/holo_red_dark" />
+
+        <Button
+            android:id="@+id/btnLogOutProfileFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="@string/btnLogOutProfileFragment_text"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            android:textColor="@android:color/holo_red_dark"  />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

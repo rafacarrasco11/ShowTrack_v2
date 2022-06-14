@@ -2,6 +2,9 @@ package com.example.showtrack.data.model.api.JSONObjects.news;
 
 import java.util.List;
 
+/**
+ * Clase POJO para los objetos JSON que deveulve la API de noticias
+ */
 public class JSONNews {
 
     String status;

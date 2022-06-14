@@ -21,9 +21,6 @@
         android:id="@+id/tilUserLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgUserLogin"
@@ -79,15 +76,6 @@
         app:layout_constraintTop_toBottomOf="@+id/chkRembMeLogin" />
 
     <Button
-        android:id="@+id/btnSignInWGoogleLogin"
-        style="@style/simpleBtnTransparent"
-        android:layout_marginTop="@dimen/btnSignInWGoogleLogin_marginTop"
-        android:text="@string/btnSignInWGoogleLogin_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignInLogin" />
-
-    <Button
         android:id="@+id/btnSignUpLogin"
         style="@style/simpleBtnTransparent"
         android:text="@string/btnSignUpLogin_text"
@@ -105,8 +93,7 @@
         android:backgroundTint="@color/secondaryLightColor"
         app:layout_constraintBottom_toTopOf="@+id/btnSignUpLogin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignInWGoogleLogin" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

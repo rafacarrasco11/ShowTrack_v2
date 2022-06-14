@@ -52,7 +52,7 @@ public class SignUpInteractor implements SignUpContract.OnSignUpCallback{
 
                 SignUpRepository.getInstance().signUp(email,passwd, conPasswd, userName, callback);
             }
-        }, 2000);
+        }, 1000);
     }
 
     @Override

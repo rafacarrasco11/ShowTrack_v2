@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.showtrack.R;
+import com.example.showtrack.data.model.api.APIClasses.APISeries;
 import com.example.showtrack.data.model.database.ShowTrackDatabase;
 import com.example.showtrack.data.model.serie.Episode;
 import com.example.showtrack.data.model.serie.Season;
@@ -17,6 +18,7 @@ import com.example.showtrack.data.repository.SerieRepository;
 import com.example.showtrack.data.repository.UserRepository;
 import com.example.showtrack.ui.ShowTrackApplication;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,10 +50,10 @@ public class EpisodeAdapter extends RecyclerView.Adapter<EpisodeAdapter.ViewHold
 
         holder.tvNumberEpisode.setText(String.valueOf(position + 1));
 
-        if (this.episodesList.get(position).getTitle().length() >= 24)
-            holder.tvTittleEpisode.setText(this.episodesList.get(position).getTitle().substring(0,21).concat("..."));
+        if (this.episodesList.get(position).getTittle().length() >= 24)
+            holder.tvTittleEpisode.setText(this.episodesList.get(position).getTittle().substring(0,21).concat("..."));
         else
-            holder.tvTittleEpisode.setText(this.episodesList.get(position).getTitle());
+            holder.tvTittleEpisode.setText(this.episodesList.get(position).getTittle());
 
         holder.tvTittleEpisodeRating.setText(this.episodesList.get(position).getImdbRating());
 
@@ -74,6 +76,13 @@ public class EpisodeAdapter extends RecyclerView.Adapter<EpisodeAdapter.ViewHold
             holder.imgBtnEpisodeNoWatched.setVisibility(View.VISIBLE);
             holder.imgBtnEpisodeWatched.setVisibility(View.GONE);
         });
+
+        try {
+            Episode episode = APISeries.getEpisodeFullInfo(this.episodesList.get(position));
+            this.episodesList.set(this.episodesList.indexOf(this.episodesList.get(position)), episode);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

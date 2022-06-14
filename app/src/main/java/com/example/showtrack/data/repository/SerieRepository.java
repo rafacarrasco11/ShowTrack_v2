@@ -1,7 +1,6 @@
 package com.example.showtrack.data.repository;
 
 
-import com.example.showtrack.data.model.Film;
 import com.example.showtrack.data.model.Genres;
 import com.example.showtrack.data.model.Lists;
 import com.example.showtrack.data.model.api.APIClasses.APISeries;
@@ -9,29 +8,35 @@ import com.example.showtrack.data.model.dao.EpisodeDao;
 import com.example.showtrack.data.model.dao.SerieDao;
 import com.example.showtrack.data.model.database.ShowTrackDatabase;
 import com.example.showtrack.data.model.serie.Episode;
-import com.example.showtrack.data.model.serie.Season;
 import com.example.showtrack.data.model.serie.Serie;
 import com.example.showtrack.data.model.user.User;
 import com.example.showtrack.ui.ShowTrackApplication;
 import com.example.showtrack.ui.prf.profile.prof.ProfileContract;
 import com.example.showtrack.ui.srs.seriegenre.SerieGenreContract;
-import com.example.showtrack.ui.srs.serieitem.SerieItemContract;
 import com.example.showtrack.ui.srs.seriesearch.SerieSearchContract;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * Clase repositorio local de las listas de series que aparecen en la pantalla series.
+ *
+ * Cada vez que se logea o se carga la pantalla, se cargan en las listas locales de esta clase los resultados de las APIS,
+ * asi, si se actualiza la API irann cambaindo las listas que aparecen.
+ * En el caso de la lista de series mas valoradas no, pero en las listas por genero que se generan en funcion a nuestras series y peluclas añadidas si.
+ *
+ * Para los metodos que solicitan las listas se devuelve un callback con el resultado de la operacion (MVP).
+ */
 public class SerieRepository implements SerieGenreContract.Repository,  SerieSearchContract.Repository, ProfileContract.SeriesRepository {
 
     private static SerieRepository instance;
 
     private ArrayList<Serie> mostPopSeries;
     private ArrayList<Serie> mostRatedSeries;
-    private ArrayList<Serie> genreThreeSeries;
-    private ArrayList<Serie> genreOneSeries;
-    private ArrayList<Serie> genreTwoSeries;
+    private static ArrayList<Serie> genreThreeSeries;
+    private static ArrayList<Serie> genreOneSeries;
+    private static ArrayList<Serie> genreTwoSeries;
 
     private SerieDao serieDao;
     private EpisodeDao episodeDao;
@@ -45,14 +50,12 @@ public class SerieRepository implements SerieGenreContract.Repository,  SerieSea
 
         mostPopSeries.addAll(APISeries.getMostPopSeries());
         mostRatedSeries.addAll(APISeries.getMostRatedSeries());
-        genreOneSeries.addAll(APISeries.getSeriesByGenre(Genres.Western.name()));
-        genreTwoSeries.addAll(APISeries.getSeriesByGenre(Genres.History.name()));
-        genreThreeSeries.addAll(APISeries.getSeriesByGenre(Genres.Comedy.name()));
 
         this.serieDao = ShowTrackDatabase.getDatabase().serieDao();
         this.episodeDao = ShowTrackDatabase.getDatabase().episodeDao();
 
-        mostPopSeries.remove(0);
+        if (mostPopSeries.size() != 0)
+            mostPopSeries.remove(0);
     }
 
     public static SerieRepository getInstance() {
@@ -60,25 +63,32 @@ public class SerieRepository implements SerieGenreContract.Repository,  SerieSea
             instance = new SerieRepository();
         }
 
-
+        if (ShowTrackApplication.getUserTemp() !=null ) {
+            genreOneSeries.clear();
+            genreOneSeries.addAll(APISeries.getSeriesByGenre(ShowTrackApplication.getUserTemp().getGenreOne()));
+            genreTwoSeries.clear();
+            genreTwoSeries.addAll(APISeries.getSeriesByGenre(ShowTrackApplication.getUserTemp().getGenreTwo()));
+            genreThreeSeries.clear();
+            genreThreeSeries.addAll(APISeries.getSeriesByGenre(ShowTrackApplication.getUserTemp().getGenreThree()));
+        }
 
         return instance;
     }
 
     public ArrayList<Serie> cargarSeriesByGenre(String genre, int pages) {
-        if (genre.equals(Genres.Western.name())) {
+        if (genre.equals(ShowTrackApplication.getUserTemp().getGenreOne())) {
             if (genreOneSeries.size() <= pages)
                 pages = genreOneSeries.size();
             List<Serie> listTmp =  genreOneSeries.subList(0,pages);
             return new ArrayList<>(listTmp);
         }
-        else if (genre.equals(Genres.History.name())) {
+        else if (genre.equals(ShowTrackApplication.getUserTemp().getGenreTwo())) {
             if (genreTwoSeries.size() <= pages)
                 pages = genreTwoSeries.size();
             List<Serie> listTmp =  genreTwoSeries.subList(0,pages);
             return new ArrayList<>(listTmp);
         }
-        else if (genre.equals(Genres.Comedy.name())) {
+        else if (genre.equals(ShowTrackApplication.getUserTemp().getGenreThree())) {
             if (genreThreeSeries.size() <= pages)
                 pages = genreThreeSeries.size();
             List<Serie> listTmp =  genreThreeSeries.subList(0,pages);
@@ -123,7 +133,12 @@ public class SerieRepository implements SerieGenreContract.Repository,  SerieSea
     @Override
     public void cargarSeriesRv(ProfileContract.OnProfileGenreCallback callback) {
         try {
-            callback.onSuccessCargarSeriessRv((ArrayList<Serie>) ShowTrackDatabase.databaseWriteExecutor.submit(() -> serieDao.getUserSeries(ShowTrackApplication.getUserTemp().getId())).get());
+            List<Serie> list =ShowTrackDatabase.databaseWriteExecutor.submit(() -> serieDao.getUserSeries(ShowTrackApplication.getUserTemp().getId())).get();
+            if (list.size() ==0) {
+                callback.onCargarSeriesRvNoData();
+            } else {
+                callback.onSuccessCargarSeriessRv((ArrayList<Serie>) list);
+            }
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -137,7 +152,7 @@ public class SerieRepository implements SerieGenreContract.Repository,  SerieSea
     public boolean isWatched(Serie serie, User userTemp) {
         try {
             List<Serie> series = ShowTrackDatabase.databaseWriteExecutor.submit(() -> serieDao.getSerieUser(userTemp.getId(),serie.getImdbID())).get();
-            if (series.size() == 1)
+            if (series.size() > 0)
                 return true;
 
         } catch (ExecutionException e) {
@@ -162,6 +177,14 @@ public class SerieRepository implements SerieGenreContract.Repository,  SerieSea
         }
 
         return false;
+    }
+
+    public ArrayList<Episode> getUserEpisodes() throws ExecutionException, InterruptedException {
+        return (ArrayList<Episode>) ShowTrackDatabase.databaseWriteExecutor.submit(() -> episodeDao.getUserEpisodes(ShowTrackApplication.getUserTemp().getId())).get();
+    }
+
+    public ArrayList<Serie> getUserSeries() throws ExecutionException, InterruptedException {
+        return (ArrayList<Serie>) ShowTrackDatabase.databaseWriteExecutor.submit(() -> serieDao.getUserSeries(ShowTrackApplication.getUserTemp().getId())).get();
     }
 
 }

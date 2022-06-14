@@ -1,5 +1,6 @@
 package com.example.showtrack.ui.srs.serieitem;
 
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +18,7 @@ import com.example.showtrack.data.model.dao.EpisodeDao;
 import com.example.showtrack.data.model.recycler.RecyclerFilm;
 import com.example.showtrack.data.model.serie.Episode;
 import com.example.showtrack.data.model.serie.Season;
+import com.example.showtrack.data.model.serie.Serie;
 import com.example.showtrack.data.repository.SerieRepository;
 import com.example.showtrack.data.repository.UserRepository;
 import com.example.showtrack.ui.ShowTrackApplication;
@@ -28,9 +31,13 @@ import java.util.List;
 public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.ViewHolderSeasons> implements EpisodeAdapter.OnEpisodeListener {
 
     private List<Season> seasonList;
+    private Activity activity;
+    private Serie serie;
 
-    public SeasonAdapter() {
+    public SeasonAdapter(Serie serie, FragmentActivity activity) {
         this.seasonList = new ArrayList<>();
+        this.activity = activity;
+        this.serie =serie;
     }
 
     @NonNull
@@ -80,6 +87,15 @@ public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.ViewHolder
     @Override
     public void addEpisode(Episode episode) {
         UserRepository.getInstance().addEpisode(episode);
+
+        String content = serie.getTittle() + "\t" + ShowTrackApplication.context().getString(R.string.addEpisode_notification) + episode.getEpisodeNumber() + ".  " + episode.getTittle();
+
+        ShowTrackApplication.newNotification(
+                activity,
+                R.drawable.ic_watched,
+                ShowTrackApplication.context().getString(R.string.episodeAddedTitle_notification),
+                content
+        );
     }
 
     @Override

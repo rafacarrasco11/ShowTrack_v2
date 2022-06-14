@@ -1,5 +1,8 @@
 package com.example.showtrack.data.model.api.JSONObjects.news;
 
+/**
+ * Clase POJO para los objetos JSON que deveulve la API de noticias
+ */
 public class JSONSource {
     String id;
     String name;

@@ -48,7 +48,38 @@ public class ProfilePresenter implements ProfileContract.Presenter, ProfileContr
     }
 
     @Override
+    public void onCargarSeriesRvNoData() {
+        this.view.onCargarSeriesRvNoData();
+    }
+
+    @Override
+    public void onCargarFilmsRvNoData() {
+        this.view.onCargarFilmsRvNoData();
+    }
+
+    @Override
     public void onSuccessCargarStatsRv(ArrayList<Stat> rvList) {
         this.view.onSuccessCargarStatsRv(rvList);
+    }
+
+    @Override
+    public void deleteAllFilms() {
+        this.interactor.deleteAllFilms();
+    }
+
+    @Override
+    public void deleteAllSeries() {
+        this.interactor.deleteAllSeries();
+    }
+
+
+    @Override
+    public void onSuccessDeleteSeries(String message) {
+        this.view.onSuccessDeleteSeries(message);
+    }
+
+    @Override
+    public void onSuccessDeleteFilms(String message) {
+        this.view.onSuccessDeleteFilms(message);
     }
 }

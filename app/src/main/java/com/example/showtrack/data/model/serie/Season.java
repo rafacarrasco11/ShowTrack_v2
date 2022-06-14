@@ -6,11 +6,19 @@ import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase POJO para la entidad de un Season
+ *
+ * Podemos observar las anotaciones para la base de datos ROOM, ya que esta almacena objetos de Season.
+ *
+ * Aunque no se opere cone sta clase, tiene que esta implementada en la base de datos puesto que un objeto de Serie si guarda seasons en sus campos
+ */
 @Entity(foreignKeys = @ForeignKey(entity = Serie.class, parentColumns = "id", childColumns = "serie_id"))
-public class Season {
+public class Season implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     int id;

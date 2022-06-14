@@ -29,7 +29,15 @@ import com.example.showtrack.utils.DrawableUtil;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
+/**
+ * Clase para el fragmento donde se enseña informacion comlpeta de una serie, desde aqui se puede añadir como vista en la base de datos.
+ *
+ * Ademas en este fragmento se muestra la informacion de los capitulos en Listas.
+ * Primero se genera una lista con todas las temporadas y luego para cada una genere otra lista con los episodios.
+ * Esto se hace con un recycler view y un nested recycler view.
+ *
+ * Funciona con un modelo Vista-Presentador.
+ */
 public class SerieItemFragment extends Fragment implements SerieItemContract.View {
 
     private FragmentSerieItemBinding binding;
@@ -84,7 +92,7 @@ public class SerieItemFragment extends Fragment implements SerieItemContract.Vie
     }
 
     private void initRvSeasons() {
-        adapter = new SeasonAdapter();
+        adapter = new SeasonAdapter(this.serie, getActivity());
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
 
         binding.rvSeasons.setLayoutManager(layoutManager);
@@ -100,6 +108,23 @@ public class SerieItemFragment extends Fragment implements SerieItemContract.Vie
     @Override
     public void onSuccessAddSerie(String message) {
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+
+        binding.btnAddSerieFilmItem.setVisibility(View.GONE);
+        binding.btnDeleteSerieFilmItem.setVisibility(View.VISIBLE);
+
+        String content = this.serie.getTittle();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("serie", this.serie);
+
+        ShowTrackApplication.newNotification(
+                bundle,
+                getActivity(),
+                R.id.serieItemFragment,
+                R.drawable.ic_watched,
+                ShowTrackApplication.context().getString(R.string.serieAddedTitle_notification),
+                content
+        );
+
 
         binding.btnAddSerieFilmItem.setVisibility(View.GONE);
         binding.btnDeleteSerieFilmItem.setVisibility(View.VISIBLE);

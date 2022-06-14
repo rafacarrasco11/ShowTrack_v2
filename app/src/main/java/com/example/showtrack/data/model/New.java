@@ -1,6 +1,13 @@
 package com.example.showtrack.data.model;
 
-public class New {
+import java.io.Serializable;
+
+/**
+ * Clase para las noticias, que se obtiene de la API.
+ *
+ * Esta entidad se usa en las listas de noticias de la pantalla home.
+ */
+public class New implements Serializable {
 
     String name;
     String author;

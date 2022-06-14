@@ -25,6 +25,11 @@ import com.example.showtrack.ui.srs.seriesrecycler.SerieAdapter;
 
 import java.util.ArrayList;
 
+/**
+ * Clase para el fragmento donde se enseña una lista en recycler view con series sobre un genero.
+ *
+ * Funciona con un modelo Vista-Presentador.
+ */
 public class SerieGenreFragment extends Fragment implements SerieGenreContract.View, SerieAdapter.OnSeriesListener {
 
     private FragmentSerieGenreBinding binding;

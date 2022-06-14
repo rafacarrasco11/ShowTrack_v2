@@ -19,6 +19,9 @@ import com.example.showtrack.utils.DrawableUtil;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Adapter para las peliculas, que son los items que hay en las listas de peliculas (Nested Recycler View).
+ */
 public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolderFilms> {
     private ArrayList<Film> filmsList;
     private OnFilmsListener listener;

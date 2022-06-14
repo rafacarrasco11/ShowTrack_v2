@@ -35,6 +35,18 @@ import java.util.List;
  * *************************************************************
  * *************************************************************
  */
+
+/**
+ * En esta clase se gestionan las peticiones a las APIS y se devuelven en forma de objeto JAVA.
+ * Se compone de diferentes variables constantes donde se almacenan los datos necesarios para acceder a las APIS y algunos parametros no variables (siempre son el mismo)
+ *
+ * Lo que se hace en esta clase es generar una url que pasa por la clase APIUtils, donde hay metodos que convierten esta url en una respuesta (OkHttp) en formato JSON,
+ * este JSON vienen como una String y aqui en esta clase y usando la libreria GSON se convierte a una entidad de la alpicacion, en este caso a una serie.
+ * En la clase tambien podemos encontrar otros metodos para obtener informacion o algo en especifico de una serie desde la API.
+ *
+ * Esta clase contiene metodos los cuales recogen (o no) parametros y devuelven listas de series, asi se cargan las listas que encontramos en el apartado series de
+ * la aplicacion o en nuestro perfil
+ */
 public class APISeries {
 
     private static final String HOST = "moviesdatabase.p.rapidapi.com";
@@ -84,12 +96,11 @@ public class APISeries {
      * @return
      */
     private static String generateURLBySearch(String search) {
-        Log.d("AAAAAAAAAAAa", URL_OMDB + "s=" + search);
         return URL_OMDB + "s=" + search;
     }
 
     /**
-     * Este metodo hace una peticion a Omdb API para rellenar toda la info de una pelicula o seria ya que esta api contiene mas informacion
+     * Este metodo hace una peticion a Omdb API para rellenar toda la info de una serie o seria ya que esta api contiene mas informacion
      * @param id
      * @return
      */
@@ -108,7 +119,7 @@ public class APISeries {
     }
 
     /**
-     * Devuelve las peliculas mas populares.
+     * Devuelve las series mas populares.
      **/
     public static List<Serie> getMostPopSeries()  {
         List<Serie> SeriesPopList = new ArrayList<>();
@@ -120,18 +131,20 @@ public class APISeries {
             e.printStackTrace();
         }
 
-        if (!jsonSeries1.getEntries().equals("0")) {
-            for (JSONResult result : jsonSeries1.getResults()) {
-                if (result.getPrimaryImage() != null) {
-                    Serie s = new Serie();
+        if (jsonSeries1 != null) {
+            if (!jsonSeries1.getEntries().equals("0")) {
+                for (JSONResult result : jsonSeries1.getResults()) {
+                    if (result.getPrimaryImage() != null) {
+                        Serie s = new Serie();
 
-                    s.setTittle(result.getTitleText().getText());
-                    s.setYearReleased(result.getReleaseYear().getYear());
-                    s.setImdbID(result.getImdbID());
-                    s.setType(result.getTitleType().getText());
-                    s.setPoster(result.getPrimaryImage().getUrl());
+                        s.setTittle(result.getTitleText().getText());
+                        s.setYearReleased(result.getReleaseYear().getYear());
+                        s.setImdbID(result.getImdbID());
+                        s.setType(result.getTitleType().getText());
+                        s.setPoster(result.getPrimaryImage().getUrl());
 
-                    SeriesPopList.add(s);
+                        SeriesPopList.add(s);
+                    }
                 }
             }
         }
@@ -140,7 +153,7 @@ public class APISeries {
     }
 
     /**
-     * Devuelve las peliculas mas valoradas.
+     * Devuelve las series mas valoradas.
      **/
     public static List<Serie> getMostRatedSeries()  {
         List<Serie> SeriesMRatedList = new ArrayList<>();
@@ -171,6 +184,9 @@ public class APISeries {
         return SeriesMRatedList;
     }
 
+    /**
+     * Obtienes una lista de series segun su genero
+     */
     public static List<Serie> getSeriesByGenre(String name) {
         List<Serie> Series = new ArrayList<>();
 
@@ -202,6 +218,9 @@ public class APISeries {
         return Series;
     }
 
+    /**
+     * Este metodo devuelve la serie que le entra por paramteros pero con toda la informacion obtenida de la API
+     */
     public static Serie getSerieFullInfo(Serie serie) throws IOException {
 
         Serie f = serie;
@@ -233,6 +252,42 @@ public class APISeries {
         return f;
     }
 
+    /**
+     * Este metodo devuelve toda la info disponible sobre un episodio en concreto
+     */
+    public static Episode getEpisodeFullInfo(Episode episode) throws IOException {
+
+        Episode e = episode;
+
+        JSONEpisode jsonEpisode = null;
+
+        try {
+            jsonEpisode = (JSONEpisode) APIUtil.getInstance().getFromApi(JSONEpisode.class, generateURLByID(e.getImdbID()));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        e.setAgeRestriction(jsonEpisode.getImdbRating());
+        e.setTime(jsonEpisode.getRuntime());
+        e.setGenre(jsonEpisode.getGenre());
+        e.setLanguage(jsonEpisode.getLanguage());
+        e.setPlot(jsonEpisode.getPlot());
+        e.setCountry(jsonEpisode.getCountry());
+        e.setAwards(jsonEpisode.getAwards());
+        e.setPoster(jsonEpisode.getPoster());
+        e.setDirector(jsonEpisode.getDirector());
+        e.setWriters(jsonEpisode.getWriters());
+        e.setActors(jsonEpisode.getActors());
+        e.setImdbRating(jsonEpisode.getImdbRating());
+
+        return e;
+    }
+
+    /**
+     * Este metodo devuelve una lista de temporadas cuando le introducimos la serie de la cual queremos sacar las temporadas por parametros
+     * @param serie
+     * @return
+     * @throws IOException
+     */
     private static List<Season> getSeasonsBySerie(Serie serie) throws IOException {
         List<Season> seasons = new ArrayList<>();
 
@@ -247,6 +302,7 @@ public class APISeries {
                 s.setSerieTittle(serie.getTittle());
                 s.setSeasonNumber((i + 1));
                 s.setEpisodes(getEpisodes(jsonSearchSeason.getEpisodes()));
+                s.setSerie_id(serie.getId());
 
                 seasons.add(s);
             }
@@ -256,7 +312,13 @@ public class APISeries {
 
     }
 
-    private static List<Episode> getEpisodes(List<JSONEpisode> episodes) {
+    /**
+     * Este metodo nos devuelve los episodios de una temporda
+     * @param episodes (OBJETO CLASE JSON)
+     * @return
+     * @throws IOException
+     */
+    private static List<Episode> getEpisodes(List<JSONEpisode> episodes) throws IOException {
         List<Episode> ep = new ArrayList<>();
 
         if (episodes != null) {
@@ -264,10 +326,11 @@ public class APISeries {
                 Episode e = new Episode();
 
                 e.setEpisodeNumber(jsonEpisode.getEpisode());
-                e.setReleased(jsonEpisode.getReleased());
+                e.setYearReleased(jsonEpisode.getYearReleased());
                 e.setImdbID(jsonEpisode.getImdbID());
-                e.setTitle(jsonEpisode.getTitle());
+                e.setTittle(jsonEpisode.getTitle());
                 e.setImdbRating(jsonEpisode.getImdbRating());
+                e.setId(jsonEpisode.getImdbID());
 
                 ep.add(e);
             }
@@ -277,6 +340,11 @@ public class APISeries {
     }
 
 
+    /**
+     * Devuelve una lista de series en funciona una busqueda por palabras clave que se pasa como parametro
+     * @param search
+     * @return
+     */
     public static List<Serie> getSeriesBySearch(String search) {
         List<Serie> series = new ArrayList<>();
 
@@ -307,6 +375,11 @@ public class APISeries {
         return series;
     }
 
+    /**
+     * Se obtiene una nueva foto para la serie oibtenida de una API diferente
+     * @param serie
+     * @return
+     */
     public static String getNewBackground(Serie serie) {
         JSONSerie jsonSerieSearch = null;
 

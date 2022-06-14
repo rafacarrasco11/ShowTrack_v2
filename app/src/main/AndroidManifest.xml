@@ -3,11 +3,13 @@
     package="com.example.showtrack">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icno_showtrack"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/icno_showtrack"
         android:supportsRtl="true"
         android:theme="@style/Theme.ShowTrack.NoActionBar"
         android:name=".ui.ShowTrackApplication">
@@ -30,7 +32,8 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 
