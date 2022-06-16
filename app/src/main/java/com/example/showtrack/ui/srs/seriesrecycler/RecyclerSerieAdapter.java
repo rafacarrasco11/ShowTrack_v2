@@ -25,8 +25,8 @@ import java.util.List;
  */
 public class RecyclerSerieAdapter extends RecyclerView.Adapter<RecyclerSerieAdapter.ViewHolderSeries> implements SerieAdapter.OnSeriesListener{
 
-    private ArrayList<RecyclerSerie> recyclersList;
-    private OnRecyclerSerieListener listener;
+    private final ArrayList<RecyclerSerie> recyclersList;
+    private final OnRecyclerSerieListener listener;
 
     public interface OnRecyclerSerieListener {
         void onVisitGenre(RecyclerSerie recyclerSerie, int numberGenre);

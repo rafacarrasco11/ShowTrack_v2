@@ -167,5 +167,9 @@ public class SerieItemFragment extends Fragment implements SerieItemContract.Vie
         return false;
     }
 
-
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+    }
 }

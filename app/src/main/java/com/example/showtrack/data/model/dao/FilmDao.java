@@ -36,4 +36,7 @@ public interface FilmDao {
 
     @Query("DELETE FROM Film")
     void deleteFilms();
+
+    @Query("DELETE FROM Film WHERE user_id=:userId")
+    void deleteFilmsById(String userId);
 }

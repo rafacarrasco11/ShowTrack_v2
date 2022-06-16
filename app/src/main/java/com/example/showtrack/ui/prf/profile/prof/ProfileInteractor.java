@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class ProfileInteractor implements ProfileContract.OnProfileGenreCallback {
 
-    private ProfileContract.OnInteractorListener listener;
+    private final ProfileContract.OnInteractorListener listener;
 
     public ProfileInteractor(ProfileContract.OnInteractorListener listener) {
         this.listener = listener;

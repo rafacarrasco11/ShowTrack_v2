@@ -21,7 +21,7 @@ import okhttp3.Response;
 public class APIUtil {
 
     private JsonReader jsonReader;
-    private Gson gson;
+    private final Gson gson;
 
     private String json;
 

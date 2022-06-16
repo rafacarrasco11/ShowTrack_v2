@@ -24,8 +24,8 @@ import java.util.List;
 
 public class EpisodeAdapter extends RecyclerView.Adapter<EpisodeAdapter.ViewHolderEpisodes> {
 
-    private List<Episode> episodesList;
-    private OnEpisodeListener listener;
+    private final List<Episode> episodesList;
+    private final OnEpisodeListener listener;
 
     public interface OnEpisodeListener {
         void addEpisode(Episode episode);

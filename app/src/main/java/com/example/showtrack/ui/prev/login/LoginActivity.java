@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         preferences = getPreferences(MODE_PRIVATE);
 
 
-        if (PreferenceManager.getDefaultSharedPreferences(this).getString("checked", "false").toString().equals("true"))
+        if (PreferenceManager.getDefaultSharedPreferences(this).getString("checked", "false").equals("true"))
             binding.chkRembMeLogin.setChecked(true);
 
         if (!PreferenceManager.getDefaultSharedPreferences(this).getString(User.TAG, "none").equals("none"))

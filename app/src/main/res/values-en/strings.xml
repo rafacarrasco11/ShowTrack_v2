@@ -10,7 +10,7 @@
     <string name="btnSignUpSignUp_text">Sign up</string>
     <string name="tieEmailSignUp_hint">Mail</string>
     <string name="tiePasswdSignUp_hint">Password</string>
-    <string name="tieConfirmPasswdSignUp_hint">Confirm pas</string>
+    <string name="tieConfirmPasswdSignUp_hint">Confirm password</string>
     <string name="btnSignInSignUp_text">Have an account? Sign in.</string>
     <string name="actionDashboardHome_tittle">Home</string>
     <string name="actionDashboardSeries_tittle">Series</string>

@@ -8,8 +8,8 @@ import com.example.showtrack.utils.CommonUtils;
 
 public class SignUpInteractor implements SignUpContract.OnSignUpCallback{
 
-    private SignUpContract.OnInteractorListener listener;
-    private SignUpContract.OnSignUpCallback callback;
+    private final SignUpContract.OnInteractorListener listener;
+    private final SignUpContract.OnSignUpCallback callback;
 
     public SignUpInteractor(SignUpContract.OnInteractorListener listener) {
         this.listener = listener;

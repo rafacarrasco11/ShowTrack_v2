@@ -32,14 +32,14 @@ public class SerieRepository implements SerieGenreContract.Repository,  SerieSea
 
     private static SerieRepository instance;
 
-    private ArrayList<Serie> mostPopSeries;
-    private ArrayList<Serie> mostRatedSeries;
+    private final ArrayList<Serie> mostPopSeries;
+    private final ArrayList<Serie> mostRatedSeries;
     private static ArrayList<Serie> genreThreeSeries;
     private static ArrayList<Serie> genreOneSeries;
     private static ArrayList<Serie> genreTwoSeries;
 
-    private SerieDao serieDao;
-    private EpisodeDao episodeDao;
+    private final SerieDao serieDao;
+    private final EpisodeDao episodeDao;
 
     private SerieRepository() {
         mostPopSeries = new ArrayList<>();

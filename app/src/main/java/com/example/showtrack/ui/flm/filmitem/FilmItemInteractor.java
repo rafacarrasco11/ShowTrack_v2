@@ -6,7 +6,7 @@ import com.example.showtrack.data.repository.UserRepository;
 
 public class FilmItemInteractor implements FilmItemContract.OnFilmItemCallback{
 
-    private FilmItemContract.OnInteractorListener listener;
+    private final FilmItemContract.OnInteractorListener listener;
 
     public FilmItemInteractor(FilmItemContract.OnInteractorListener listener) {
         this.listener = listener;

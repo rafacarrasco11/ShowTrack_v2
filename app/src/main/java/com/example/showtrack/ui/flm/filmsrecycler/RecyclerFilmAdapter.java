@@ -26,8 +26,8 @@ import java.util.ArrayList;
  * Adapter para la clase de listas de peliculas que aparecen en la pantalla peliculas.
  */
 public class RecyclerFilmAdapter extends RecyclerView.Adapter<RecyclerFilmAdapter.ViewHolderFilms> implements FilmsAdapter.OnFilmsListener{
-    private ArrayList<RecyclerFilm> recyclersList;
-    private OnRecyclerFilmListener listener;
+    private final ArrayList<RecyclerFilm> recyclersList;
+    private final OnRecyclerFilmListener listener;
 
     public interface OnRecyclerFilmListener {
         void onVisitGenre(RecyclerFilm recyclerFilm, int numberGenre);

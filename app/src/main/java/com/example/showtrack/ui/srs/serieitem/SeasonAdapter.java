@@ -30,9 +30,9 @@ import java.util.List;
 
 public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.ViewHolderSeasons> implements EpisodeAdapter.OnEpisodeListener {
 
-    private List<Season> seasonList;
-    private Activity activity;
-    private Serie serie;
+    private final List<Season> seasonList;
+    private final Activity activity;
+    private final Serie serie;
 
     public SeasonAdapter(Serie serie, FragmentActivity activity) {
         this.seasonList = new ArrayList<>();

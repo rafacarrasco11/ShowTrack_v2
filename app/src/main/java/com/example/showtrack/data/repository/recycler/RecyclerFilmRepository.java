@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class RecyclerFilmRepository implements RecyclerFilmsContract.Repository {
 
     private static RecyclerFilmRepository instance;
-    private ArrayList<RecyclerFilm> rvList;
+    private final ArrayList<RecyclerFilm> rvList;
 
     private RecyclerFilmRepository() {
         this.rvList = new ArrayList<>();

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class RecyclerFilmsFragmentInteractor implements RecyclerFilmsContract.OnRepositoryRecyclerFilmFragmentCallback {
 
-    private RecyclerFilmsContract.OnInteractorListener listener;
+    private final RecyclerFilmsContract.OnInteractorListener listener;
 
     public RecyclerFilmsFragmentInteractor(RecyclerFilmsContract.OnInteractorListener listener) {
         this.listener = listener;

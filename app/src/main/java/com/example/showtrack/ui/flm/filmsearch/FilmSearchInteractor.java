@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class FilmSearchInteractor implements FilmSearchContract.OnFilmSearchCallback{
 
-    private FilmSearchContract.OnInteractorListener listener;
+    private final FilmSearchContract.OnInteractorListener listener;
 
     public FilmSearchInteractor(FilmSearchContract.OnInteractorListener listener) {
         this.listener = listener;

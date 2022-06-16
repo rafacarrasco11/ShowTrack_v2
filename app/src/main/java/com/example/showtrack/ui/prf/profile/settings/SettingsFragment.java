@@ -64,7 +64,6 @@ import java.util.concurrent.ExecutionException;
  *          - Eliminar tu cuenta
  *          - Cerrar sesion
  *
- *
  *  Utiliza el MVP donde se controlan los errores y el resultado de las operaciones.
  */
 
@@ -120,6 +119,9 @@ public class SettingsFragment extends Fragment implements SettingsFragmentContra
             pickImage();
         });
 
+        if (ShowTrackApplication.getUserTemp().getProfilePhotoRoom() != null)
+            binding.imgAvatarSettingsFragment.setImageBitmap(CommonUtils.StringToBitMap(ShowTrackApplication.getUserTemp().getProfilePhotoRoom()));
+
         languages.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -127,13 +129,10 @@ public class SettingsFragment extends Fragment implements SettingsFragmentContra
                     setLocale("es");
                 else if (position == 2)
                     setLocale("en");
-
-
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
 
@@ -182,6 +181,10 @@ public class SettingsFragment extends Fragment implements SettingsFragmentContra
 
                 ShowTrackApplication.getUserTemp().setProfilePhoto(selectedImage);
                 ShowTrackApplication.getUserTemp().setProfilePhotoRoom(CommonUtils.BitMapToString(selectedImage));
+
+                User user = ShowTrackApplication.getUserTemp();
+
+
                 UserRepository.getInstance().setProfilePhoto();
                 binding.imgAvatarSettingsFragment.setImageBitmap(selectedImage);
             } catch (FileNotFoundException e) {

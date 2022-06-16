@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class RecyclerSerieFragmentInteractor implements RecyclerSerieContract.OnRepositoryRecyclerSerieFragmentCallback {
 
-    private RecyclerSerieContract.OnInteractorListener listener;
+    private final RecyclerSerieContract.OnInteractorListener listener;
 
     public RecyclerSerieFragmentInteractor(RecyclerSerieContract.OnInteractorListener listener) {
         this.listener = listener;

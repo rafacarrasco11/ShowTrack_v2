@@ -12,8 +12,8 @@ import com.example.showtrack.utils.CommonUtils;
 
 public class SettingsFragmentInteractor implements SettingsFragmentContract.OnSettingsCallback{
 
-    private SettingsFragmentContract.OnInteractorListener listener;
-    private SettingsFragmentContract.OnSettingsCallback callback;
+    private final SettingsFragmentContract.OnInteractorListener listener;
+    private final SettingsFragmentContract.OnSettingsCallback callback;
 
     public SettingsFragmentInteractor(SettingsFragmentContract.OnInteractorListener listener) {
         this.listener = listener;

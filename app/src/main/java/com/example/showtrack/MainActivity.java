@@ -50,9 +50,9 @@ public class MainActivity extends AppCompatActivity {
         FilmRepository.getInstance();
         SerieRepository.getInstance();
 
-       if (PreferenceManager.getDefaultSharedPreferences(this).getString("lang", "0" ).toString().equals("es"))
+       if (PreferenceManager.getDefaultSharedPreferences(this).getString("lang", "0" ).equals("es"))
            setLocale("es");
-       else if (PreferenceManager.getDefaultSharedPreferences(this).getString("lang", "0" ).toString().equals("en"))
+       else if (PreferenceManager.getDefaultSharedPreferences(this).getString("lang", "0" ).equals("en"))
            setLocale("en");
 
     }

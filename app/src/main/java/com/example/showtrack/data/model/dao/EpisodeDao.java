@@ -34,4 +34,7 @@ public interface EpisodeDao {
 
     @Query("DELETE FROM Episode")
     void deleteEpisodes();
+
+    @Query("DELETE FROM Episode WHERE user_id=:userId")
+    void deleteEpisodesById(String userId);
 }

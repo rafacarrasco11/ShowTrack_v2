@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class HomeInteractor implements HomeContract.OnRepositoryHomeFragmentCallback {
 
-    private HomeContract.OnInteractorListener listener;
+    private final HomeContract.OnInteractorListener listener;
 
     public HomeInteractor(HomeContract.OnInteractorListener listener) {
         this.listener = listener;

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class SerieSearchInteractor implements SerieSearchContract.OnSerieSearchCallback{
 
-    private SerieSearchContract.OnInteractorListener listener;
+    private final SerieSearchContract.OnInteractorListener listener;
 
     public SerieSearchInteractor(SerieSearchContract.OnInteractorListener listener) {
         this.listener = listener;

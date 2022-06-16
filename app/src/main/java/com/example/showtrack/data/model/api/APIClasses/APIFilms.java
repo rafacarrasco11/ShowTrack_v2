@@ -73,7 +73,6 @@ public class APIFilms {
                 + "&titleType=" + titleType
                 + "&genre=" + genre
                 + "&list=" + listPops;
-
     }
 
     /**

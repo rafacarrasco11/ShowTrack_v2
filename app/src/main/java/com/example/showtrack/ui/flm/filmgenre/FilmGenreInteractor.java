@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class FilmGenreInteractor implements FilmGenreContract.OnFilmGenreCallback{
 
-    private FilmGenreContract.OnInteractorListener listener;
+    private final FilmGenreContract.OnInteractorListener listener;
 
     public FilmGenreInteractor(FilmGenreContract.OnInteractorListener listener) {
         this.listener = listener;

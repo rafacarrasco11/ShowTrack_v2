@@ -23,8 +23,8 @@ import java.util.ArrayList;
  * Adapter para las series, que son los items que hay en las listas de series (Nested Recycler View).
  **/
 public class SerieAdapter extends RecyclerView.Adapter<SerieAdapter.ViewHolderSeries> {
-    private ArrayList<Serie> seriesList;
-    private OnSeriesListener listener;
+    private final ArrayList<Serie> seriesList;
+    private final OnSeriesListener listener;
 
     public interface OnSeriesListener{
         void onVisitSerie(Serie serie);

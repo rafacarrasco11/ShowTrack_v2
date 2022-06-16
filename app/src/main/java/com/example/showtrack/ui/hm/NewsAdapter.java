@@ -24,8 +24,8 @@ import java.util.Locale;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolderNews> {
 
-    private ArrayList<New> newsList;
-    private NewsAdapter.OnNewsListener listener;
+    private final ArrayList<New> newsList;
+    private final NewsAdapter.OnNewsListener listener;
 
     public interface OnNewsListener{
         void onClickNew(New neW);

@@ -174,6 +174,9 @@ public class UserRepository implements ProfileContract.UserRepository, FilmItemC
     public void DeleteAccount(SettingsFragmentContract.OnSettingsCallback callback) {
         FirebaseAuth.getInstance().getCurrentUser().delete();
         ShowTrackDatabase.databaseWriteExecutor.submit(() -> userDao.delete(ShowTrackApplication.getUserTemp()));
+        ShowTrackDatabase.databaseWriteExecutor.submit(() -> filmDao.deleteFilmsById(String.valueOf(ShowTrackApplication.getUserTemp().getId())));
+        ShowTrackDatabase.databaseWriteExecutor.submit(() -> episodeDao.deleteEpisodesById(String.valueOf(ShowTrackApplication.getUserTemp().getId())));
+        ShowTrackDatabase.databaseWriteExecutor.submit(() -> serieDao.deleteSerieById(String.valueOf(ShowTrackApplication.getUserTemp().getId())));
 
         callback.onSuccessDeleteAccount();
     }

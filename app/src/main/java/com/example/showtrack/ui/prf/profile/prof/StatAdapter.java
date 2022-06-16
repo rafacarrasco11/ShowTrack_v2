@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class StatAdapter extends RecyclerView.Adapter<StatAdapter.ViewHolderStats> {
 
-    private ArrayList<Stat> statArrayList;
+    private final ArrayList<Stat> statArrayList;
 
     public StatAdapter() {
         this.statArrayList = new ArrayList<>();

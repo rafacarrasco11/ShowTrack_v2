@@ -31,7 +31,7 @@ import java.util.List;
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class APINews {
 
-    private static List<New> newsList = new ArrayList<>();
+    private static final List<New> newsList = new ArrayList<>();
 
     private static final String API_KEY = "be1e2b3473c248848654fe44cd7307ad";
     private static final String apiURL = "https://newsapi.org/v2/everything?apiKey=";

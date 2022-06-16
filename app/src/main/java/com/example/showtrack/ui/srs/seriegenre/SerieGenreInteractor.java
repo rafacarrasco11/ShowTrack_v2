@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class SerieGenreInteractor implements SerieGenreContract.OnSerieGenreCallback{
 
-    private SerieGenreContract.OnInteractorListener listener;
+    private final SerieGenreContract.OnInteractorListener listener;
 
     public SerieGenreInteractor(SerieGenreContract.OnInteractorListener listener) {
         this.listener = listener;

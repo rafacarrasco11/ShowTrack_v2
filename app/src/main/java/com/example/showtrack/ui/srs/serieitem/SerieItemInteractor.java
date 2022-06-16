@@ -9,7 +9,7 @@ import java.util.List;
 
 public class SerieItemInteractor implements SerieItemContract.OnSerieItemCallback{
 
-    private SerieItemContract.OnInteractorListener listener;
+    private final SerieItemContract.OnInteractorListener listener;
 
     public SerieItemInteractor(SerieItemContract.OnInteractorListener listener) {
         this.listener = listener;

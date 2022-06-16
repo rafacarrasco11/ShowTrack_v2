@@ -11,8 +11,8 @@ import com.example.showtrack.utils.CommonUtils;
 
 public class LoginInteractor implements LoginContract.OnLoginCallback {
 
-    private LoginContract.OnInteractorListener listener;
-    private LoginContract.OnLoginCallback callback;
+    private final LoginContract.OnInteractorListener listener;
+    private final LoginContract.OnLoginCallback callback;
 
     public LoginInteractor(LoginContract.OnInteractorListener listener) {
         this.listener = listener;

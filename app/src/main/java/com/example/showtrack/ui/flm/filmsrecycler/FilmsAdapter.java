@@ -23,8 +23,8 @@ import java.util.ArrayList;
  * Adapter para las peliculas, que son los items que hay en las listas de peliculas (Nested Recycler View).
  */
 public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolderFilms> {
-    private ArrayList<Film> filmsList;
-    private OnFilmsListener listener;
+    private final ArrayList<Film> filmsList;
+    private final OnFilmsListener listener;
 
     public interface OnFilmsListener{
         void onVisitFilm(Film film);

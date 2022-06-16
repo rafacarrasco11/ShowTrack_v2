@@ -147,5 +147,10 @@ public class FilmItemFragment extends Fragment implements FilmItemContract.View 
         return false;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
 
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+    }
 }

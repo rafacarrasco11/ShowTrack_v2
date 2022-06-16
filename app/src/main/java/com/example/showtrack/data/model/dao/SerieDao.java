@@ -35,4 +35,7 @@ public interface SerieDao {
 
     @Query("DELETE FROM Serie")
     void deleteSeries();
+
+    @Query("DELETE FROM Serie WHERE user_id=:userId")
+    void deleteSerieById(String userId);
 }
