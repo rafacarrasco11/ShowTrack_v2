@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">ShowTrack</string>
-    <string name="tieUserLogin_hint">User</string>
+    <string name="tieUserLogin_hint">Email</string>
     <string name="tiePaswdLogin_hint">Password</string>
     <string name="chkRembMeLogin_text">Remember me</string>
     <string name="btnSignInLogin_text">Sign In</string>

@@ -4,7 +4,7 @@
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label" translatable="false">First Fragment</string>
 
-    <string name="tieUserLogin_hint">Usuario</string>
+    <string name="tieUserLogin_hint">Email</string>
     <string name="tiePaswdLogin_hint">Contraseña</string>
     <string name="chkRembMeLogin_text">Recordar Usuario</string>
     <string name="btnSignInLogin_text">Iniciar sesion</string>
